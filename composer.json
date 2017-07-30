@@ -1,16 +1,20 @@
 {
     "name": "laravel/laravel",
+    "minimum-stability": "dev",
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "adamwathan/bootforms": "dev-master",
         "barryvdh/laravel-debugbar": "^2.4",
         "barryvdh/laravel-ide-helper": "^2.4",
+        "dlouvard/bootformlaravel": "dev-master",
         "doctrine/dbal": "^2.6",
         "laravel/framework": "5.4.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "laravelcollective/html": "~5.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -28,7 +32,8 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [ "app/Http/helpers.php" ]
     },
     "scripts": {
         "post-root-package-install": [

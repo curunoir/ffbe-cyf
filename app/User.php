@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get the accounts associated to the user.
+     */
+    public function accounts()
+    {
+        return $this->hasMany('App\Account');
+    }
 }
