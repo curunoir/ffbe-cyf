@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.nifty')
 
 @section('content')
     <div class="container">
