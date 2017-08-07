@@ -21,7 +21,8 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view('profile');
+        $user = Auth::getUser();
+        return view('profile', compact('user'));
     }
 
     public function update(Request $request)
@@ -33,12 +34,13 @@ class ProfileController extends Controller
 
     public function newAccount(Request $request){
 
+        $this->validate($request, [
+            'ffbe_id' => 'required|unique:accounts|max:255'
+        ]);
+
         $user = Auth::getUser();
-
         $account =  $user->accounts()->create($request->all());
-
-        //$user->save();
-        return view('profile');
+        return redirect(route('profile'));
     }
 
 }

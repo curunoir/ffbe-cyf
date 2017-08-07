@@ -12,7 +12,10 @@
                         <li class="list-header">Navigation</li>
                             <!--Submenu-->
                             <ul class="collapse in" aria-expanded="true">
-                                <li><a href="{{ route('profile') }}" class=""><i class="pli-male ic-user"></i> Profil</a></li>
+                                <li><a href="{{ route('profile') }}" class=""><i class="psi-male ic-user"></i> Profil</a></li>
+                            </ul>
+                            <ul class="collapse in" aria-expanded="true">
+                                <li><a href="{{ route('friend') }}" class=""><i class="psi-angel ic-user"></i> Search friends</a></li>
                             </ul>
 
                         <li class="list-divider"></li>
