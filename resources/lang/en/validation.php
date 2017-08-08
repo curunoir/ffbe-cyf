@@ -87,6 +87,7 @@ return [
     'unique'               => 'The :attribute has already been taken.',
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
+	'friendcode' 		   => 'The :attribute format must be 111,111,111',
 
     /*
     |--------------------------------------------------------------------------
@@ -101,7 +102,7 @@ return [
 
     'custom' => [
         'attribute-name' => [
-            'rule-name' => 'custom-message',
+            'rule-name' => 'custom-message'
         ],
     ],
 

@@ -38,9 +38,7 @@
                                         <li class="dropdown-header"><i class="demo-pli-file icon-fw"></i> Pages</li>
                                         <li><a href="{{ route('profile') }}"><i class="pli-male ic-user"></i> Profile</a></li>
                                         <li><a href="#">Search Result</a></li>
-                                        <li><a href="#">FAQ</a></li>
-                                        <li><a href="#">Sreen Lock</a></li>
-                                        <li><a href="#" class="disabled">Disabled</a></li>                                        </ul>
+                                    </ul>
 
                                 </div>
                                 <div class="col-sm-4 col-md-3">
@@ -113,8 +111,8 @@
             </ul>
             <ul class="nav navbar-top-links pull-right">
                 @if (Auth::guest())
-                    <li><a href="{{ route('login') }}"><i class="fa fa-sign-in"></i> Identification</a></li>
-                    <li><a href="{{ route('register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> Enregistrement</a></li>
+                    <li><a href="{{ route('login') }}"><i class="fa fa-sign-in"></i> Login</a></li>
+                    <li><a href="{{ route('register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign in</a></li>
                 @else
                 <!--User dropdown-->
                     <li id="dropdown-user" class="dropdown">
@@ -129,7 +127,7 @@
                            onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();" class="btn">
                            <span class="pull-right">
-                                <i class="pli-unlock icon-fw"></i>Déconnexion
+                                <i class="pli-unlock icon-fw"></i>Logout
                            </span>
                         </a>
 

@@ -14,7 +14,7 @@
             <div class="panel-title">Add a new account</div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
 
                         {!! BootForm::open()->action(route('account.new'))->put() !!}
 

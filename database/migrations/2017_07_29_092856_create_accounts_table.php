@@ -22,8 +22,8 @@ class CreateAccountsTable extends Migration
             $table->string('ffbe_id');
             $table->string('server');
             $table->boolean('ffbe_id_visibility')->default(false);
-        });
 
+        });
 
     }
 

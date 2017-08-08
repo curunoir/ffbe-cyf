@@ -35,7 +35,13 @@ class ProfileController extends Controller
     public function newAccount(Request $request){
 
         $this->validate($request, [
-            'ffbe_id' => 'required|unique:accounts|max:255'
+            'ffbe_id' => [
+				'required',
+				'unique:accounts',
+				'max:11',
+				'max:50',
+				'friendcode'
+			]
         ]);
 
         $user = Auth::getUser();

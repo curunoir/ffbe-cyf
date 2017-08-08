@@ -50,4 +50,20 @@ class Account extends Model
         $friend = User::find($friend_id);               // find your friend, and...
         $friend->friend_accounts()->detach($this->id);  // remove myself, too
     }
+
+	/**
+	 * Get the current unit associated to the account.
+	 */
+	public function current_unit()
+	{
+		return $this->HasOne('App\Unit', 'current_unit_id');
+	}
+
+	/**
+	 * Get the desired unit associated to the account.
+	 */
+	public function desired_unit()
+	{
+		return $this->HasOne('App\Unit', 'desired_unit_id');
+	}
 }
