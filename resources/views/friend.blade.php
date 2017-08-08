@@ -86,6 +86,21 @@
                 </div>
             </div>
         </div> <!-- END <div class="ROW"> -->
-    </div>
 
+        <div class="row" id="units">
+
+
+        </div>
+    </div>
+    <script src="{{ asset('js/ffbe/units_icons.js') }}"></script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            ffbe_units.forEach(function(unit) {
+                var styleBg = 'style="background: ' + unit.bg +';"'
+                $('#units').append('<div class="col-xs-1 bg-sprites" ' +styleBg +' title="'+unit.id+ '-'+unit.name+'" ></div>');
+
+                //console.log(unit);
+            });
+        });
+    </script>
 @endsection

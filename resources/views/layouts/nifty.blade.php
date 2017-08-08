@@ -13,6 +13,7 @@
     <link href="{{ asset('premium/icon-sets/icons/line-icons/premium-line-icons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('premium/icon-sets/icons/solid-icons/premium-solid-icons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pace.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/ffbe.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/demo/nifty-demo-icons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/demo/nifty-demo.min.css') }}" rel="stylesheet">
