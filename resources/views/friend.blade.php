@@ -20,7 +20,7 @@
                 </div>
                 <div class="panel panel-trans col-md-offset-3">
                     <div class="input-group mar-btm">
-                        <input type="text" placeholder="Search units..." class="form-control">
+                        <input placeholder="Search units..." class="form-control" id="input_search_units">
                         <span class="input-group-btn">
 					         <button class="btn btn-mint " type="button"><i class="demo-pli-magnifi-glass"></i></button>
 					    </span>
@@ -53,18 +53,6 @@
                                 <a class="btn-link text-success box-inline" href="#">http://www.example.com/nifty/admin</a>
                                 <p class="text-sm">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
                             </li>
-                            <li class="list-group-item list-item-lg media">
-                                <div class="pull-left">
-                                    <img class="img-md" alt="Image" src="img/thumbs/mega-menu-2.jpg">
-                                </div>
-                                <div class="media-body">
-                                    <div class="media-heading">
-                                        <a class="h4 text-primary mar-no" href="#">Beautiful Nature | Landscapes Wallpapers</a>
-                                    </div>
-                                    <a class="btn-link text-success box-inline" href="#">http://www.example.com/nifty/admin</a>
-                                    <p class="text-sm">Lorem ipsum dolor sit amet, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                                </div>
-                            </li>
 
                         </ul>
                         <hr class="hr-wide">
@@ -95,12 +83,14 @@
     <script src="{{ asset('js/ffbe/units_icons.js') }}"></script>
     <script type="text/javascript">
         $( document ).ready(function() {
+
             ffbe_units.forEach(function(unit) {
                 var styleBg = 'style="background: ' + unit.bg +';"'
                 $('#units').append('<div class="col-xs-1 bg-sprites" ' +styleBg +' title="'+unit.id+ '-'+unit.name+'" ></div>');
-
                 //console.log(unit);
             });
+
+
         });
     </script>
 @endsection

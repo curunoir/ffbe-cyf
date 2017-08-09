@@ -23,7 +23,6 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
 
 
-
 </head>
 
 <body>
