@@ -15,6 +15,7 @@
     "cross-env": "^5.0.1",
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0",
+    "gulp.spritesmith": "^6.5.1",
     "jquery": "^3.1.1",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",

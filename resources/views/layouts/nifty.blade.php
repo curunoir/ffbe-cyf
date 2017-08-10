@@ -21,7 +21,7 @@
 
     <script src="{{ asset('js/pace.min.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-
+    <script src="{{ asset('js/jquery.autocomplete.min.js') }}"></script>
 
 </head>
 
