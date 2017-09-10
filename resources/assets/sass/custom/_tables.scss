@@ -1,0 +1,63 @@
+table.dataTable thead > tr > th input, table.dataTable tfoot > tr > th input {
+  width: 100% !important;
+  font-weight: normal;
+}
+
+table.dataTable {
+  width: 100%;
+}
+
+table.dataTable thead > tr.tr_search_grid > th {
+  padding: 0px;
+  // line-height: 1.42857143;
+  input {
+    border: none;
+    padding: 5px;
+  }
+}
+table.dataTable thead > tr > th, table.dataTable tbody > tr > td{
+  padding-left: 4px;
+  padding-right: 4px;
+}
+#container .dataTables_wrapper  .table th {
+  font-size: 95%;
+}
+
+table a {
+  font-weight: 700;
+}
+
+div.DTS div.dataTables_scrollBody {
+  background: none;
+}
+
+.table-noborder {
+  border: none;
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        border: none !important;
+      }
+    }
+  }
+  > tbody > tr {
+    > th,
+    > td {
+      border: none;
+    }
+  }
+  td {
+    border: none;
+  }
+}
+
+/* DATATABLES */
+.dataTables_scrollFootInner{
+  padding-right: 15px;
+}
+div.dataTables_processing {
+  color: $blueMega;
+}

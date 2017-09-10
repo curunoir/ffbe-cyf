@@ -14,11 +14,11 @@ class AddUnitsToAccountsTable extends Migration
     public function up()
     {
         Schema::table('accounts', function (Blueprint $table) {
-			$table->string('rank');
-			$table->unsignedInteger('current_unit_id')->default(null);
-			$table->string('current_unit_description');
-			$table->unsignedInteger('desired_unit_id')->default(null);
-			$table->string('desired_unit_comments');
+			$table->string('rank')->nullable();
+			$table->unsignedInteger('current_unit_id')->nullable();
+			$table->string('current_unit_description')->nullable();
+			$table->unsignedInteger('desired_unit_id')->nullable();
+			$table->string('desired_unit_comments')->nullable();
         });
     }
 

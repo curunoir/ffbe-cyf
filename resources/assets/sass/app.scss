@@ -1,9 +1,37 @@
-
+/*
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
-// Variables
-@import "variables";
-
+*/
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "_variables";
+
+// Set as default color scheme.
+
+@import "custom/_global";
+@import "nifty/_layout";
+@import "nifty/_navbar";
+@import "nifty/_mainnav";
+@import "nifty/_aside";
+@import "nifty/_footer";
+@import "nifty/_animations";
+@import "nifty/_extras";
+@import "nifty/_bs-overwrite";
+@import "nifty/_helper-classes";
+
+@import "themes/type-a/theme-coffee";
+@import "themes/_themes";
+@import "custom/_fonts";
+@import "custom/_mixin";
+@import "custom/label";
+@import "custom/modal";
+@import "custom/_form";
+@import "custom/_tables";
+@import "custom/search";
+@import "nifty/_magic-checkbox";
+@import "custom/helpers";
+@import "custom/btn";
+@import "custom/smartnotification";
+@import "custom/login";
+@import "custom/responsive";

@@ -1,0 +1,30 @@
+/** Login **/
+.main_login {
+  background-color: #F7F7F7;
+
+}
+
+html.main_login, html.main_login body, body.main_login {
+  background-color: #F7F7F7;
+  background-size: 100% 100%;
+
+}
+
+.cls-content {
+  color: $white;
+  h1.h3 {
+    color: $white;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    font-size: 250%;
+  }
+  .pad-all a{
+    color: $white;
+
+  }
+}
+.maintenance{
+  background-color: white;
+  margin-bottom: 15px !important;
+  clear: both;
+}

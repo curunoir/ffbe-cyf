@@ -1,0 +1,25 @@
+.label-md{
+  font-size: 13px;
+}
+.eye{
+  margin-top:7px;
+  &:hover{
+    color:$blueMega;
+    cursor: pointer;
+  }
+}
+.dataTable .eye{
+  margin-top: 0px;
+}
+#page-content table  a.label{
+  color:$white;
+  text-decoration: none;
+}
+
+ .panel-gray {
+  border: 1px solid #00bcd4;
+}
+
+ .panel-heading.bg-purple h3.panel-title{
+   color:white;
+ }

@@ -1,0 +1,137 @@
+@keyframes hover-color {
+  from {
+    border-color: #e0e0e0
+  }
+  to {
+    border-color: #42a5f5
+  }
+}
+
+input[type=radio], input[type=checkbox] {
+  position: absolute;
+  display: none
+}
+
+input[type=radio][disabled], input[type=checkbox][disabled] {
+  cursor: not-allowed
+}
+
+.input-group-addon > input[type=radio] + label, .input-group-addon > input[type=checkbox] + label {
+  display: block
+}
+
+input[type=radio] + label, input[type=checkbox] + label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+  margin: 0
+}
+
+input[type=radio] + label:hover:before, input[type=checkbox] + label:hover:before {
+  animation-duration: .4s;
+  animation-fill-mode: both;
+  animation-name: hover-color
+}
+
+input[type=radio] + label:before, input[type=checkbox] + label:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  content: '';
+  border: 1px solid #e0e0e0
+}
+
+input[type=radio] + label:after, input[type=checkbox] + label:after {
+  position: absolute;
+  display: none;
+  content: ''
+}
+
+input[type=radio] + label {
+  min-width: 16px;
+  min-height: 16px
+}
+
+input[type=radio] + label:not(:empty) {
+  padding: 0 21px !important
+}
+
+input[type=checkbox] + label {
+  min-width: 16px;
+  min-height: 16px
+}
+
+input[type=checkbox] + label:not(:empty) {
+  padding: 0 21px !important
+}
+
+.btn-group input[type=radio] + label, .btn-group input[type=checkbox] + label {
+  vertical-align: baseline;
+  min-height: 1em
+}
+
+input[type=radio][disabled] + label, input[type=checkbox][disabled] + label {
+  cursor: not-allowed;
+  opacity: .5
+}
+
+input[type=radio][disabled] + label:hover, input[type=radio][disabled] + label:before, input[type=radio][disabled] + label:after, input[type=checkbox][disabled] + label:hover, input[type=checkbox][disabled] + label:before, input[type=checkbox][disabled] + label:after {
+  cursor: not-allowed
+}
+
+input[type=radio][disabled] + label:hover:before, input[type=checkbox][disabled] + label:hover:before {
+  animation-name: none
+}
+
+input[type=radio]:checked + label:before, input[type=checkbox]:checked + label:before {
+  animation-name: none
+}
+
+input[type=radio]:checked + label:after, input[type=checkbox]:checked + label:after {
+  display: block
+}
+
+input[type=radio] + label:before {
+  border-radius: 50%;
+  left: -.01em
+}
+
+input[type=radio] + label:after {
+  top: 2.5px;
+  left: 2.5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #42a5f5
+}
+
+input[type=radio]:checked + label:before {
+  border: 1px solid #42a5f5
+}
+
+input[type=checkbox] + label:before {
+  border-radius: 0
+}
+
+input[type=checkbox] + label:after {
+  top: 1px;
+  left: 5px;
+  box-sizing: border-box;
+  width: 6px;
+  height: 12px;
+  transform: rotate(45deg);
+  border-width: 2px;
+  border-style: solid;
+  border-color: #fff;
+  border-top: 0;
+  border-left: 0
+}
+
+input[type=checkbox]:checked + label:before {
+  border: #42a5f5;
+  background: #42a5f5
+}

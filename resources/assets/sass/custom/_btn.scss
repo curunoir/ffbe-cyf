@@ -1,0 +1,60 @@
+.btnwarwhite {
+  background-color: #FFF;
+  border-color: $warning-bg;
+  color: $warning-bg;
+  &:hover {
+    background-color: $warning-bg;
+    color: #FFF;
+  }
+}
+
+.btnsucceswhite {
+  background-color: $white;
+  border-color: $success-bg;
+  color: $success-bg !important;
+  &:hover {
+    background-color: $success-bg;
+    color: $white !important;
+  }
+}
+
+.btndangerwhite {
+  background-color: $white;
+  border-color: $danger-bg;
+  color: $danger-bg !important;
+  &:hover {
+    background-color: $danger-bg;
+    color: #FFF !important;
+  }
+}
+
+.btn-primary-white {
+  background-color: #FFF;
+  border-color: $blueMega;
+  color: $blueMega !important;
+  &:hover {
+    background-color: $blueMega;
+    color: #FFF;
+  }
+}
+.btn-confirm,.fa_flash{
+  color:$white;
+  animation:myfirst 1s;
+  -moz-animation:myfirst 1s infinite; /* Firefox */
+  -webkit-animation:myfirst 1s infinite; /* Safari and Chrome */
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+  0%   {background:$danger-bg;border-color:$danger-bg }
+  50%  {background:$warning-bg;border-color:$warning-bg}
+  100%  {background:$danger-bg;border-color:$danger-bg}
+}
+
+@-webkit-keyframes myfirst /* Firefox */
+{
+  0%   {background:$danger-bg;border-color:$danger-bg}
+  50%  {background:$warning-bg;border-color:$warning-bg}
+  100%  {background:$danger-bg;border-color:$danger-bg}
+}
+
