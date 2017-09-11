@@ -25,10 +25,20 @@
                         {!! BootForm::close() !!}
 
                     </div>
+
+                    <div class="col-md-4">
+                        <div>
+                            <div class="panel panel-trans col-md-offset-3">
+                                @include('friends._searchForm')
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <hr />
                 @include('profile._accounts')
             </div>
         </div>
+
+
     </div>
 @endsection

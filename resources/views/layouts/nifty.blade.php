@@ -18,8 +18,6 @@
     <link href="{{ asset('css/demo/nifty-demo-icons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/demo/nifty-demo.min.css') }}" rel="stylesheet">
 
-
-    <script src="{{ asset('js/pace.min.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/jquery.autocomplete.min.js') }}"></script>
 
