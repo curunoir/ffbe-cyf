@@ -1,0 +1,89 @@
+.bold {
+  font-weight: bold;
+}
+
+.700
+{
+  font-weight: 700;
+}
+.border-right {
+  border-right: 1px solid #CCC;
+}
+
+.block {
+  border: 1px solid $blueMega;
+  margin: 5px 0px;
+  .btn {
+    margin-top: 2px;
+  }
+}
+.relative{
+  position: relative;
+}
+a.panel-title {
+
+  &.editable {
+    padding: 0px!important;
+    margin-left: 15px;
+    line-height: inherit;
+    margin-top: 15px;
+    border-bottom: dashed 1px $white;
+  }
+}
+
+#page-content table a {
+  text-decoration: underline;
+  color: $blueMega;
+}
+
+.tab-base .nav-tabs > .active > a, .tab-base .nav-tabs > .active a:hover, .tab-base .nav-tabs > .active > a:focus {
+  border-color: transparent;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+  color: #555;
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+.text-white {
+  color:white;
+}
+
+/**RELEASE**/
+.releases_content{
+  h5{
+    font-size:120%;
+    border-bottom: 2px solid;
+  }
+  .newthings  h5{
+    color:$success-bg;
+    border-bottom-color:$success-bg;
+  }
+  .ameliorations  h5{
+    color:$purple-bg;
+    border-bottom-color:$purple-bg;
+  }
+}
+
+.photo{
+  border-radius: 50%;
+}
+.brand-icon {
+  padding: 0px 0px 0px 15px;
+}
+#container.mainnav-sm .brand-icon {
+
+}
+
+.header_icon{
+  padding: 0 12px;
+  height: 40px;
+  i{
+    line-height: 40px;
+    font-size: 120%;
+  }
+}
+
+

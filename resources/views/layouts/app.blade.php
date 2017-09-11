@@ -14,6 +14,14 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+
+            <div id="content-container">
+                @include('partials._flash')
+                @yield('content')
+            </div>
+        </div>
+
+
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">

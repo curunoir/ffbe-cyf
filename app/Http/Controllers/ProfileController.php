@@ -22,7 +22,7 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::getUser();
-        return view('profile', compact('user'));
+        return view('profile.index',  ['accounts' => $user->accounts, 'user' => $user]);
     }
 
     public function update(Request $request)
@@ -37,7 +37,6 @@ class ProfileController extends Controller
         $this->validate($request, [
             'ffbe_id' => [
 				'required',
-				'unique:accounts',
 				'max:11',
 				'max:50',
 				'friendcode'
@@ -46,7 +45,8 @@ class ProfileController extends Controller
 
         $user = Auth::getUser();
         $account =  $user->accounts()->create($request->all());
-        return redirect(route('profile'));
+        return redirect(route('profile'))->with('success', "Compte ajouté avec succès");
+;
     }
 
 }

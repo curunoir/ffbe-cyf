@@ -20,29 +20,14 @@
 
                         {!! BootForm::text("Friend code account", 'ffbe_id') !!}
                         {!! BootForm::select('Server',  'server', ['GLOBAL' => 'GLOBAL', 'JAPAN' => 'JAPAN'])  !!}
+                        {!! BootForm::text("Rank", 'rank') !!}
                         {!! BootForm::submit("Add account") !!}
                         {!! BootForm::close() !!}
 
                     </div>
                 </div>
                 <hr />
-                <div class="panel-title">Your accounts</div>
-                <div class="row">
-                        @foreach( $user->accounts as $account)
-                            <div class="col-md-3">
-                                <div class="panel">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">FFBE ID = {{ $account->ffbe_id }}</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <p>Server = {{ $account->server }}</p>
-                                        <p>Created at = {{ $account->created_at }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                </div>
-
+                @include('profile._accounts')
             </div>
         </div>
     </div>

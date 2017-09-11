@@ -1,0 +1,59 @@
+select.form-control {
+  @include border-radius(0);
+  box-shadow: none;
+  height: 32px;
+}
+
+.error {
+  color: $danger-bg;
+  font-weight: 600;
+}
+
+.lastmodif {
+  margin-left: 30px;
+  margin-top: 50px;
+  border-left: 2px solid $dark-bg;
+  .element {
+    padding: 10px 0px 5px 10px;
+    h5 {
+      color: $blueMega;
+      font-size: 110%;
+    }
+    p {
+      color: $body-main-color;
+    }
+  }
+}
+
+.permissions {
+  p {
+    font-weight: 500;
+    font-size: 1.1em;
+    border-bottom: 1px solid $gray-bg;
+  }
+}
+
+.ui-datepicker-title select {
+  color: $blueMega;
+}
+
+#map {
+  height: 100%;
+  min-height: 500px;
+}
+
+.firstHeading {
+  font-size: 140%;
+}
+
+.form-mini {
+  .form-group {
+    .form-control {
+      height: 24px;
+      padding: 3px 6px;
+
+    }
+    margin-bottom: 5px;
+  }
+
+}

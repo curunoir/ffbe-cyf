@@ -13,7 +13,7 @@ class Account extends Model
      * @var array
      */
     protected $fillable = [
-        'ffbe_id', 'server', 'ffbe_id_visibility'
+        'ffbe_id', 'server', 'ffbe_id_visibility', 'rank'
     ];
 
     /**

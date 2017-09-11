@@ -75,10 +75,7 @@
             </div>
         </div> <!-- END <div class="ROW"> -->
 
-        <div class="row" id="units">
-
-
-        </div>
+        @include('profile._accounts')
     </div>
     <script src="{{ asset('js/ffbe/units_icons.js') }}"></script>
     <script type="text/javascript">
@@ -90,13 +87,12 @@
 
             });
 
-
             $('#input_search_units').autocomplete({
                 lookup: ffbe_units_suggestions,
                 formatResult : function (suggestion, currentValue) {
 
-                   // var pattern = '(' + currentValue.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&") + ')';
-                   // return suggestion.value.replace(new RegExp(pattern, 'gi'), '<strong>$1<\/strong>') + ' (' + suggestion.data + ')';
+                    // var pattern = '(' + currentValue.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&") + ')';
+                    // return suggestion.value.replace(new RegExp(pattern, 'gi'), '<strong>$1<\/strong>') + ' (' + suggestion.data + ')';
                     //console.log(ffbe_units_names[suggestion.value]);
                     console.log(suggestion.data);
 
