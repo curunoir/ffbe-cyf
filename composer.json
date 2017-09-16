@@ -5,13 +5,26 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/bluemountainteam/translation"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/bluemountainteam/bootform"
+        }
+    ],
     "require": {
         "php": ">=7.0.0",
-        "adamwathan/bootforms": "dev-master",
         "dlouvard/bootformlaravel": "dev-master",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "~5.0"
+        "laravelcollective/html": "~5.4",
+        "stolz/assets": "^0.1.9",
+        "vinkla/hashids": "^3.1",
+        "bluemountainteam/translation": "master@dev",
+        "bluemountainteam/bootform": "master@dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

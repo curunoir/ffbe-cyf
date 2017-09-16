@@ -177,11 +177,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Collective\Html\HtmlServiceProvider::class,
+        Stolz\Assets\Laravel\ServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
-        Dlouvard\Bootformlaravel\BootformLaravelServiceProvider::class,
-        AdamWathan\BootForms\BootFormsServiceProvider::class
+        Vinkla\Hashids\HashidsServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        BlueMountainTeam\Translation\TranslationServiceProvider::class,
+        BlueMountainTeam\Bootform\BootformServiceProvider::class
+
 
     ],
 
@@ -233,8 +235,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        //'bootform' => Dlouvard\Bootformlaravel\Facades\BootForm::class,
-        'BootForm' => AdamWathan\BootForms\Facades\BootForm::class
+        'BootForm' => BlueMountainTeam\Bootform\Facades\BootForm::class,
+        'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
+        'TranslationStatic' => BlueMountainTeam\Translation\Facades\TranslationStatic::class,
+        'TranslationDyn' => BlueMountainTeam\Translation\Facades\TranslationDyn::class
 
     ],
 

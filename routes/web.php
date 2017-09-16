@@ -11,16 +11,19 @@
 |
 */
 
-Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('home', 'HomeController@index')->name('home');
-Route::get('profile','ProfileController@index')->name('profile');
-Route::put('profile','ProfileController@update')->name('profile.update');
+Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => ['auth']], function () {
+    Route::get('/', 'HomeController@index')->name('home');
 
-Route::put('account/new','ProfileController@newAccount')->name('account.new');
+    Route::get('home', 'HomeController@index')->name('home');
+    Route::get('profile','ProfileController@index')->name('profile');
+    Route::put('profile','ProfileController@update')->name('profile.update');
 
-Route::resource('friends', 'FriendsController');
+    Route::put('account/new','ProfileController@newAccount')->name('account.new');
+
+    Route::resource('friends', 'FriendsController');
+});
+

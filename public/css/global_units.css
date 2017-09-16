@@ -1,0 +1,126 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.icon-Aiden {
+  background-image: url(/../img/global_units.png);
+  background-position: -56px 0px;
+  width: 56px;
+  height: 38px;
+}
+.icon-Black_Cat_Lid {
+  background-image: url(/../img/global_units.png);
+  background-position: 0px -114px;
+  width: 56px;
+  height: 38px;
+}
+.icon-Cupid_Artemios {
+  background-image: url(/../img/global_units.png);
+  background-position: 0px -38px;
+  width: 56px;
+  height: 38px;
+}
+.icon-Cupid_Luna {
+  background-image: url(/../img/global_units.png);
+  background-position: -56px -38px;
+  width: 56px;
+  height: 38px;
+}
+.icon-Demon_Rain {
+  background-image: url(/../img/global_units.png);
+  background-position: -112px 0px;
+  width: 56px;
+  height: 38px;
+}
+.icon-Dracu_Lasswell {
+  background-image: url(/../img/global_units.png);
+  background-position: -112px -38px;
+  width: 56px;
+  height: 38px;
+}
+.icon-Elza {
+  background-image: url(/../img/global_units.png);
+  background-position: 0px -76px;
+  width: 56px;
+  height: 38px;
+}
+.icon-Fryevia {
+  background-image: url(/../img/global_units.png);
+  background-position: -56px -76px;
+  width: 56px;
+  height: 38px;
+}
+.icon-Ling {
+  background-image: url(/../img/global_units.png);
+  background-position: -112px -76px;
+  width: 56px;
+  height: 38px;
+}
+.icon-Olive {
+  background-image: url(/../img/global_units.png);
+  background-position: 0px 0px;
+  width: 56px;
+  height: 38px;
+}
+.icon-Reberta {
+  background-image: url(/../img/global_units.png);
+  background-position: -56px -114px;
+  width: 56px;
+  height: 38px;
+}
+.icon-Santa_Roselia {
+  background-image: url(/../img/global_units.png);
+  background-position: -112px -114px;
+  width: 56px;
+  height: 38px;
+}
+.icon-White_Knight_Noel {
+  background-image: url(/../img/global_units.png);
+  background-position: -168px 0px;
+  width: 56px;
+  height: 38px;
+}
+.icon-White_Witch_Fina {
+  background-image: url(/../img/global_units.png);
+  background-position: -168px -38px;
+  width: 56px;
+  height: 38px;
+}
+.icon-Xon {
+  background-image: url(/../img/global_units.png);
+  background-position: -168px -76px;
+  width: 56px;
+  height: 38px;
+}
+.icon-Yun {
+  background-image: url(/../img/global_units.png);
+  background-position: -168px -114px;
+  width: 56px;
+  height: 38px;
+}
+.icon-Zargabaath {
+  background-image: url(/../img/global_units.png);
+  background-position: 0px -152px;
+  width: 56px;
+  height: 38px;
+}
+.icon-Zyrus {
+  background-image: url(/../img/global_units.png);
+  background-position: -56px -152px;
+  width: 56px;
+  height: 38px;
+}
