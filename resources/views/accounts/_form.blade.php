@@ -8,5 +8,5 @@
 
 
 <div class="text-center margin-bottom-10">
-    {!! BootForm::submit(_t('Ajouter')) !!}
+    {!! BootForm::submit(_t('Valider')) !!}
 </div>

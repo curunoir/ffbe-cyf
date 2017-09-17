@@ -7,7 +7,7 @@
     </div>
 
     <div class="panel panel-default">
-        <div class="panel-title">{{ _t('Ajouter un compte') }}</div>
+        <div class="panel-title">{{ _t('Editer un compte') }}</div>
         <div class="panel-body">
             <div role="content">
                 {!! BootForm::open($account, ['class' => 'form-horizontal','id' => 'Form','enctype' => 'multipart/form-data']) !!}

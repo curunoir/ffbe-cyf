@@ -66,11 +66,14 @@ class AccountsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Account  $account
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Account $account)
+    public function edit($id)
     {
-        //
+        $account = Account::findOrFail(_d($id));
+
+        return view('accounts.edit', compact('account'));
     }
 
     /**
@@ -80,9 +83,22 @@ class AccountsController extends Controller
      * @param  \App\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Account $account)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'ffbe_id' => [
+                'required',
+                'max:11',
+                'max:50',
+                'friendcode'
+            ]
+        ]);
+
+        $req = $request->all();
+        $account = Account::findOrFail(_d($id));
+        $account->update($req);
+        return redirect(action('AccountsController@index'))->withSuccess(_t('Compte mis à jour avec succès'));
+
     }
 
     /**
