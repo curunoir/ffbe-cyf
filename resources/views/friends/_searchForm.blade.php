@@ -2,7 +2,7 @@
 <div class="input-group mar-btm">
     <input placeholder="Search units..." class="form-control" id="input_search_units">
     <span class="input-group-btn">
-        <button class="btn btn-mint " type="button"><i class="demo-pli-magnifi-glass"></i></button>
+        <button class="btn btn-mint " type="button"><i class="fa fa-search"></i></button>
     </span>
 </div>
 

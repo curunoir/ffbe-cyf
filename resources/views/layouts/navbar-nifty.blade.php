@@ -4,9 +4,8 @@
         <!--Brand logo & name-->
         <div class="navbar-header">
             <a href="{{ route('home') }}" class="navbar-brand">
-                <img src="img/200px-Game-logo.png" alt="FFBE Logo" class="brand-icon">
                 <div class="brand-title">
-                    <span class="brand-text">{{ config('app.name', 'Laravel') }}</span>
+                    <span class="brand-text"><img src="{{ asset('img/200px-Game-logo.png') }}" alt="FFBE Logo" style="width:36px;"> {{ config('app.name', 'FFBE-CYF') }}</span>
                 </div>
             </a>
         </div>
@@ -20,7 +19,7 @@
                 <!--Navigation toogle button-->
                 <li class="tgl-menu-btn">
                     <a class="mainnav-toggle" href="#">
-                        <i class="demo-pli-view-list"></i>
+                        <i class="fa fa-list"></i>
                     </a>
                 </li>
                 <!--End Navigation toogle button-->
@@ -30,23 +29,24 @@
             </ul>
             <ul class="nav navbar-top-links pull-right">
                 @if (Auth::guest())
-                    <li><a href="{{ route('login') }}"><i class="fa fa-sign-in"></i> Login</a></li>
-                    <li><a href="{{ route('register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign in</a></li>
+                    <li><a href="{{ route('login') }}"><i class="fa fa-sign-in"></i> {{ _t('Connexion') }}</a></li>
+                    <li><a href="{{ route('register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> {{ _t("Nouveau ?") }}</a></li>
                 @else
                 <!--User dropdown-->
                     <li id="dropdown-user" class="dropdown">
-                        <a href="#" data-toggle="" class="text-right">
+                        <a href="{{ route('profile') }}" data-toggle="" class="text-right">
                             <span class="pull-left">
-                                <i class="pli-male ic-user"></i>
+                                <i class="fa fa-user"></i>
+                                <span class="hidden-xs"> {{ Auth::user()->name }}</span>
                             </span>
-                            <div class="username hidden-xs">{{ Auth::user()->name }}</div>
+
                         </a>
 
                         <a href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();" class="btn">
                            <span class="pull-right">
-                                <i class="pli-unlock icon-fw"></i>Logout
+                                <i class="fa fa-sign-out"></i>{{ _t('Déconnexion') }}
                            </span>
                         </a>
 

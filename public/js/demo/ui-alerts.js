@@ -39,7 +39,7 @@ $(document).ready(function() {
             var btn_stat = input_xbtn.prop("checked")
             closebtn_alert = btn_stat;
             if (btn_stat) {
-                alert_preview.prepend('<button class="close"><i class="pci-cross pci-circle"></i></button>');
+                alert_preview.prepend('<button class="close"><i class="fa fa-times fa-2x"></i></button>');
             } else {
                 alert_preview.find('.close').remove();
             }

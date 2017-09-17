@@ -4,12 +4,12 @@
         <div class="pad-hor bord-btm clearfix">
             <div class="pull-right pad-top">
                 <button id="demo-btn-close-settings" class="btn btn-trans">
-                    <i class="pci-cross pci-circle icon-lg"></i>
+                    <i class="fa fa-times fa-2x"></i>
                 </button>
             </div>
             <div class="media">
                 <div class="media-left">
-                    <i class="demo-pli-gear icon-2x"></i>
+                    <i class="fa fa-cog fa-2x"></i>
                 </div>
                 <div class="media-body">
                     <span class="text-semibold text-lg text-main">Costomize</span>
@@ -273,5 +273,5 @@
             </div>
         </div>
     </div>
-    <button id="demo-set-btn" class="btn" data-toggle="collapse" data-target="#demo-set-body"><i class="demo-psi-gear icon-lg"></i></button>
+    <button id="demo-set-btn" class="btn" data-toggle="collapse" data-target="#demo-set-body"><i class="fa fa-cogs fa-lg" aria-hidden="true"></i></button>
 </div>

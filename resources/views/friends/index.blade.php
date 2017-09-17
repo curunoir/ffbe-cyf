@@ -15,7 +15,7 @@
             <div class="col-md-3">
                 <div class="panel panel-trans">
                     <div class="col-md-offset-3">
-                        <img src="img/200px-Game-logo.png" alt="FFBE Logo" class="">
+                        <img src="{{ asset('img/200px-Game-logo.png') }}" alt="FFBE Logo" class="">
                     </div>
                 </div>
                 <div class="panel panel-trans col-md-offset-3">
