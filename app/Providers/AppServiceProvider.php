@@ -14,10 +14,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // FFBE friendcode regexp
 		Validator::extend('friendcode', function ($attribute, $value, $parameters, $validator) {
 			if( preg_match('/\b\d{3}[,]?\d{3}[,]?\d{3}\b/', $value) )
 				return true;
-
 			return false;
 		});
 
@@ -30,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
     }
 }

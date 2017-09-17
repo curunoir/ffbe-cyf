@@ -155,7 +155,7 @@ return [
         'de' => 'German',
         'it' => 'Italian',
         'es' => 'Spanish; Castilian',
-        'zh' => 'Chinese',
+        'zh' => 'Chinese'
     ],
     /*
     |--------------------------------------------------------------------------

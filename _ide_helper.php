@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.30 on 2017-07-30.
+ * Generated for Laravel 5.4.36 on 2017-09-17.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -416,7 +416,7 @@ namespace Illuminate\Support\Facades {
          * Register a deferred provider and service.
          *
          * @param string $provider
-         * @param string $service
+         * @param string|null $service
          * @return void 
          * @static 
          */ 
@@ -6521,7 +6521,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Returns the client IP address.
+         * Get the client IP address.
          *
          * @return string 
          * @static 
@@ -6532,7 +6532,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Returns the client IP addresses.
+         * Get the client IP addresses.
          *
          * @return array 
          * @static 
@@ -6540,6 +6540,17 @@ namespace Illuminate\Support\Facades {
         public static function ips()
         {
             return \Illuminate\Http\Request::ips();
+        }
+        
+        /**
+         * Get the client user agent.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function userAgent()
+        {
+            return \Illuminate\Http\Request::userAgent();
         }
         
         /**
@@ -10059,6 +10070,18 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+         * Get the full path for the file at the given "short" path.
+         *
+         * @param string $path
+         * @return string 
+         * @static 
+         */ 
+        public static function path($path)
+        {
+            return \Illuminate\Filesystem\FilesystemAdapter::path($path);
+        }
+        
+        /**
          * Get the contents of a file.
          *
          * @param string $path
@@ -10251,6 +10274,20 @@ namespace Illuminate\Support\Facades {
         public static function url($path)
         {
             return \Illuminate\Filesystem\FilesystemAdapter::url($path);
+        }
+        
+        /**
+         * Get a temporary URL for the file at the given path.
+         *
+         * @param string $path
+         * @param \DateTimeInterface $expiration
+         * @param array $options
+         * @return string 
+         * @static 
+         */ 
+        public static function temporaryUrl($path, $expiration, $options = array())
+        {
+            return \Illuminate\Filesystem\FilesystemAdapter::temporaryUrl($path, $expiration, $options);
         }
         
         /**
@@ -12061,6 +12098,17 @@ namespace Collective\Html {
         }
         
         /**
+         * Take Request in fill process
+         *
+         * @param bool $consider
+         * @static 
+         */ 
+        public static function considerRequest($consider = true)
+        {
+            return \Collective\Html\FormBuilder::considerRequest($consider);
+        }
+        
+        /**
          * Get a value from the session's old input.
          *
          * @param string $name
@@ -12572,18 +12620,262 @@ namespace Collective\Html {
  
 }
 
-namespace AdamWathan\BootForms\Facades { 
+namespace BlueMountainTeam\Bootform\Facades { 
 
     class BootForm {
         
         /**
          * 
          *
+         * @param null $model
+         * @param array $options
+         * @return mixed 
          * @static 
          */ 
-        public static function open()
+        public static function open($model = null, $options = array())
         {
-            return \AdamWathan\BootForms\BootForm::open();
+            return \BlueMountainTeam\Bootform\BootForm::open($model, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @param $type
+         * @param $name
+         * @param null $label
+         * @param null $value
+         * @param array $options
+         * @param array $list
+         * @return string 
+         * @static 
+         */ 
+        public static function input($type, $name, $label = null, $value = null, $options = array(), $list = array())
+        {
+            return \BlueMountainTeam\Bootform\BootForm::input($type, $name, $label, $value, $options, $list);
+        }
+        
+        /**
+         * 
+         *
+         * @param $type
+         * @param $name
+         * @param null $label
+         * @param array $options
+         * @return string 
+         * @static 
+         */ 
+        public static function inputLang($type, $name, $label = null, $options = array())
+        {
+            return \BlueMountainTeam\Bootform\BootForm::inputLang($type, $name, $label, $options);
+        }
+        
+        /**
+         * Returns span containing vendor locale flag if exists
+         *
+         * @param $locale
+         * @param $classL
+         * @static 
+         */ 
+        public static function spanFlag($locale, $classL = null)
+        {
+            return \BlueMountainTeam\Bootform\BootForm::spanFlag($locale, $classL);
+        }
+        
+        /**
+         * 
+         *
+         * @param $name
+         * @param null $label
+         * @param null $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */ 
+        public static function text($name, $label = null, $value = null, $options = array())
+        {
+            return \BlueMountainTeam\Bootform\BootForm::text($name, $label, $value, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @param $name
+         * @param null $label
+         * @param array $options
+         * @return string 
+         * @static 
+         */ 
+        public static function textLang($name, $label = null, $options = array())
+        {
+            return \BlueMountainTeam\Bootform\BootForm::textLang($name, $label, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @param $name
+         * @param null $label
+         * @param null $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */ 
+        public static function textareaLang($name, $label = null, $value = null, $options = array())
+        {
+            return \BlueMountainTeam\Bootform\BootForm::textareaLang($name, $label, $value, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @param $name
+         * @param null $label
+         * @param null $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */ 
+        public static function file($name, $label = null, $value = null, $options = array())
+        {
+            return \BlueMountainTeam\Bootform\BootForm::file($name, $label, $value, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @param $name
+         * @param null $label
+         * @param null $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */ 
+        public static function email($name, $label = null, $value = null, $options = array())
+        {
+            return \BlueMountainTeam\Bootform\BootForm::email($name, $label, $value, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @param $name
+         * @param null $label
+         * @param null $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */ 
+        public static function password($name, $label = null, $value = null, $options = array())
+        {
+            return \BlueMountainTeam\Bootform\BootForm::password($name, $label, $value, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @param $name
+         * @param null $label
+         * @param null $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */ 
+        public static function checkbox($name, $label = null, $value = null, $options = array())
+        {
+            return \BlueMountainTeam\Bootform\BootForm::checkbox($name, $label, $value, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @param $name
+         * @param null $label
+         * @param null $value
+         * @param array $list
+         * @param array $options
+         * @return string 
+         * @static 
+         */ 
+        public static function select($name, $label = null, $value = null, $list = array(), $options = array())
+        {
+            return \BlueMountainTeam\Bootform\BootForm::select($name, $label, $value, $list, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @param $name
+         * @param null $label
+         * @param null $value
+         * @param array $list
+         * @param array $options
+         * @return string 
+         * @static 
+         */ 
+        public static function datalists($name, $label = null, $value = null, $list = array(), $options = array())
+        {
+            return \BlueMountainTeam\Bootform\BootForm::datalists($name, $label, $value, $list, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @param $name
+         * @param null $label
+         * @param null $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */ 
+        public static function textarea($name, $label = null, $value = null, $options = array())
+        {
+            return \BlueMountainTeam\Bootform\BootForm::textarea($name, $label, $value, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @param null $name
+         * @param bool $modal
+         * @param null $value
+         * @param string $size
+         * @return string 
+         * @static 
+         */ 
+        public static function submit($name = null, $modal = true, $value = null, $size = 'normal')
+        {
+            return \BlueMountainTeam\Bootform\BootForm::submit($name, $modal, $value, $size);
+        }
+        
+        /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function close()
+        {
+            return \BlueMountainTeam\Bootform\BootForm::close();
+        }
+        
+        /**
+         * Output vendor published js
+         *
+         * @static 
+         */ 
+        public static function asset_js()
+        {
+            return \BlueMountainTeam\Bootform\BootForm::asset_js();
+        }
+        
+        /**
+         * Output vendor published js
+         *
+         * @static 
+         */ 
+        public static function asset_css()
+        {
+            return \BlueMountainTeam\Bootform\BootForm::asset_css();
         }
         
         /**
@@ -12591,9 +12883,766 @@ namespace AdamWathan\BootForms\Facades {
          *
          * @static 
          */ 
-        public static function openHorizontal($columnSizes)
+        public static function get_single_class($model)
         {
-            return \AdamWathan\BootForms\BootForm::openHorizontal($columnSizes);
+            return \BlueMountainTeam\Bootform\BootForm::get_single_class($model);
+        }
+         
+    }
+ 
+}
+
+namespace Vinkla\Hashids\Facades { 
+
+    class Hashids {
+        
+        /**
+         * Get the factory instance.
+         *
+         * @return \Vinkla\Hashids\HashidsFactory 
+         * @static 
+         */ 
+        public static function getFactory()
+        {
+            return \Vinkla\Hashids\HashidsManager::getFactory();
+        }
+        
+        /**
+         * Get a connection instance.
+         *
+         * @param string|null $name
+         * @return object 
+         * @static 
+         */ 
+        public static function connection($name = null)
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager            
+            return \Vinkla\Hashids\HashidsManager::connection($name);
+        }
+        
+        /**
+         * Reconnect to the given connection.
+         *
+         * @param string|null $name
+         * @return object 
+         * @static 
+         */ 
+        public static function reconnect($name = null)
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager            
+            return \Vinkla\Hashids\HashidsManager::reconnect($name);
+        }
+        
+        /**
+         * Disconnect from the given connection.
+         *
+         * @param string|null $name
+         * @return void 
+         * @static 
+         */ 
+        public static function disconnect($name = null)
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager            
+            \Vinkla\Hashids\HashidsManager::disconnect($name);
+        }
+        
+        /**
+         * Get the configuration for a connection.
+         *
+         * @param string|null $name
+         * @throws \InvalidArgumentException
+         * @return array 
+         * @static 
+         */ 
+        public static function getConnectionConfig($name = null)
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager            
+            return \Vinkla\Hashids\HashidsManager::getConnectionConfig($name);
+        }
+        
+        /**
+         * Get the default connection name.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getDefaultConnection()
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager            
+            return \Vinkla\Hashids\HashidsManager::getDefaultConnection();
+        }
+        
+        /**
+         * Set the default connection name.
+         *
+         * @param string $name
+         * @return void 
+         * @static 
+         */ 
+        public static function setDefaultConnection($name)
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager            
+            \Vinkla\Hashids\HashidsManager::setDefaultConnection($name);
+        }
+        
+        /**
+         * Register an extension connection resolver.
+         *
+         * @param string $name
+         * @param callable $resolver
+         * @return void 
+         * @static 
+         */ 
+        public static function extend($name, $resolver)
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager            
+            \Vinkla\Hashids\HashidsManager::extend($name, $resolver);
+        }
+        
+        /**
+         * Return all of the created connections.
+         *
+         * @return object[] 
+         * @static 
+         */ 
+        public static function getConnections()
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager            
+            return \Vinkla\Hashids\HashidsManager::getConnections();
+        }
+        
+        /**
+         * Get the config instance.
+         *
+         * @return \Illuminate\Contracts\Config\Repository 
+         * @static 
+         */ 
+        public static function getConfig()
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager            
+            return \Vinkla\Hashids\HashidsManager::getConfig();
+        }
+         
+    }
+ 
+}
+
+namespace BlueMountainTeam\Translation\Facades { 
+
+    class TranslationStatic {
+        
+        /**
+         * 
+         *
+         * @param string $text
+         * @param string $lang
+         * @return mixed|null|string 
+         * @static 
+         */ 
+        public static function translate($text, $lang = null, $parameters = null)
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::translate($text, $lang, $parameters);
+        }
+        
+        /**
+         * Retrieves the cache of a lang
+         *
+         * @param $lang string lang of the cache we're searching for
+         * @return \BlueMountainTeam\Translation\Collection 
+         * @static 
+         */ 
+        public static function getCacheTrad($lang)
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::getCacheTrad($lang);
+        }
+        
+        /**
+         * Retrieves the cache of a lang or creates it from the database
+         *
+         * @param $lang The lang of the cache we're searching for
+         * @return \BlueMountainTeam\Translation\Collection 
+         * @static 
+         */ 
+        public static function cacheTrad($lang)
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::cacheTrad($lang);
+        }
+        
+        /**
+         * Add a translation on database and cache entry and returns it
+         *
+         * @param $text
+         * @param $lang
+         * @return mixed|string 
+         * @static 
+         */ 
+        public static function addTrad($text, $lang)
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::addTrad($text, $lang);
+        }
+        
+        /**
+         * Returns the array of configuration allowed locales.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getConfigUntranslatableActions()
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::getConfigUntranslatableActions();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getLocale()
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::getLocale();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setLocale($code = '')
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::setLocale($code);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getRoutePrefix()
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::getRoutePrefix();
+        }
+        
+        /**
+         * Returns the array of configuration locales.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getConfigLocales()
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::getConfigLocales();
+        }
+        
+        /**
+         * Returns the locale model from the configuration.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getConfigLocaleModel()
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::getConfigLocaleModel();
+        }
+        
+        /**
+         * Returns the array of configuration allowed locales.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getConfigAllowedLocales()
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::getConfigAllowedLocales();
+        }
+        
+        /**
+         * Returns a the english name of the locale code entered from the config file.
+         *
+         * @param string $code
+         * @return string 
+         * @static 
+         */ 
+        public static function getConfigLocaleByCode($code)
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::getConfigLocaleByCode($code);
+        }
+        
+        /**
+         * 
+         *
+         * @param $code
+         * @return mixed 
+         * @static 
+         */ 
+        public static function getLocaleIdByCode($code)
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::getLocaleIdByCode($code);
+        }
+        
+        /**
+         * Returns the default locale from the configuration.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getConfigDefaultLocale()
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::getConfigDefaultLocale();
+        }
+        
+        /**
+         * Returns the default locale id from the configuration and database
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getConfigDefaultLocaleId()
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::getConfigDefaultLocaleId();
+        }
+        
+        /**
+         * Retrieves or creates a locale from the specified code.
+         *
+         * @param string $code
+         * @return \BlueMountainTeam\Translation\Model 
+         * @static 
+         */ 
+        public static function firstOrCreateLocale($code)
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::firstOrCreateLocale($code);
+        }
+        
+        /**
+         * Returns the request segment to retrieve the locale from.
+         *
+         * @return int 
+         * @static 
+         */ 
+        public static function getConfigRequestSegment()
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::getConfigRequestSegment();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getAppLocale()
+        {
+            return \BlueMountainTeam\Translation\TranslationStatic::getAppLocale();
+        }
+         
+    }
+
+    class TranslationDyn {
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function translate($text, $lang = null, $parameters = null)
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::translate($text, $lang, $parameters);
+        }
+        
+        /**
+         * Add a new translation in database
+         *
+         * @param $data Array Must contain 'content' 'model' 'object_id' values
+         * @static 
+         */ 
+        public static function addTrad($data)
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::addTrad($data);
+        }
+        
+        /**
+         * 
+         *
+         * @param $data
+         * @param bool $localTrad
+         * @return mixed|null 
+         * @static 
+         */ 
+        public static function getOne($data, $localTrad = false)
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::getOne($data, $localTrad);
+        }
+        
+        /**
+         * 
+         *
+         * @param $data
+         * @param bool $localTrad
+         * @return array 
+         * @static 
+         */ 
+        public static function getAll($data, $localTrad = false)
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::getAll($data, $localTrad);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getLocale()
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::getLocale();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setLocale($code = '')
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::setLocale($code);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getRoutePrefix()
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::getRoutePrefix();
+        }
+        
+        /**
+         * Returns the array of configuration locales.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getConfigLocales()
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::getConfigLocales();
+        }
+        
+        /**
+         * Returns the locale model from the configuration.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getConfigLocaleModel()
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::getConfigLocaleModel();
+        }
+        
+        /**
+         * Returns the array of configuration allowed locales.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getConfigAllowedLocales()
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::getConfigAllowedLocales();
+        }
+        
+        /**
+         * Returns a the english name of the locale code entered from the config file.
+         *
+         * @param string $code
+         * @return string 
+         * @static 
+         */ 
+        public static function getConfigLocaleByCode($code)
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::getConfigLocaleByCode($code);
+        }
+        
+        /**
+         * 
+         *
+         * @param $code
+         * @return mixed 
+         * @static 
+         */ 
+        public static function getLocaleIdByCode($code)
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::getLocaleIdByCode($code);
+        }
+        
+        /**
+         * Returns the default locale from the configuration.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getConfigDefaultLocale()
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::getConfigDefaultLocale();
+        }
+        
+        /**
+         * Returns the default locale id from the configuration and database
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getConfigDefaultLocaleId()
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::getConfigDefaultLocaleId();
+        }
+        
+        /**
+         * Retrieves or creates a locale from the specified code.
+         *
+         * @param string $code
+         * @return \BlueMountainTeam\Translation\Model 
+         * @static 
+         */ 
+        public static function firstOrCreateLocale($code)
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::firstOrCreateLocale($code);
+        }
+        
+        /**
+         * Returns the request segment to retrieve the locale from.
+         *
+         * @return int 
+         * @static 
+         */ 
+        public static function getConfigRequestSegment()
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::getConfigRequestSegment();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getAppLocale()
+        {
+            return \BlueMountainTeam\Translation\TranslationDyn::getAppLocale();
+        }
+         
+    }
+ 
+}
+
+namespace Stolz\Assets\Laravel { 
+
+    class Facade {
+        
+        /**
+         * Set up configuration options.
+         * 
+         * All the class properties except 'js' and 'css' are accepted here.
+         * Also, an extra option 'autoload' may be passed containing an array of
+         * assets and/or collections that will be automatically added on startup.
+         *
+         * @param array $config Configurable options.
+         * @return \Stolz\Assets\Manager 
+         * @static 
+         */ 
+        public static function config($config)
+        {
+            return \Stolz\Assets\Manager::config($config);
+        }
+        
+        /**
+         * Add an asset or a collection of assets.
+         * 
+         * It automatically detects the asset type (JavaScript, CSS or collection).
+         * You may add more than one asset passing an array as argument.
+         *
+         * @param mixed $asset
+         * @return \Stolz\Assets\Manager 
+         * @static 
+         */ 
+        public static function add($asset)
+        {
+            return \Stolz\Assets\Manager::add($asset);
+        }
+        
+        /**
+         * Add a CSS asset.
+         * 
+         * It checks for duplicates.
+         * You may add more than one asset passing an array as argument.
+         *
+         * @param mixed $asset
+         * @return \Stolz\Assets\Manager 
+         * @static 
+         */ 
+        public static function addCss($asset)
+        {
+            return \Stolz\Assets\Manager::addCss($asset);
+        }
+        
+        /**
+         * Add a JavaScript asset.
+         * 
+         * It checks for duplicates.
+         * You may add more than one asset passing an array as argument.
+         *
+         * @param mixed $asset
+         * @return \Stolz\Assets\Manager 
+         * @static 
+         */ 
+        public static function addJs($asset)
+        {
+            return \Stolz\Assets\Manager::addJs($asset);
+        }
+        
+        /**
+         * Build the CSS `<link>` tags.
+         * 
+         * Accepts an array of $attributes for the HTML tag.
+         * You can take control of the tag rendering by
+         * providing a closure that will receive an array of assets.
+         *
+         * @param array|\Closure $attributes
+         * @return string 
+         * @static 
+         */ 
+        public static function css($attributes = null)
+        {
+            return \Stolz\Assets\Manager::css($attributes);
+        }
+        
+        /**
+         * Build the JavaScript `<script>` tags.
+         * 
+         * Accepts an array of $attributes for the HTML tag.
+         * You can take control of the tag rendering by
+         * providing a closure that will receive an array of assets.
+         *
+         * @param array|\Closure $attributes
+         * @return string 
+         * @static 
+         */ 
+        public static function js($attributes = null)
+        {
+            return \Stolz\Assets\Manager::js($attributes);
+        }
+        
+        /**
+         * Add/replace collection.
+         *
+         * @param string $collectionName
+         * @param array $assets
+         * @return \Stolz\Assets\Manager 
+         * @static 
+         */ 
+        public static function registerCollection($collectionName, $assets)
+        {
+            return \Stolz\Assets\Manager::registerCollection($collectionName, $assets);
+        }
+        
+        /**
+         * Reset all assets.
+         *
+         * @return \Stolz\Assets\Manager 
+         * @static 
+         */ 
+        public static function reset()
+        {
+            return \Stolz\Assets\Manager::reset();
+        }
+        
+        /**
+         * Reset CSS assets.
+         *
+         * @return \Stolz\Assets\Manager 
+         * @static 
+         */ 
+        public static function resetCss()
+        {
+            return \Stolz\Assets\Manager::resetCss();
+        }
+        
+        /**
+         * Reset JavaScript assets.
+         *
+         * @return \Stolz\Assets\Manager 
+         * @static 
+         */ 
+        public static function resetJs()
+        {
+            return \Stolz\Assets\Manager::resetJs();
+        }
+        
+        /**
+         * Build an HTML attribute string from an array.
+         *
+         * @param array $attributes
+         * @return string 
+         * @static 
+         */ 
+        public static function buildTagAttributes($attributes)
+        {
+            return \Stolz\Assets\Manager::buildTagAttributes($attributes);
+        }
+        
+        /**
+         * Get all CSS assets already added.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getCss()
+        {
+            return \Stolz\Assets\Manager::getCss();
+        }
+        
+        /**
+         * Get all JavaScript assets already added.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getJs()
+        {
+            return \Stolz\Assets\Manager::getJs();
+        }
+        
+        /**
+         * Add all assets matching $pattern within $directory.
+         *
+         * @param string $directory Relative to $this->public_dir
+         * @param string $pattern (regex)
+         * @return \Stolz\Assets\Manager 
+         * @static 
+         */ 
+        public static function addDir($directory, $pattern = null)
+        {
+            return \Stolz\Assets\Manager::addDir($directory, $pattern);
+        }
+        
+        /**
+         * Add all CSS assets within $directory (relative to public dir).
+         *
+         * @param string $directory Relative to $this->public_dir
+         * @return \Stolz\Assets\Manager 
+         * @static 
+         */ 
+        public static function addDirCss($directory)
+        {
+            return \Stolz\Assets\Manager::addDirCss($directory);
+        }
+        
+        /**
+         * Add all JavaScript assets within $directory (relative to public dir).
+         *
+         * @param string $directory Relative to $this->public_dir
+         * @return \Stolz\Assets\Manager 
+         * @static 
+         */ 
+        public static function addDirJs($directory)
+        {
+            return \Stolz\Assets\Manager::addDirJs($directory);
         }
          
     }
@@ -12716,7 +13765,7 @@ namespace  {
             /**
              * Add an "or where" clause to the query.
              *
-             * @param string|\Closure $column
+             * @param string|array|\Closure $column
              * @param string $operator
              * @param mixed $value
              * @return \Illuminate\Database\Eloquent\Builder|static 
@@ -13216,6 +14265,18 @@ namespace  {
             }
          
             /**
+             * Pass the query to a given callback.
+             *
+             * @param \Closure $callback
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */ 
+            public static function tap($callback)
+            {    
+                return \Illuminate\Database\Eloquent\Builder::tap($callback);
+            }
+         
+            /**
              * Apply the callback's query changes if the given "value" is false.
              *
              * @param mixed $value
@@ -13274,6 +14335,18 @@ namespace  {
             }
          
             /**
+             * Add a relationship count / exists condition to the query with an "or".
+             *
+             * @param string $relation
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function orDoesntHave($relation)
+            {    
+                return \Illuminate\Database\Eloquent\Builder::orDoesntHave($relation);
+            }
+         
+            /**
              * Add a relationship count / exists condition to the query with where clauses.
              *
              * @param string $relation
@@ -13314,6 +14387,19 @@ namespace  {
             public static function whereDoesntHave($relation, $callback = null)
             {    
                 return \Illuminate\Database\Eloquent\Builder::whereDoesntHave($relation, $callback);
+            }
+         
+            /**
+             * Add a relationship count / exists condition to the query with where clauses and an "or".
+             *
+             * @param string $relation
+             * @param \Closure $callback
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function orWhereDoesntHave($relation, $callback = null)
+            {    
+                return \Illuminate\Database\Eloquent\Builder::orWhereDoesntHave($relation, $callback);
             }
          
             /**
@@ -13520,18 +14606,6 @@ namespace  {
             public static function crossJoin($table, $first = null, $operator = null, $second = null)
             {    
                 return \Illuminate\Database\Query\Builder::crossJoin($table, $first, $operator, $second);
-            }
-         
-            /**
-             * Pass the query to a given callback.
-             *
-             * @param \Closure $callback
-             * @return \Illuminate\Database\Query\Builder 
-             * @static 
-             */ 
-            public static function tap($callback)
-            {    
-                return \Illuminate\Database\Query\Builder::tap($callback);
             }
          
             /**
@@ -14668,7 +15742,15 @@ namespace  {
 
     class Html extends \Collective\Html\HtmlFacade {}
 
-    class BootForm extends \AdamWathan\BootForms\Facades\BootForm {}
+    class BootForm extends \BlueMountainTeam\Bootform\Facades\BootForm {}
+
+    class Hashids extends \Vinkla\Hashids\Facades\Hashids {}
+
+    class TranslationStatic extends \BlueMountainTeam\Translation\Facades\TranslationStatic {}
+
+    class TranslationDyn extends \BlueMountainTeam\Translation\Facades\TranslationDyn {}
+
+    class Assets extends \Stolz\Assets\Laravel\Facade {}
  
 }
 

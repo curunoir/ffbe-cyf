@@ -15,6 +15,9 @@
                                 <li><a href="{{ route('profile') }}" class=""><i class="psi-male ic-user"></i> Profil</a></li>
                             </ul>
                             <ul class="collapse in" aria-expanded="true">
+                                <li><a href="{{ action('AccountsController@index') }}" class=""><i class="psi-male ic-user"></i> {{ _t('Vos comptes') }}</a></li>
+                            </ul>
+                            <ul class="collapse in" aria-expanded="true">
                                 <li><a href="{{ action('FriendsController@index') }}" class=""><i class="psi-angel ic-user"></i> Search friends</a></li>
                             </ul>
 

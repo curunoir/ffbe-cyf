@@ -182,8 +182,9 @@ return [
         Vinkla\Hashids\HashidsServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         BlueMountainTeam\Translation\TranslationServiceProvider::class,
-        BlueMountainTeam\Bootform\BootformServiceProvider::class
+        BlueMountainTeam\Bootform\BootformServiceProvider::class,
 
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class
 
     ],
 

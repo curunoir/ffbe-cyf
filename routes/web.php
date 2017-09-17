@@ -26,7 +26,8 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => [
     Route::put('account/new','ProfileController@newAccount')->name('account.new');
 
     Route::resource('friends', 'FriendsController');
-    
+    Route::resource('accounts', 'AccountsController');
+
     Auth::routes();
 });
 
