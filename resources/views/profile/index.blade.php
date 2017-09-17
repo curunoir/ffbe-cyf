@@ -16,8 +16,8 @@
                 <div class="row">
                     <div class="col-md-3">
 
-                        {!! BootForm::open() !!}
 
+                        {!! Form::open(['method' => 'put', route('account.new')]) !!}
                         {!! BootForm::text("Friend code account", 'ffbe_id') !!}
                         {!! BootForm::select('Server',  'server', ['GLOBAL' => 'GLOBAL', 'JAPAN' => 'JAPAN'])  !!}
                         {!! BootForm::text("Rank", 'rank') !!}

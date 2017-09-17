@@ -12,11 +12,12 @@
 */
 
 
-
 Auth::routes();
-
 Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => ['auth']], function () {
-    Route::get('/', 'HomeController@index')->name('home');
+
+    Route::get('/', function () {
+        return redirect(action('HomeController@index'));
+    });
 
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('profile','ProfileController@index')->name('profile');
@@ -25,5 +26,11 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => [
     Route::put('account/new','ProfileController@newAccount')->name('account.new');
 
     Route::resource('friends', 'FriendsController');
+    
+    Auth::routes();
 });
 
+Route::group(['prefix' => TranslationStatic::getRoutePrefix()], function () {
+    Auth::routes();
+
+});
