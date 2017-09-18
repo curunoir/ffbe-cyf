@@ -21,6 +21,9 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/jquery.autocomplete.min.js') }}"></script>
 
+    <?php Assets::add(BootForm::asset_css());     Assets::add(BootForm::asset_js());?>
+    <?=Assets::css(); ?>
+
 </head>
 
 <body>
@@ -29,7 +32,7 @@
         @include('partials._flash')
 
     </div>
-    @include('layouts.navbar-nifty')
+    @include('layouts.navbar')
 
     <div class="boxed">
         <!--CONTENT CONTAINER-->
@@ -40,7 +43,7 @@
     </div>
 
     @if (!Auth::guest())
-        @include('layouts.navigation-nifty')
+        @include('layouts.navgauche')
     @endif
 </div>
 
@@ -52,9 +55,11 @@
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/nifty.min.js') }}"></script>
 <script src="{{ asset('js/demo/nifty-demo.js') }}"></script>
-
 <script src="{{ asset('js/app.js') }}"></script>
-
+<?=Assets::js(); ?>
+<script type="text/javascript">
+    var prefix_ajax = '{{asset('/')}}';
+</script>
 @if(env('APP_DEBUG'))
     <script id="__bs_script__">//<![CDATA[
         document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.18.8'><\/script>".replace("HOST", location.hostname));

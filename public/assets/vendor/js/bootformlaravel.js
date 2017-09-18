@@ -1,20 +1,22 @@
-function Xeditable() {
-    $('.editable').editable({
-        emptytext: "Vide",
-        params: function params(_params) {
-            _params.model = $(this).attr('data-model');
-            _params.hasone = $(this).attr('data-hasone');
-            _params.foreignkey = $(this).attr('data-foreignkey');
-            return _params;
-        },
-        showbuttons: 'bottom',
-        onblur: 'ignore',
-        url: '/ajax/quickupdate'
+function errorS(text) {
+    $.niftyNoty({
+        type: 'danger',
+        icon: 'pli-cross icon-2x',
+        message: text,
+        container: 'floating',
+        timer: 3000
     });
+
 }
 
-if ($('.editable').length) {
-    Xeditable();
+function successS(text) {
+    $.niftyNoty({
+        type: 'success',
+        icon: 'pli-cross icon-2x',
+        message: text,
+        container: 'floating',
+        timer: 3000
+    });
 }
 
 $(document).on('click', '.showAllTrad', function () {

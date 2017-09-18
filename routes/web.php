@@ -27,6 +27,7 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => [
 
     Route::resource('friends', 'FriendsController');
     Route::resource('accounts', 'AccountsController');
+    Route::resource('units', 'UnitsController');
 
     Auth::routes();
 });

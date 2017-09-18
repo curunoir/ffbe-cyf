@@ -1,4 +1,4 @@
-@extends('layouts.nifty')
+@extends('layouts.app')
 
 @section('content')
     <div id="page-content">
