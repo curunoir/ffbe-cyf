@@ -1,6 +1,6 @@
 
 
-{!! BootForm::text('ffbe_id', _t("Code ami") ) !!}
+{!! Form::text('ffbe_id', _t("Code ami") ) !!}
 
 {!! BootForm::select('server',  _t('Serveur'), ['GLOBAL' => 'GLOBAL', 'JAPAN' => 'JAPAN'])  !!}
 
@@ -8,7 +8,7 @@
 
 <div class="form-group form-text">
     <label for="unit" class="col-sm-3 control-label">{{ _t('Unité partagée') }}</label>
-    <div class="col-sm-9">
+    <div class="col-sm-6">
         <div class="input-group mar-btm">
             <span class="input-group-btn">
                 <button class="btn btn-mint " type="button"><i class="fa fa-search"></i></button>
@@ -23,7 +23,7 @@
 
 <div class="form-group form-text">
     <label for="unit" class="col-sm-3 control-label">{{ _t('Unité désirée') }}</label>
-    <div class="col-sm-9">
+    <div class="col-sm-6">
         <div class="input-group mar-btm">
             <span class="input-group-btn">
                 <button class="btn btn-mint " type="button"><i class="fa fa-search"></i></button>

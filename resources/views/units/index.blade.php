@@ -12,9 +12,13 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="panel-title">{{ _t('Gestion des unités') }}</div>
-
-                <div class="col-xs-6 text-right">
-                    <a class="btn btn-primary " href="{{action('UnitsController@create')}}"><i class="fa fa-plus"></i> {{_t('Ajouter une unité')}}</a>
+                <div class="row">
+                    @foreach($units as $unit)
+                        <div>{{ $unit->name }}</div>
+                        <div>
+                            <img src="{{ asset( 'storage/'.$unit->icon_file) }}">
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

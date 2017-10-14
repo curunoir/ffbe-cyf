@@ -16,8 +16,11 @@
                         </div>
                         @if( admin())
                             <div id="profile-nav" class="list-group bg-trans collapse" aria-expanded="false" style="height: 2px;">
-                                <a href="{{ action('UnitsController@index') }}" class="list-group-item">
-                                    <i class="fa fa-pied-piper"></i> {{ _t('Gestion des unités') }}
+                                <a href="{{ action('UnitsController@create6') }}" class="list-group-item">
+                                    <i class="fa fa-pied-piper"></i> {{ _t('Ajouter une unité 6 étoiles') }}
+                                </a>
+                                <a href="{{ action('UnitsController@multiple') }}" class="list-group-item">
+                                    <i class="fa fa-pied-piper"></i> {{ _t('Editer les unites') }}
                                 </a>
                             </div>
                         @endif

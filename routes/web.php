@@ -28,6 +28,8 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => [
     Route::resource('friends', 'FriendsController');
     Route::resource('accounts', 'AccountsController');
     Route::resource('units', 'UnitsController');
+    Route::get('units/create/6', 'UnitsController@create6');
+    Route::get('unitsmultipleedit', 'UnitsController@multiple');
 
     Auth::routes();
 });
@@ -36,3 +38,5 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix()], function () {
     Auth::routes();
 
 });
+
+Auth::routes();

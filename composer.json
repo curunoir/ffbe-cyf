@@ -24,6 +24,7 @@
         "stolz/assets": "^0.1.9",
         "vinkla/hashids": "^3.1",
         "bluemountainteam/translation": "master@dev",
+        "stolz/assets": "^0.1.9",
         "bluemountainteam/bootform": "master@dev"
     },
     "require-dev": {

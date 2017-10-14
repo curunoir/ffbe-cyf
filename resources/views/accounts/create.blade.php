@@ -1,18 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+    <div id="page-content">
+        <div id="page-title">
+            <h1 class="page-header text-overflow">{{ _t('Ajouter un compte') }}</h1>
+        </div>
+        <ol class="breadcrumb">
+            <li><a href="{{ route('home') }}">{{ _t('Accueil') }}</a></li>
+            <li><a href="{{ action('AccountsController@index') }}">{{ _t('Vos comptes') }}</a></li>
+            <li class="active">{{ _t('Nouveau compte') }}</li>
+        </ol>
 
-    <div class="text-right margin-bottom-10">
-        <a class="btn btn-primary" href="{{action('AccountsController@index')}}"><i class="fa fa-reply"></i> {{_t('retour')}}</a>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-title">{{ _t('Ajouter un compte') }}</div>
-        <div class="panel-body">
-            <div role="content">
-                {!! BootForm::open($account, ['class' => 'form-horizontal','id' => 'Form','enctype' => 'multipart/form-data']) !!}
-                @include('accounts._form')
-                {!! BootForm::close() !!}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div role="content">
+                    {!! BootForm::open($account, ['class' => 'form-horizontal','id' => 'Form','enctype' => 'multipart/form-data']) !!}
+                    @include('accounts._form')
+                    {!! BootForm::close() !!}
+                </div>
             </div>
         </div>
     </div>

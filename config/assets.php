@@ -59,7 +59,7 @@ return [
 		 *
 		 * @var string
 		 */
-		//'css_dir' => 'css',
+		'css_dir' => '/assets/css',
 
 		/**
 		 * Directory for local JavaScript assets.
@@ -68,7 +68,7 @@ return [
 		 *
 		 * @var string
 		 */
-		//'js_dir' => 'js',
+		'js_dir' => '/assets/js',
 
 		/**
 		 * Directory for local package assets.
@@ -121,42 +121,31 @@ return [
 		 */
 		//'fetch_command' => function ($asset) {return preprocess(file_get_contents($asset));},
 
-		/**
-		 * Available collections.
-		 * Each collection is an array of assets.
-		 * Collections may also contain other collections.
-		 *
-		 * @var array
-		 */
-		/*'collections' => array(
+        'collections' => [
 
-			// jQuery (CDN)
-			'jquery-cdn' => array('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'),
+            'js_primary' => [ 'libs/jquery-2.2.4.min.js',
+                'bootstrap/bootstrap.min.js',
+                'laravel.js',
+                'plugins/metismenu.js',
+                'plugins/nano_scroller.js',
+                'plugins/SmartNotification.min.js',
+                'jquery.autocomplete.min.js',
+                'nifty.js',
+                'nifty-demo.js',
+                'app.js'
 
-			// jQuery UI (CDN)
-			'jquery-ui-cdn' => array(
-				'jquery-cdn',
-				'//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js',
-			),
+            ],
+            'css_primary' => [
+                'bootstrap.min.css',
+                'app.css',
+                'font-awesome/css/font-awesome.min.css',
+                'pace.min.css',
+                'ffbe.css',
+                'demo/nifty-demo-icons.min.css',
+                'demo/nifty-demo.min.css'
+            ]
+        ]
 
-			// Twitter Bootstrap (CDN)
-			'bootstrap-cdn' => array(
-				'jquery-cdn',
-				'//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css',
-				'//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css',
-				'//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'
-			),
-
-			// Zurb Foundation (CDN)
-			'foundation-cdn' => array(
-				'jquery-cdn',
-				'//cdn.jsdelivr.net/foundation/5.3.3/css/normalize.css',
-				'//cdn.jsdelivr.net/foundation/5.3.3/css/foundation.min.css',
-				'//cdn.jsdelivr.net/foundation/5.3.3/js/foundation.min.js',
-				'app.js'
-			),
-
-		),*/
 
 		/**
 		 * Preload assets.
