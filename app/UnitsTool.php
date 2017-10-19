@@ -38,7 +38,20 @@ class UnitsTool
         {
             return preg_match('/(^unit_icon.*['.$max.']).png/', $file);
         });
-        return collect($files);
+        if($max == 6)
+            return collect($files);
+        else{
+            if($max == 5){
+                // on regarde si pas deja existant en six etoiles sinon osef
+                $filtered_files = array();
+                foreach($files as $file) {
+                    $filesixstars = substr($file, 0, strlen($file)-5) .'6.png';
+                    if(!Storage::disk('local')->exists($filesixstars))
+                        $filtered_files[] = $file;
+                }
+                return collect($filtered_files);
+            }
+        }
     }
 
     public function getAllMaxSixIcons() : Collection {

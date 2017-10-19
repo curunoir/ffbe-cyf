@@ -29,7 +29,10 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => [
     Route::resource('accounts', 'AccountsController');
     Route::resource('units', 'UnitsController');
     Route::get('units/create/6', 'UnitsController@create6');
+    Route::get('units/create/5', 'UnitsController@create5');
     Route::get('unitsmultipleedit', 'UnitsController@multiple');
+
+    Route::post('ajax/unit/update', 'UnitsController@updateajax');
 
     Auth::routes();
 });

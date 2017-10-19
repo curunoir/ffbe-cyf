@@ -14,7 +14,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div role="content">
-                    {!! BootForm::open($account, ['class' => 'form-horizontal','id' => 'Form','enctype' => 'multipart/form-data']) !!}
+                    {!! BootForm::open($account, ['class' => 'form-horizontal','id' => 'Form']) !!}
                     @include('accounts._form')
                     {!! BootForm::close() !!}
                 </div>

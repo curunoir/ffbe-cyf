@@ -17,7 +17,6 @@
 @endif
 @if(session()->has('info'))
     <div data-alert="info" data-title="{{'Informations'}} !" data-content="{!!session('info')!!}"></div>
-
 @endif
 @if(session()->has('error'))
     <div data-alert="danger" data-title="{{'Erreur'}} !" data-content="{!!session('error')!!}"></div>
@@ -25,7 +24,6 @@
 @if(session()->has('success'))
     <div data-alert="success" data-title="{{'Succès'}} !" data-content="{!!session('success')!!}"></div>
 @endif
-
 @if(session()->has('warning'))
     <div data-alert="warning" data-title="{{'Attention'}} !" data-content="{!!session('warning')!!}"></div>
 @endif

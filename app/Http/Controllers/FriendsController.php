@@ -23,10 +23,10 @@ class FriendsController extends Controller
     public function index()
     {
         $user = Auth::getUser();
-
-        $accounts = $user->accounts();
-        //getDatatables();
-        return view('friends.index', ['accounts' => $user->accounts, 'user' => $user]);
+        $accounts = Account::get()->take(10);
+        getDatatables(true);
+        getValidate():
+        return view('friends.index', compact('user', 'accounts'));
     }
 
     /**

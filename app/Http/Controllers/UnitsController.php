@@ -33,11 +33,7 @@ class UnitsController extends Controller
         return view('units.index', compact('units'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create6(UnitsTool $unitsTool)
     {
         $unit = new Unit();
@@ -49,11 +45,22 @@ class UnitsController extends Controller
             return "Plus d'icones d'unités 6 étoiles a ajouter";
     }
 
+    public function create5(UnitsTool $unitsTool)
+    {
+        $unit = new Unit();
+        $maxstars = 5;
+        $icon = $unitsTool::getFirstUnknownForMaxStars($maxstars);
+        if($icon)
+            return view('units.create', compact('unit', 'icon', 'maxstars'));
+        else
+            return "Plus d'icones d'unités 5 étoiles a ajouter";
+    }
+
 
     public function multiple(UnitsTool $unitsTool)
     {
         getDatatables(true);
-        $units = Unit::get();
+        $units = Unit::orderBy('icon_file')->get();
         return view('units.multiple', compact('units'));
     }
 
@@ -102,6 +109,7 @@ class UnitsController extends Controller
         return view('accounts.edit', compact('account'));
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -112,6 +120,26 @@ class UnitsController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Unit  $unit
+     * @return \Illuminate\Http\Response
+     */
+    public function updateajax(Request $request)
+    {
+        if($request->has('id') && $request->has('name') ) {
+            $unit = Unit::find($request->get('id'));
+            $unit->name = $request->get('name');
+            $unit->validation = true;
+            if($unit->save())
+                return 'OK';
+            else
+                return 'NOK';
+        }
     }
 
     /**

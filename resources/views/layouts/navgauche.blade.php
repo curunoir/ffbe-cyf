@@ -19,6 +19,9 @@
                                 <a href="{{ action('UnitsController@create6') }}" class="list-group-item">
                                     <i class="fa fa-pied-piper"></i> {{ _t('Ajouter une unité 6 étoiles') }}
                                 </a>
+                                <a href="{{ action('UnitsController@create5') }}" class="list-group-item">
+                                    <i class="fa fa-pied-piper"></i> {{ _t('Ajouter une unité 5 étoiles') }}
+                                </a>
                                 <a href="{{ action('UnitsController@multiple') }}" class="list-group-item">
                                     <i class="fa fa-pied-piper"></i> {{ _t('Editer les unites') }}
                                 </a>
