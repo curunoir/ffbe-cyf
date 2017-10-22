@@ -26,6 +26,8 @@ class AccountsController extends Controller
     public function create()
     {
         $account = new Account();
+        getValidate();
+        getChosen();
         return view('accounts.create', compact('account'));
     }
 
@@ -43,7 +45,8 @@ class AccountsController extends Controller
                 'max:11',
                 'max:50',
                 'friendcode'
-            ]
+            ],
+            'rank' => ['numeric']
         ]);
 
         $user = Auth::getUser();
@@ -71,6 +74,8 @@ class AccountsController extends Controller
      */
     public function edit($id)
     {
+        getValidate();
+        getChosen();
         $account = Account::findOrFail(_d($id));
 
         return view('accounts.edit', compact('account'));
@@ -91,7 +96,8 @@ class AccountsController extends Controller
                 'max:11',
                 'max:50',
                 'friendcode'
-            ]
+            ],
+            'rank' => ['numeric']
         ]);
 
         $req = $request->all();

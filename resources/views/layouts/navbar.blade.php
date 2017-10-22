@@ -34,7 +34,7 @@
                 @else
                 <!--User dropdown-->
                     <li id="dropdown-user" class="dropdown">
-                        <a href="{{ route('profile') }}" data-toggle="" class="text-right">
+                        <a href="{{ route('accounts.index') }}" data-toggle="" class="text-right">
                             <span class="pull-left">
                                 <i class="fa fa-user"></i>
                                 <span class="hidden-xs"> {{ Auth::user()->name }}</span>

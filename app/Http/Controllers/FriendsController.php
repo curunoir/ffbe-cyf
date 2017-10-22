@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Yajra\Datatables\Facades\Datatables;
 use App\Account;
 
 class FriendsController extends Controller
@@ -23,10 +24,41 @@ class FriendsController extends Controller
     public function index()
     {
         $user = Auth::getUser();
-        $accounts = Account::get()->take(10);
+        $accounts = Account::get();
         getDatatables(true);
-        getValidate():
+        getValidate();
         return view('friends.index', compact('user', 'accounts'));
+    }
+
+    public function searchfriends()
+    {
+        $model = Account::select('accounts.*',
+            'units.name as units.name',
+            'units.icon_file as icon',
+            'users.name as users.name'
+            )
+            ->leftJoin('units', 'units.id', '=', 'accounts.current_unit_id' )
+            ->leftJoin('users', 'users.id', '=', 'accounts.user_id' );
+
+        $data = Datatables::of($model)
+            ->editColumn('btn_request', function ($value) {
+                $text =  '<button data-id="'._c($value->id) .'" class="request_friend btn btn-mint btn-icon"><i class="fa fa-pencil icon-lg"></i></button>';
+                return $text;
+            })
+            ->editColumn('icon', function ($value) {
+                $text =  '<img src="'. asset( 'storage/'.$value->current_unit->icon_file).'">';
+                return $text;
+            })
+            ->setRowId(function ($value) {
+                return $value->reference_id;
+            })
+            ->filter(function ($query) {
+                if (request()->has('fnofriends')) {
+                    $query->doesntHave('friend_accounts');
+                }
+            }, true)
+            ->rawColumns(['btn_request', 'icon']);
+        return $data->make(true);
     }
 
     /**

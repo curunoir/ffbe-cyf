@@ -13,8 +13,20 @@ class Unit extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'japan_name', 'description', 'slug', 'base_stars', 'max_stars',
-        'icon_file', 'icon_one', 'icon_two', 'icon_three', 'icon_four', 'icon_five', 'icon_six', 'validation'
+        'name',
+        'japan_name',
+        'description',
+        'slug',
+        'base_stars',
+        'max_stars',
+        'icon_file',
+        'icon_one',
+        'icon_two',
+        'icon_three',
+        'icon_four',
+        'icon_five',
+        'icon_six',
+        'validation'
     ];
 
 }

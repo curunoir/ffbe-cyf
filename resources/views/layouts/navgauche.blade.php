@@ -31,10 +31,7 @@
                     <ul id="mainnav-menu" class="list-group">
                         <!--Category name-->
                         <li class="list-header ">{{ _t('Navigation') }}</li>
-                            <!--Submenu-->
-                        <li class="">
-                            <a href="{{ route('profile') }}" class=""><i class="fa fa-user "></i> {{ _t('Votre profil') }}</a>
-                        </li>
+
                         <li class="" >
                             <a href="{{ action('AccountsController@index') }}" class=""><i class="fa fa-gamepad"></i> {{ _t('Vos comptes') }}</a>
                         </li>

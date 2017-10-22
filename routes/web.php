@@ -20,14 +20,17 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => [
     });
 
     Route::get('home', 'HomeController@index')->name('home');
-    Route::get('profile','ProfileController@index')->name('profile');
-    Route::put('profile','ProfileController@update')->name('profile.update');
 
     Route::put('account/new','ProfileController@newAccount')->name('account.new');
 
     Route::resource('friends', 'FriendsController');
     Route::resource('accounts', 'AccountsController');
     Route::resource('units', 'UnitsController');
+
+    Route::post('ajax/searchfriends', 'FriendsController@searchfriends');
+
+    Route::get('ajax/testpusher', 'HomeController@ajaxtestpusher');
+
     Route::get('units/create/6', 'UnitsController@create6');
     Route::get('units/create/5', 'UnitsController@create5');
     Route::get('unitsmultipleedit', 'UnitsController@multiple');

@@ -73,4 +73,27 @@ class UnitsTool
     }
 
 
+    /**
+     * @param $name
+     * @param $value
+     * @param null $options
+     * @param null $min
+     * @param null $max
+     */
+    public function selectUnits($name, $value = null, $options = null, $min =null, $max = null)
+    {
+       $units = Unit::where('validation', '=', true)->get();
+        $options_select = '';
+       if($options != null)
+           foreach($options as $key => $option)
+            $options_select .= $key."='".$option."'' ";
+       $html = "<select name='$name' id='$name' ".$options_select.">";
+       foreach($units as $unit) {
+           $selected = $unit->id == $value ? 'selected' : '';
+           $html .= "<option value='".$unit->id."' ".$selected." >".$unit->name."</option>";
+       }
+        $html .= "</select>";
+       return $html;
+    }
+
 }

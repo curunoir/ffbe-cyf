@@ -184,6 +184,7 @@ return [
         BlueMountainTeam\Translation\TranslationServiceProvider::class,
         BlueMountainTeam\Bootform\BootformServiceProvider::class,
         App\Providers\UnitsToolServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class
 
@@ -241,7 +242,7 @@ return [
         'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
         'TranslationStatic' => BlueMountainTeam\Translation\Facades\TranslationStatic::class,
         'TranslationDyn' => BlueMountainTeam\Translation\Facades\TranslationDyn::class,
-        'ImportOldWiki' => App\Facades\ImportOldWiki::class,
+        'UnitsTool' => App\Facades\UnitsTool::class
 
     ],
 

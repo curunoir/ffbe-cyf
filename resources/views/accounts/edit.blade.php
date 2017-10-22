@@ -14,9 +14,16 @@
         <div class="panel panel-default">
             <div class="panel-body">
             <div role="content">
-                {!! BootForm::open($account, ['class' => 'form-horizontal','id' => 'Form','enctype' => 'multipart/form-data']) !!}
-                @include('accounts._form')
-                {!! BootForm::close() !!}
+                <div class=row">
+                    <div class="col-sm-11">
+                        {!! BootForm::open($account, ['class' => 'form-horizontal','id' => 'Form','enctype' => 'multipart/form-data']) !!}
+                        @include('accounts._form')
+                        {!! BootForm::close() !!}
+                    </div>
+                    <div class="col-sm-1">
+                        <a class="btn btn-primary " href="{{action('AccountsController@index')}}"><i class="fa fa-plus"></i> {{_t('Retour')}}</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

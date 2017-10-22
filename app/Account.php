@@ -13,7 +13,14 @@ class Account extends Model
      * @var array
      */
     protected $fillable = [
-        'ffbe_id', 'server', 'ffbe_id_visibility', 'rank'
+        'ffbe_id',
+        'server',
+        'ffbe_id_visibility',
+        'rank',
+        'current_unit_id',
+        'current_unit_description',
+        'desired_unit_id',
+        'desired_unit_comments'
     ];
 
     /**
@@ -56,7 +63,7 @@ class Account extends Model
 	 */
 	public function current_unit()
 	{
-		return $this->HasOne('App\Unit', 'current_unit_id');
+		return $this->HasOne('App\Unit', 'id', 'current_unit_id');
 	}
 
 	/**
@@ -64,6 +71,6 @@ class Account extends Model
 	 */
 	public function desired_unit()
 	{
-		return $this->HasOne('App\Unit', 'desired_unit_id');
+		return $this->HasOne('App\Unit', 'id', 'desired_unit_id');
 	}
 }

@@ -25,7 +25,7 @@
                 </div>
                 <hr />
                 <div class="panel-title">{{ _t('Vos comptes') }}</div>
-                @include('profile._accounts')
+                @include('accounts._accounts')
             </div>
         </div>
     </div>
