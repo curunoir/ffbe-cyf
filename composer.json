@@ -20,20 +20,21 @@
         "bluemountainteam/bootform": "master@dev",
         "bluemountainteam/translation": "master@dev",
         "dlouvard/bootformlaravel": "dev-master",
-        "graham-campbell/manager": "^3.0@dev",
-        "laravel/framework": "5.4.*",
+        "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "~5.4",
-        "stolz/assets": "^0.1.9",
-        "vinkla/hashids": "^3.1",
-        "yajra/laravel-datatables-oracle": "~7.4"
+        "laravelcollective/html": "~5.5",
+        "stolz/assets": "dev-master",
+        "vinkla/hashids": "^3.3@dev",
+        "vinkla/pusher": "^3.1@dev",
+        "yajra/laravel-datatables-oracle": "8.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "barryvdh/laravel-debugbar": "^2.4",
         "barryvdh/laravel-ide-helper": "^2.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.7"
+        "phpunit/phpunit": "~6.0",
+        "filp/whoops": "~2.0"
     },
     "autoload": {
         "classmap": [
@@ -57,12 +58,13 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
+            "Illuminate\\Foundation\\ComposerScripts::postInstall"
         ],
         "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
+        ],
+        "post-autoload-dump": [
+            "@php artisan package:discover"
         ]
     },
     "config": {

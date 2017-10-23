@@ -139,6 +139,11 @@ function getChosen()
     \Assets::add('plugins/chosen/chosen.min.css');
 }
 
+function getVueChat()
+{
+    \Assets::add('chat.js');
+}
+
 function tranfSlash($data)
 {
     return str_replace('|', '/', $data);

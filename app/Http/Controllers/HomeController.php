@@ -39,8 +39,6 @@ class HomeController extends Controller
 
     public function ajaxtestpusher()
     {
-
-
-        Pusher::trigger('my-channel', 'my-event', ['message' => $message]);
+        $res = Pusher::trigger('my-channel', 'my-event', ['message' => "test pusher CURU"]);
     }
 }

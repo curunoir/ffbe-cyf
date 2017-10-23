@@ -123,7 +123,8 @@ return [
 
         'collections' => [
 
-            'js_primary' => [ 'libs/jquery-2.2.4.min.js',
+            'js_primary' => [
+                'libs/jquery-2.2.4.min.js',
                 'bootstrap/bootstrap.min.js',
                 'laravel.js',
                 'plugins/metismenu.js',

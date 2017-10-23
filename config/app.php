@@ -173,7 +173,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
@@ -184,7 +184,8 @@ return [
         BlueMountainTeam\Translation\TranslationServiceProvider::class,
         BlueMountainTeam\Bootform\BootformServiceProvider::class,
         App\Providers\UnitsToolServiceProvider::class,
-        Yajra\Datatables\DatatablesServiceProvider::class,
+        Yajra\Datatables\DataTablesServiceProvider::class,
+        Vinkla\Pusher\PusherServiceProvider::class,
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class
 
@@ -242,6 +243,7 @@ return [
         'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
         'TranslationStatic' => BlueMountainTeam\Translation\Facades\TranslationStatic::class,
         'TranslationDyn' => BlueMountainTeam\Translation\Facades\TranslationDyn::class,
+        'Pusher' => Vinkla\Pusher\Facades\Pusher::class,
         'UnitsTool' => App\Facades\UnitsTool::class
 
     ],

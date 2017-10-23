@@ -9,9 +9,6 @@
 
                 <div class="panel-body">
                     {{ _t('T\'es loggé mec !') }}
-                    <div>
-                        <a href="#" class="test-pusher">Test pusher</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -19,10 +16,10 @@
 </div>
 @endsection
 
-@section('script)
+@section('script')
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <script type="text/javascript">
-        $('.test-pusher').click( function() {
+
             Pusher.logToConsole = true;
 
             var pusher = new Pusher('ff317e0f3fd829e48367', {
@@ -34,6 +31,6 @@
             channel.bind('my-event', function(data) {
                 alert(data.message);
             });
-        });
+
     </script>
 @endsection

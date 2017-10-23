@@ -1,6 +1,7 @@
 
 window._ = require('lodash');
 
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -12,6 +13,8 @@ try {
 
     require('bootstrap-sass');
 } catch (e) {}
+
+window.Vue = require('vue');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -43,11 +46,53 @@ if (token) {
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from 'laravel-echo'
+import Echo from 'laravel-echo'
 
-// window.Pusher = require('pusher-js');
+window.Pusher = require('pusher-js');
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: 'your-pusher-key'
-// });
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: 'ff317e0f3fd829e48367',
+    cluster: 'eu',
+    encrypted: true
+});
+
+Vue.component('chat-messages', require('./components/ChatMessages.vue'));
+Vue.component('chat-form', require('./components/ChatForm.vue'));
+
+$(document).ready(function () {
+    const app = new Vue({
+        el: '#app',
+
+        data: {
+            messages: []
+        },
+
+        created() {
+            this.fetchMessages();
+            Echo.private('chat')
+                .listen('MessageSent', (e) => {
+                    this.messages.push({
+                        message: e.message.message,
+                        user: e.user
+                    });
+                });
+        },
+
+        methods: {
+            fetchMessages() {
+                axios.get('/messages').then(response => {
+                    this.messages = response.data;
+                });
+            },
+
+            addMessage(message) {
+                this.messages.push(message);
+
+                axios.post('/messages', message).then(response => {
+                    console.log(response.data);
+                });
+            }
+        }
+    });
+});

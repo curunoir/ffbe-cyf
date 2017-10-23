@@ -19,7 +19,7 @@
     </div>
 @endsection
 
-@section('script)
+@section('script')
     <script type="text/javascript">
         $('.test-pusher').click( function() {
             $.ajax('ajax/testpusher');

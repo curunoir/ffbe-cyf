@@ -21,8 +21,6 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => [
 
     Route::get('home', 'HomeController@index')->name('home');
 
-    Route::put('account/new','ProfileController@newAccount')->name('account.new');
-
     Route::resource('friends', 'FriendsController');
     Route::resource('accounts', 'AccountsController');
     Route::resource('units', 'UnitsController');
@@ -30,12 +28,17 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => [
     Route::post('ajax/searchfriends', 'FriendsController@searchfriends');
 
     Route::get('ajax/testpusher', 'HomeController@ajaxtestpusher');
+    Route::get('testpusher', 'HomeController@testpusher');
 
     Route::get('units/create/6', 'UnitsController@create6');
     Route::get('units/create/5', 'UnitsController@create5');
     Route::get('unitsmultipleedit', 'UnitsController@multiple');
 
     Route::post('ajax/unit/update', 'UnitsController@updateajax');
+
+    Route::get('/chat', 'ChatsController@index');
+    Route::get('messages', 'ChatsController@fetchMessages');
+    Route::post('messages', 'ChatsController@sendMessage');
 
     Auth::routes();
 });

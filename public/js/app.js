@@ -1,3 +1,80 @@
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(1);
+module.exports = __webpack_require__(2);
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
 
 
 /**
@@ -11,12 +88,12 @@ $('html').bind('keypress', function (e) {
     }
 });
 
-var createFormDelete = function (link) {
-    var form = $('<form>', {'method': 'POST', 'action': link});
-    var token = $('<input>', {'type': 'hidden', 'name': '_token', 'value': $('meta[name=csrf_token]').attr('content')});
-    var hiddenInput = $('<input>', {'name': '_method', 'type': 'hidden', 'value': 'DELETE'});
+var createFormDelete = function createFormDelete(link) {
+    var form = $('<form>', { 'method': 'POST', 'action': link });
+    var token = $('<input>', { 'type': 'hidden', 'name': '_token', 'value': $('meta[name=csrf_token]').attr('content') });
+    var hiddenInput = $('<input>', { 'name': '_method', 'type': 'hidden', 'value': 'DELETE' });
     return form.append(token, hiddenInput).appendTo('body');
-}
+};
 
 if ($('.datatable').length) {
     $('.datatable').dataTable({
@@ -30,7 +107,7 @@ if ($('.datatable').length) {
         language: {
             "url": "assets/js/plugins/datatables/fr.json"
         },
-        "autoWidth": true,
+        "autoWidth": true
     });
 }
 
@@ -51,11 +128,11 @@ $('[rel=tooltip]').tooltip();
 function Xeditable() {
     $('.editable').editable({
         emptytext: "Vide",
-        params: function (params) {
-            params.model = $(this).attr('data-model');
-            params.hasone = $(this).attr('data-hasone');
-            params.foreignkey = $(this).attr('data-foreignkey');
-            return params;
+        params: function params(_params) {
+            _params.model = $(this).attr('data-model');
+            _params.hasone = $(this).attr('data-hasone');
+            _params.foreignkey = $(this).attr('data-foreignkey');
+            return _params;
         },
         showbuttons: 'bottom',
         onblur: 'ignore',
@@ -66,7 +143,6 @@ function Xeditable() {
 if ($('.editable').length) {
     Xeditable();
 }
-
 
 function countLine(text) {
     var lines = text.split("\n");
@@ -88,11 +164,11 @@ $(document).on('click', '#allcheck', function () {
     //parent = $(this).parents('table');
     el = $(this);
     if (el.is(":checked")) {
-        $('input[name^=check]').prop('checked', true)
+        $('input[name^=check]').prop('checked', true);
     } else {
-        $('input[name^=check]').prop('checked', false)
+        $('input[name^=check]').prop('checked', false);
     }
-})
+});
 $('.delallcheck').click(function (e) {
     e.preventDefault();
     if ($('input[name^=check]:checked').length) {
@@ -102,11 +178,10 @@ $('.delallcheck').click(function (e) {
             type: 'POST',
             data: data,
             dataType: 'html',
-            success: function (data) {
+            success: function success(data) {
                 $('#lg_modal').modal();
                 $('.content_lg_modal').html(data);
-
-            },
+            }
         });
     } else {
         errorS('Veuillez choisir des éléments à supprimer');
@@ -138,12 +213,11 @@ function searchAll(e) {
         url: '/ajax/searchall',
         type: 'POST',
         dataType: 'html',
-        data: {search: search},
-        success: function (data) {
+        data: { search: search },
+        success: function success(data) {
             $('.search_content').html(data);
-
         }
-    })
+    });
 }
 
 $('#close_search').click(function () {
@@ -157,12 +231,12 @@ $(document).on('click', '.fa_flash', function () {
         url: '/ajax/notification',
         type: 'POST',
         dataType: 'json',
-        data: {id: id},
-        success: function (data) {
+        data: { id: id },
+        success: function success(data) {
             successS('Lecture de la notification prise en compte');
             $('.notification').find('a').removeClass('fa_flash');
         }
-    })
+    });
 });
 
 $(document).on('click', '.moreResult', function () {
@@ -192,18 +266,16 @@ $(document).on('click', '.validManualPaid', function (e) {
     $.ajax({
         url: '/ajax/manualpayefacture',
         type: 'POST',
-        data: {ref_document: ref_document, date: date},
+        data: { ref_document: ref_document, date: date },
         dataType: 'json',
-        success: function (data) {
+        success: function success(data) {
             if (data.success) {
-                $('.blockPaid').html(' <td class="text-right font-sm bold">Date de paiement</td>' +
-                    '<td><span class="bold">' + date + '</span><br />' +
-                    '<label class="label label-success">PAYEE</label></td>');
+                $('.blockPaid').html(' <td class="text-right font-sm bold">Date de paiement</td>' + '<td><span class="bold">' + date + '</span><br />' + '<label class="label label-success">PAYEE</label></td>');
                 successS('Facture déclarée comme payée');
             }
-        },
+        }
     });
-})
+});
 
 $(document).on('click', '[data-type=eye]', function (e) {
     block = $(this);
@@ -227,16 +299,16 @@ $(document).on('click', '[data-type=eye]', function (e) {
             method: block.attr('data-method'),
             href: block.attr('data-href'),
             async: block.attr('data-async'),
-            nodelete: block.attr('data-nodelete'),
+            nodelete: block.attr('data-nodelete')
         },
         dataType: 'html',
-        success: function (data) {
+        success: function success(data) {
             if (data) {
                 $('#' + modal).modal();
                 $('.content_lg_modal').html(data);
             }
         },
-        error: function (status) {
+        error: function error(status) {
             console.log(status);
             alert(status);
         }
@@ -254,20 +326,18 @@ $(document).on('click', '[data-confirm=delete]', function () {
             data: {
                 model: block.attr('data-model'),
                 id: id,
-                nodelete: block.attr('data-nodelete'),
+                nodelete: block.attr('data-nodelete')
             },
             dataType: 'html',
-            success: function (data) {
+            success: function success(data) {
                 if (data) {
-                    if (!data.nodelete)
-                        $('[data-id=' + id + ']').parents(parent).remove();
+                    if (!data.nodelete) $('[data-id=' + id + ']').parents(parent).remove();
                     $('#lg_modal').modal('hide');
                     successS('Element supprimé avec succès !');
                 }
-            },
+            }
 
         });
-
     } else {
 
         form = createFormDelete(block.attr('data-href'));
@@ -293,13 +363,13 @@ $(document).on('click', '[data-type=update]', function () {
                 val_input: val_input
             },
             dataType: 'json',
-            success: function (data) {
+            success: function success(data) {
                 if (data.success) {
                     $('#lg_modal').modal('hide');
                     successS('Modification effectuée');
                 }
             },
-            error: function (data) {
+            error: function error(data) {
                 errorS('Contacter le Support');
             }
 
@@ -308,7 +378,7 @@ $(document).on('click', '[data-type=update]', function () {
         errorS('Aucun élément disponible');
     }
 });
-var datatableM = function () {
+var datatableM = function datatableM() {
     $('.dataTable').dataTable({
         "pageLength": 50,
         "aaSorting": [],
@@ -320,12 +390,11 @@ var datatableM = function () {
         language: {
             "url": "/assets/js/plugins/datatables/fr.json"
         },
-        "autoWidth": false,
+        "autoWidth": false
     });
-}
+};
 if ($('.dataTable').length) {
-    datatableM()
-
+    datatableM();
 }
 if ($('.select2').length) {
     $('.select2').select2();
@@ -333,12 +402,12 @@ if ($('.select2').length) {
 if ($('.datepicker').length) {
     $('.datepicker').datepicker({
         dateFormat: 'yy-mm-dd'
-    })
+    });
 }
 
 /**MAPS**/
 $(document).on('click', '.invAdress', function () {
-    adresse1 = $('input[name=adresse1]').val()
+    adresse1 = $('input[name=adresse1]').val();
     adresse2 = $('input[name=adresse2]').val();
     $('input[name=adresse1]').val(adresse2);
     $('input[name=adresse2]').val(adresse1);
@@ -361,15 +430,15 @@ function showMap(ID) {
     $.ajax({
         url: "/ajax/societe_maps",
         type: 'POST',
-        data: {types: types, search: search},
+        data: { types: types, search: search },
         dataType: 'json',
-        success: function (data) {
+        success: function success(data) {
             setTimeout(function (e) {
                 initMap(data, ID);
             }, 1000);
             initMapHtml = true;
         }
-    })
+    });
 }
 
 if ($('input[name^=types_map]').length) {
@@ -390,27 +459,26 @@ $(document).on('click', '.validAdress', function () {
     $.ajax({
         url: "/ajax/updatesociete",
         type: 'POST',
-        data: {data: data},
+        data: { data: data },
         dataType: 'json',
-        success: function (data) {
+        success: function success(data) {
             if (data.success) {
                 if ($('.tableErrorMaps').length) {
                     $('.tableErrorMaps').find('tr[data-id=' + data.id + ']').remove();
                     $('#lg_modal').modal('hide');
-
                 }
                 successS('Société mise à jour avec succès !');
             }
         }
-    })
+    });
 });
 $(document).on('click', '.testMap', function () {
     var ID = $(this).attr('data-map');
 
     switchAdress = $('input[name=switch_adresse]:checked').val();
 
-    adresse1 = $('input[name=adresse1]').val()
-    adresse2 = $('input[name=adresse2]').val()
+    adresse1 = $('input[name=adresse1]').val();
+    adresse2 = $('input[name=adresse2]').val();
     adresse = 'nyons';
     switch (switchAdress) {
         case '1':
@@ -429,17 +497,17 @@ $(document).on('click', '.testMap', function () {
     adresseComplete = adresse + ' ' + $('input[name=cp]').val() + ' ' + $('input[name=ville]').val();
     var map = new google.maps.Map(document.getElementById(ID), {
         zoom: 10,
-        center: {lat: 46.191644, lng: 5.322666}
+        center: { lat: 46.191644, lng: 5.322666 }
     });
     var geocoder = new google.maps.Geocoder();
 
-    geocoder.geocode({'address': adresseComplete}, function (results, status) {
+    geocoder.geocode({ 'address': adresseComplete }, function (results, status) {
         if (status === 'OK') {
             map.setCenter(results[0].geometry.location);
 
             var marker = new google.maps.Marker({
                 map: map,
-                position: results[0].geometry.location,
+                position: results[0].geometry.location
             });
             position = results[0].geometry.location;
             $('input[name=latitude]').val(position.lat);
@@ -459,7 +527,7 @@ $(document).on('click', '.testMap', function () {
 /** END MAPS **/
 /** Remarque **/
 if ($('.listRemarques').length) {
-    $('.listRemarques .nano-content').scrollTop($('.listRemarques ul').height())
+    $('.listRemarques .nano-content').scrollTop($('.listRemarques ul').height());
 }
 $(document).on('click', '.editRemarque', function () {
     parentGlobal = $(this).parents('remarque');
@@ -470,13 +538,13 @@ $(document).on('click', '.editRemarque', function () {
     $.ajax({
         url: "/ajax/editremarque",
         type: 'POST',
-        data: {model: model, object_id: object_id, id: id},
+        data: { model: model, object_id: object_id, id: id },
         dataType: 'html',
-        success: function (data) {
+        success: function success(data) {
             $('#lg_modal').modal();
             $('.content_lg_modal').html(data);
         }
-    })
+    });
 });
 
 $(document).ready(function () {
@@ -484,7 +552,7 @@ $(document).ready(function () {
         var clickover = $(event.target);
         var _opened = $(".collapse").hasClass("collapse in");
         if (_opened === true && !clickover.parents('.collapse').hasClass('collapse-toggle')) {
-            $(".collapse-toggle").collapse('hide')
+            $(".collapse-toggle").collapse('hide');
         }
     });
 });
@@ -495,14 +563,14 @@ $(document).on('click', '.addRemarque', function () {
     $.ajax({
         url: "/ajax/addremarque",
         type: 'POST',
-        data: {model: model, object_id: object_id, body: body},
+        data: { model: model, object_id: object_id, body: body },
         dataType: 'html',
-        success: function (data) {
+        success: function success(data) {
             $('input[name=body]').val('');
             $('.listRemarques ul').append(data);
-            $('.listRemarques .nano-content').scrollTop($('.listRemarques ul').height())
+            $('.listRemarques .nano-content').scrollTop($('.listRemarques ul').height());
         }
-    })
+    });
 });
 
 /** END Remarque **/
@@ -524,14 +592,14 @@ $(document).on('click', '.addAcademy', function () {
         url: '/ajax/addacademy',
         type: 'POST',
         dataType: 'json',
-        data: {tags: tags, id: id, contacts_id: contacts_id},
-        success: function (data) {
+        data: { tags: tags, id: id, contacts_id: contacts_id },
+        success: function success(data) {
             console.log(data);
             if (data.success) {
                 if (!nodelete) {
                     $('.addAcademy').hide();
                     $('.accountAcademyOK').show();
-                }else{
+                } else {
                     successS('Catégories renvoyées');
                 }
                 $('.sendMailAcademy').show();
@@ -540,7 +608,7 @@ $(document).on('click', '.addAcademy', function () {
                 $('.errorTag').show();
             }
         },
-        error: function (xhr, status) {
+        error: function error(xhr, status) {
             console.log(status);
             errorS('Une erreur s\'est produite');
         }
@@ -548,10 +616,7 @@ $(document).on('click', '.addAcademy', function () {
 });
 $(document).on('click', '#Contact input[type=checkbox]', function () {
     arr = [];
-    if ($('#Contact input[type=checkbox]:checked').length >= 1)
-        $('.settingsContact').show();
-    else
-        $('.settingsContact').hide();
+    if ($('#Contact input[type=checkbox]:checked').length >= 1) $('.settingsContact').show();else $('.settingsContact').hide();
 });
 $('.addsAcademy').click(function () {
     arr = [];
@@ -567,13 +632,13 @@ $(document).on('click', '.sendMailAcademy', function () {
         url: '/ajax/sendmailacademy',
         type: 'POST',
         dataType: 'json',
-        data: {contacts_id: contacts_id, id: id},
-        success: function (data) {
+        data: { contacts_id: contacts_id, id: id },
+        success: function success(data) {
             if (data.success) {
-                if(!nodelete) {
+                if (!nodelete) {
                     $('.sendAcademyOK').show();
                     $('.sendMailAcademy').hide();
-                }else{
+                } else {
                     successS('Message envoyé');
                 }
                 //location.reload();
@@ -588,9 +653,9 @@ $('.scanConnections').click(function () {
         url: '/ajax/scanconnectionacademy',
         type: 'POST',
         dataType: 'json',
-        success: function (data) {
+        success: function success(data) {
             if (data.success) {
-                successS('Scan des dernières connections effectuées')
+                successS('Scan des dernières connections effectuées');
             } else {
                 successS(data.message);
             }
@@ -607,14 +672,13 @@ function log_message(message) {
     //document.getElementById("resultStream").innerHTML += message;
 }
 
-$('.submit_on_enter').keydown(function(event) {
+$('.submit_on_enter').keydown(function (event) {
     // enter has keyCode = 13, change it if you want to use another button
     if (event.keyCode == 13) {
         this.form.submit();
         return false;
     }
 });
-
 
 function stream(formData, url) {
     $('#resultStream').html('');
@@ -626,8 +690,8 @@ function stream(formData, url) {
             log_message("[XHR] Fatal Error :" + e);
         };
         xhr.beforeSend = function () {
-            document.getElementById("log_message").innerHTML = 'opui'
-        }
+            document.getElementById("log_message").innerHTML = 'opui';
+        };
 
         xhr.onreadystatechange = function () {
             try {
@@ -644,9 +708,8 @@ function stream(formData, url) {
                         successS('Processus terminé, rechargement en cours...');
                         setTimeout(function () {
                             location.reload();
-                        }, 2000)
+                        }, 2000);
                         return;
-
                     }
 
                     xhr.previous_text = xhr.responseText;
@@ -656,21 +719,27 @@ function stream(formData, url) {
                 if (xhr.status == 500) {
                     log_message('<li class="text-danger text-bold">Erreur! Veuillez vérifier votre configuration</li>');
                 }
-
-            }
-            catch (e) {
+            } catch (e) {
                 //log_message("<b>[XHR] Exception: " + e + "</b>");
             }
         };
         xhr.timeout = 300000000;
         xhr.ontimeout = function () {
             //log_message('TimeOut');
-        }
+        };
         xhr.open("POST", url, true);
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.send(formData);
-    }
-    catch (e) {
+    } catch (e) {
         log_message("<b>[XHR] Exception: " + e + "</b>");
     }
 }
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ })
+/******/ ]);

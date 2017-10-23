@@ -117,6 +117,7 @@ return [
         'test',
         'logs',
         'ajax',
+        'broadcasting',
         'datadevices',
         'maintenances'
     ],
