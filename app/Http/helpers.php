@@ -139,8 +139,9 @@ function getChosen()
     \Assets::add('plugins/chosen/chosen.min.css');
 }
 
-function getVueChat()
+function getChat()
 {
+    \Assets::add('echo.js');
     \Assets::add('chat.js');
 }
 

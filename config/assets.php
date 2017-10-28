@@ -134,16 +134,14 @@ return [
                 'nifty.js',
                 'nifty-demo.js',
                 'app.js'
-
             ],
             'css_primary' => [
                 'bootstrap.min.css',
                 'app.css',
                 'font-awesome/css/font-awesome.min.css',
                 'pace.min.css',
-                'ffbe.css',
-                'demo/nifty-demo-icons.min.css',
-                'demo/nifty-demo.min.css'
+                'nifty.css',
+                'ffbe.css'
             ]
         ]
 

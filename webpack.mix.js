@@ -15,11 +15,3 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/assets/js')
     .js('resources/assets/js/chat.js', 'public/assets/js')
     .sass('resources/assets/sass/app.scss', 'public/css');
-
-mix.browserSync({
-    proxy: false, logConnections: true, reloadOnRestart: true, notify: false,
-    files: [
-        'public/css/*.css',
-        'public/js/*.js'
-    ],
-});

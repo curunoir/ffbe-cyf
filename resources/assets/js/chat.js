@@ -1,44 +1,5 @@
 
-window._ = require('lodash');
-
-
-/**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
- */
-
-try {
-    window.$ = window.jQuery = require('jquery');
-
-    require('bootstrap-sass');
-} catch (e) {}
-
-window.Vue = require('vue');
-
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
-
-window.axios = require('axios');
-
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-/**
- * Next we will register the CSRF Token as a common header with Axios so that
- * all outgoing HTTP requests automatically have it attached. This is just
- * a simple convenience so we don't have to attach every token manually.
- */
-
 let token = document.head.querySelector('meta[name="csrf-token"]');
-
-if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-} else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -46,53 +7,75 @@ if (token) {
  * allows your team to easily build robust real-time web applications.
  */
 
-import Echo from 'laravel-echo'
+/**
+ *
+ * @param name
+ * @param message
+ * @param time
+ * @param place left or right
+ * @returns {string}
+ */
+function chatMessage(name, message, time, place) {
+    if(place == 'right')
+        speechclass = 'speech-right';
+    else
+        speechclass = '';
 
-window.Pusher = require('pusher-js');
+    var html = ' <li class="mar-btm">';
+    html += '    <div class="media-'+place+'">';
+    html += '        <img src="storage/unit_icons/unit_icon_100000316.png" class="img-circle img-sm" alt="Profile Picture">';
+    html += '    </div>';
+    html += '    <div class="media-body pad-hor '+speechclass+'">';
+    html += '        <div class="speech">';
+    html += '            <a href="#" class="media-heading">'+name+'</a>';
+    html += '            <p>'+message+'</p>';
+    html += '            <p class="speech-time">';
+    html += '                <i class="demo-pli-clock icon-fw"></i> '+time;
+    html += '           </p>';
+    html += '        </div>';
+    html += '    </div>';
+    html += '</li>';
+    return html;
+}
 
-window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: 'ff317e0f3fd829e48367',
-    cluster: 'eu',
-    encrypted: true
-});
-
-Vue.component('chat-messages', require('./components/ChatMessages.vue'));
-Vue.component('chat-form', require('./components/ChatForm.vue'));
 
 $(document).ready(function () {
-    const app = new Vue({
-        el: '#app',
 
-        data: {
-            messages: []
-        },
+    // window.Echo = new Echo({
+    //     broadcaster: 'pusher',
+    //     key: 'ff317e0f3fd829e48367',
+    //     cluster: 'eu',
+    //     encrypted: true
+    // });
 
-        created() {
-            this.fetchMessages();
-            Echo.private('chat')
-                .listen('MessageSent', (e) => {
-                    this.messages.push({
-                        message: e.message.message,
-                        user: e.user
-                    });
-                });
-        },
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = false;
 
-        methods: {
-            fetchMessages() {
-                axios.get('/messages').then(response => {
-                    this.messages = response.data;
-                });
-            },
+    var pusher = new Pusher('ff317e0f3fd829e48367', {
+        cluster: 'eu',
+        encrypted: true
+    });
 
-            addMessage(message) {
-                this.messages.push(message);
+    var channel = pusher.subscribe('chat');
+    channel.bind('NewMessage', function(data) {
+        console.log(data);
+        if(data.userid == myid)
+            $('#ulchat1').append(chatMessage(data.username, data.message, data.time, 'left'));
+        else
+            $('#ulchat1').append(chatMessage(data.username, data.message, data.time, 'right'));
+    });
 
-                axios.post('/messages', message).then(response => {
-                    console.log(response.data);
-                });
-            }
+
+    $('#sendMessage').on('click', function (e) {
+        e.preventDefault();
+        var input = $('#chat-input').val();
+        if(input != '') {
+            console.log(prefix_ajax+"ajax/message");
+            $.post(prefix_ajax+"ajax/message", { message : input },
+                function(returnedData){
+
+            })
         }
     });
+
 });
