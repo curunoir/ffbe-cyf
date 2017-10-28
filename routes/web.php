@@ -13,12 +13,15 @@
 
 
 Auth::routes();
+
+
+
 Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => ['auth']], function () {
 
     Route::get('/', function () {
         return redirect(action('HomeController@index'));
     });
-
+    Route::post('pusher/auth', 'Broadcast\ChatBroadcastController@authenticate');
     Route::get('home', 'HomeController@index')->name('home');
 
     Route::resource('friends', 'FriendsController');
@@ -36,8 +39,9 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => [
 
     Route::post('ajax/unit/update', 'UnitsController@updateajax');
 
+    Route::post('ajax/friends/request', 'FriendsController@request');
+
     Route::get('/chat', 'ChatsController@index');
-    Route::get('/chatnovue', 'ChatsController@indexnovue');
     Route::get('ajax/messages', 'ChatsController@fetchMessages');
     Route::get('ajax/lastmessage', 'ChatsController@lastMessage');
     Route::post('ajax/message', 'ChatsController@sendMessage');

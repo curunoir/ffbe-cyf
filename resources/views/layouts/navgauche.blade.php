@@ -38,6 +38,9 @@
                         <li class="">
                             <a href="{{ action('FriendsController@index') }}" class=""><i class="fa fa-users"></i> {{ _t('Chercher des amis') }}</a>
                         </li>
+                        <li class="">
+                            <a href="{{ action('ChatsController@index') }}" class=""><i class="fa fa-weixin"></i> {{ _t('Chat') }}</a>
+                        </li>
                         <li class="list-divider"></li>
                     </ul>
 

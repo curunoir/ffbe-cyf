@@ -30,15 +30,21 @@ class FriendsController extends Controller
         return view('friends.index', compact('user', 'accounts'));
     }
 
+    /**
+     * Search friends for requests for current user
+     * @return mixed
+     */
     public function searchfriends()
     {
+        $user = Auth::getUser();
         $model = Account::select('accounts.*',
             'units.name as units.name',
             'units.icon_file as icon',
             'users.name as users.name'
             )
             ->leftJoin('units', 'units.id', '=', 'accounts.current_unit_id' )
-            ->leftJoin('users', 'users.id', '=', 'accounts.user_id' );
+            ->leftJoin('users', 'users.id', '=', 'accounts.user_id' )
+            ->where('users.id', '!=', $user->id);
 
         $data = Datatables::of($model)
             ->editColumn('btn_request', function ($value) {
@@ -59,6 +65,16 @@ class FriendsController extends Controller
             }, true)
             ->rawColumns(['btn_request', 'icon']);
         return $data->make(true);
+    }
+
+    public function request(Request $request)
+    {
+        if(!$request->has('id'))
+            return response()->json(['status' => 'error']);
+        $requestedFriend = Friend::where('id', '=',_d($request->get('id')));
+        if(!$requestedFriend)
+            return response()->json(['status' => 'error']);
+
     }
 
     /**

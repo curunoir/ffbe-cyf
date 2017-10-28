@@ -23,3 +23,11 @@ $(document).ready(function () {
         }
     });
 });
+
+function request_friend(accid) {
+    $.post(prefix_ajax+"ajax/friends/request", { id : accid },
+        function(returnedData){
+            if(returnedData.status == 'OK')
+                successS("Demande envoyée");
+        })
+}

@@ -24,19 +24,10 @@ class ChatsController extends Controller
      */
     public function index()
     {
-        getVueChat();
-        return view('chat');
-    }
-
-    /**
-     * Show chats
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function indexnovue()
-    {
         getChat();
-        return view('chatnovue');
+        $messages = Message::with('user')->get();
+
+        return view('chat.index', compact('messages'));
     }
 
     /**
@@ -46,7 +37,8 @@ class ChatsController extends Controller
      */
     public function fetchMessages()
     {
-        return Message::with('user')->get();
+        $messages = Message::with('user')->get();
+         return view('chat.index');
     }
 
     /**
@@ -74,13 +66,13 @@ class ChatsController extends Controller
         ]);
 
         //broadcast(new MessageSent($user, $message))->toOthers();
-        $res = Pusher::trigger('chat', 'NewMessage', [
+        $res = Pusher::trigger('private-chat', 'NewMessage', [
             'message' => $message->message,
-            'time' => Carbon::now(),
+            'time' => Carbon::now()->toDateTimeString(),
             'username' => $user->name,
             'userid' => _c($user->id)
         ]);
 
-        return ['status' => 'Message Sent!'];
+        return ['status' => 'OK'];
     }
 }

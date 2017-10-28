@@ -18,14 +18,14 @@
                     <div class="panel-heading">
                         <div class="panel-control">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default" data-toggle="dropdown" aria-expanded="false"><i class="demo-pli-gear icon-lg"></i></button>
+                                <button type="button" class="btn btn-default" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-gear fa-2x"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="#">Available</a></li>
-                                    <li><a href="#">Busy</a></li>
-                                    <li><a href="#">Away</a></li>
+                                    <li><a href="#">{{ _t('Disponible') }}</a></li>
+                                    <li><a href="#">{{ _t('Occupé') }}</a></li>
+                                    <li><a href="#">{{ _t('Absent') }}</a></li>
                                     <li class="divider"></li>
-                                    <li><a id="demo-connect-chat" href="#" class="disabled-link" data-target="#demo-chat-body">Connect</a></li>
-                                    <li><a id="demo-disconnect-chat" href="#" data-target="#demo-chat-body">Disconect</a></li>
+                                    <li><a id="demo-connect-chat" href="#" class="disabled-link" data-target="#demo-chat-body">{{ _t('Connecté') }}</a></li>
+                                    <li><a id="demo-disconnect-chat" href="#" data-target="#demo-chat-body">{{ _t('Déconnexion') }}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -34,23 +34,10 @@
 
                     <!--Widget body-->
                     <div>
-                        <div class="nano" style="height:300px">
+                        <div class="nano" style="height:310px">
                             <div class="nano-content pad-all">
-                                <ul class="list-unstyled media-block" id="ulchat1">
-                                    <li class="mar-btm">
-                                        <div class="media-left">
-                                            <img src="img/profile-photos/1.png" class="img-circle img-sm" alt="Profile Picture">
-                                        </div>
-                                        <div class="media-body pad-hor">
-                                            <div class="speech">
-                                                <a href="#" class="media-heading">Bot chat</a>
-                                                <p>Début de la conversation</p>
-                                                <p class="speech-time">
-                                                    <i class="demo-pli-clock icon-fw"></i>09:12AM
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </li>
+                                <ul class="list-unstyled media-block" id="ulchat1" style="height: 300px; overflow: auto">
+                                    @include('chat._conversation')
                                 </ul>
                             </div>
                         </div>

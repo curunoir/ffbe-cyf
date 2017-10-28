@@ -114,7 +114,13 @@ function chatMessage(name, message, time, place) {
     return html;
 }
 
+function scrollDownChat() {
+    $('#ulchat1').scrollTop($('#ulchat1')[0].scrollHeight);
+}
+
 $(document).ready(function () {
+
+    scrollDownChat();
 
     // window.Echo = new Echo({
     //     broadcaster: 'pusher',
@@ -124,25 +130,46 @@ $(document).ready(function () {
     // });
 
     // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = false;
+    Pusher.logToConsole = true;
 
     var pusher = new Pusher('ff317e0f3fd829e48367', {
         cluster: 'eu',
-        encrypted: true
+        encrypted: true,
+        authEndpoint: 'pusher/auth',
+        auth: {
+            headers: {
+                'X-CSRF-Token': token.content
+            }
+        }
     });
 
-    var channel = pusher.subscribe('chat');
-    channel.bind('NewMessage', function (data) {
+    var channel = pusher.subscribe('private-chat');
+    channel.bind('pusher:subscription_error', function (data) {
+        // console.log(data);
+    });
+    channel.bind('pusher:subscription_succeeded', function (data) {
         console.log(data);
+    });
+
+    channel.bind('NewMessage', function (data) {
         if (data.userid == myid) $('#ulchat1').append(chatMessage(data.username, data.message, data.time, 'left'));else $('#ulchat1').append(chatMessage(data.username, data.message, data.time, 'right'));
+        scrollDownChat();
+    });
+
+    $('.chat-input').on('keyup', function (e) {
+        if (e.keyCode == 13) {
+            $('#sendMessage').click();
+        }
     });
 
     $('#sendMessage').on('click', function (e) {
         e.preventDefault();
         var input = $('#chat-input').val();
         if (input != '') {
-            console.log(prefix_ajax + "ajax/message");
-            $.post(prefix_ajax + "ajax/message", { message: input }, function (returnedData) {});
+
+            $.post(prefix_ajax + "ajax/message", { message: input }, function (returnedData) {
+                if (returnedData.status == 'OK') $('#chat-input').val('');
+            });
         }
     });
 });

@@ -22,12 +22,12 @@
                 <table id="grid" class="table table-striped table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th>{{ _t('Serveur') }}</th>
                         <th>{{ _t('Icon') }}</th>
                         <th>{{ _t('Unit') }}</th>
                         <th>{{ _t('Rang') }}</th>
-                        <th>{{ _t('Joueur') }}</th>
                         <th>{{ _t('Description') }}</th>
+                        <th>{{ _t('Nom du joueur') }}</th>
+                        <th>{{ _t('Serveur') }}</th>
                         <th>{{ _t('Demande ami') }}</th>
                     </tr>
                     </thead>
@@ -44,7 +44,6 @@
 
     <script type="text/javascript">
         var ColumnSetting = [
-            {name: 'server', data: 'server', trad: "{{ _t('Serveur') }}" , searchable: true},
             {
                 "className":        'unit-icon-table',
                 "name":             'icon',
@@ -57,7 +56,9 @@
             {name: 'rank', data: 'rank', trad: "{{ _t('Rang') }}" , searchable: true},
             {name: 'users.name', data: 'users.name', trad: "{{ _t('Joueur') }}" , searchable: true},
             {name: 'current_unit_description', data: 'current_unit_description', trad: "{{ _t('Description') }}" , searchable: true},
-            {name: 'btn_request', data: 'btn_request', trad: "{{ _t('Demande ami') }}" , searchable: false, orderable: false},
+            {name: 'server', data: 'server', trad: "{{ _t('Serveur') }}" , searchable: true},
+
+            {name: 'btn_request', data: 'btn_request', trad: "{{ _t('Demande ami') }}" , searchable: false, orderable: false}
         ];
 
         $(document).ready(function() {
