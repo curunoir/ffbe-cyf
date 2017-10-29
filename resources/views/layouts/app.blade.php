@@ -40,7 +40,8 @@
             @include('layouts.navgauche')
         @endif
     </div>
-
+    @include('layouts._footer')
+    @php Assets::add('app.js') @endphp
     <?=Assets::js(); ?>
     <script type="text/javascript">
         var prefix_ajax = '{{asset('/')}}';

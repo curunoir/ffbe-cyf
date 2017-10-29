@@ -1,115 +1,95 @@
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
-/******/ })
-/************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(1);
-module.exports = __webpack_require__(2);
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-
-
-if ($('.dataTable').length) {
-    datatableM();
+function request_modal(accid, ami) {
+    var modal = 'lg_modal';
+    var html = '<article>';
+    html += '   <div class="modal-header bg-gray-light">';
+    html += '        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">';
+    html += '            <i class="fa fa-times"></i>';
+    html += '        </button>';
+    html += '        <h4 class="modal-title " id="myModalLabel">Demande d\'ami à '+ami+'</h4>';
+    html += '    </div>';
+    html += '    <div class="modal-body modalwidgets bg-gray-light" id="myModalContent">';
+    html += '        <div>';
+    html += '            <mark class="text-info">Vous pourrez voir son code ami et communiquer avec lui si il accepte.</mark>';
+    html += '        </div><hr />';
+    html += '        <div><label for="message" class="col-sm-3 control-label">Message pour le joueur</label>';
+    html += '        <textarea required="" class="form-control" name="message" cols="10" rows="4" id="request_message"></textarea></div>';
+    html += '        <div class="text-center pad-top">';
+    html += '            <button class="btn btn-primary btn-labeled text-bold confirm_send_request" data-id="'+accid+'"> Envoyer la requête  <i class="fa fa-question"> </i></button>';
+    html += '        </div>';
+    html += '    </div>';
+    html += '    <div class="modal-footer clearfix">';
+    html += '    <span class="btn btn-default pull-left" data-dismiss="modal">';
+    html += '    Fermer';
+    html += '    </span>';
+    html += '    </div>';
+    html += '</article>';
+    $('.content_lg_modal').html(html);
 }
-if ($('.select2').length) {
-    $('.select2').select2();
-}
-if ($('.datepicker').length) {
-    $('.datepicker').datepicker({
-        dateFormat: 'yy-mm-dd'
+
+function request_friend(accid, name) {
+    var modal = 'lg_modal';
+    request_modal(accid, name);
+    $('#' + modal).modal();
+    $('#' + modal).on('shown.bs.modal', function (e) {
+        attach_confirm_request();
     });
 }
+
+function attach_confirm_request(){
+    $('.confirm_send_request').off();
+    $('.confirm_send_request').on('click', function() {
+        $('#lg_modal').modal('hide');
+        var message = $('#request_message').val();
+        var accid = $(this).attr('data-id');
+        $.post(prefix_ajax+"ajax/requestfriend", { id : accid, message : message },
+            function(returnedData){
+                if(returnedData.status == 'OK')
+                    successS("Demande envoyée");
+                else
+                    errorS(returnedData.status);
+            })
+    });
+}
+
 
 $(document).ready(function () {
     $(document).click(function (event) {
         var clickover = $(event.target);
         var _opened = $(".collapse").hasClass("collapse in");
         if (_opened === true && !clickover.parents('.collapse').hasClass('collapse-toggle')) {
-            $(".collapse-toggle").collapse('hide');
+            $(".collapse-toggle").collapse('hide')
         }
     });
+
+    if ($('.dataTable').length) {
+        datatableM()
+
+    }
+    if ($('.select2').length) {
+        $('.select2').select2();
+    }
+    if ($('.datepicker').length) {
+        $('.datepicker').datepicker({
+            dateFormat: 'yy-mm-dd'
+        })
+    }
+
 });
 
-function request_friend(accid) {
-    $.post(prefix_ajax + "ajax/friends/request", { id: accid }, function (returnedData) {
-        if (returnedData.status == 'OK') successS("Demande envoyée");
-    });
-}
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ })
-/******/ ]);
+// $.ajax({
+//     url: prefix_ajax + "ajax/friends/request",
+//     type: 'POST',
+//     data: {
+//         'id' : accid
+//     },
+//     dataType: 'html',
+//     success: function (data) {
+//         if (data) {
+//             $('#' + modal).modal();
+//
+//         }
+//     },
+//     error: function (status) {
+//         console.log(status);
+//         errorS("Erreur ajax/supplyproposalsaccept/modal : " + status);
+//     }

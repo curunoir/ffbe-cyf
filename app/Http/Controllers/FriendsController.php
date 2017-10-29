@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 use App\Account;
+use App\Request as FRequest;
+use App\User;
+use App\Friend;
 
 class FriendsController extends Controller
 {
@@ -40,7 +43,7 @@ class FriendsController extends Controller
         $model = Account::select('accounts.*',
             'units.name as units.name',
             'units.icon_file as icon',
-            'users.name as users.name'
+            'users.name as user_name'
             )
             ->leftJoin('units', 'units.id', '=', 'accounts.current_unit_id' )
             ->leftJoin('users', 'users.id', '=', 'accounts.user_id' )
@@ -48,7 +51,7 @@ class FriendsController extends Controller
 
         $data = Datatables::of($model)
             ->editColumn('btn_request', function ($value) {
-                $text =  '<button data-id="'._c($value->id) .'" class="request_friend btn btn-mint btn-icon"><i class="fa fa-pencil icon-lg"></i></button>';
+                $text =  '<button data-name="'.$value->user_name .'" data-id="'._c($value->id) .'" class="request_friend btn btn-mint btn-icon"><i class="fa fa-pencil icon-lg"></i></button>';
                 return $text;
             })
             ->editColumn('icon', function ($value) {
@@ -58,11 +61,11 @@ class FriendsController extends Controller
             ->setRowId(function ($value) {
                 return $value->reference_id;
             })
-            ->filter(function ($query) {
-                if (request()->has('fnofriends')) {
-                    $query->doesntHave('friend_accounts');
-                }
-            }, true)
+//            ->filter(function ($query) {
+//                if (request()->has('fnofriends')) {
+//                    $query->doesntHave('friend_accounts');
+//                }
+//            }, true)
             ->rawColumns(['btn_request', 'icon']);
         return $data->make(true);
     }
@@ -71,10 +74,19 @@ class FriendsController extends Controller
     {
         if(!$request->has('id'))
             return response()->json(['status' => 'error']);
-        $requestedFriend = Friend::where('id', '=',_d($request->get('id')));
-        if(!$requestedFriend)
+        $requestedAccount = Account::find(_d($request->get('id')));
+        if(!$requestedAccount)
             return response()->json(['status' => 'error']);
 
+        $user = Auth::getUser();
+        $frequest = new FRequest();
+        $frequest->message = $request->get('message');
+        $frequest->requester_id = $user->id;
+        $frequest->requester_account_id = $requestedAccount->id;
+        $frequest->requested_id = $requestedAccount->user->id;
+        if($frequest->save())
+            return response()->json(['status' => 'OK']);
+        return response()->json(['status' => 'error']);
     }
 
     /**

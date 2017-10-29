@@ -36,6 +36,30 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the friends
+     */
+    public function friends()
+    {
+        return $this->hasMany('App\Friend');
+    }
+
+    /**
+     * Get the friends
+     */
+    public function sent_requests()
+    {
+        return $this->hasMany('App\Request', 'requester_id');
+    }
+
+    /**
+     * Get the friends
+     */
+    public function received_requests()
+    {
+        return $this->hasMany('App\Request', 'requested_id');
+    }
+
+    /**
      * A user can have many messages
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
