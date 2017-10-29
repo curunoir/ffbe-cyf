@@ -14,6 +14,7 @@ class Account extends Model
      */
     protected $fillable = [
         'ffbe_id',
+        'name',
         'server',
         'ffbe_id_visibility',
         'rank',

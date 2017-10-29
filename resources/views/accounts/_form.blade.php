@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-sm-8">
         {!! BootForm::text('ffbe_id', _t("Code ami"), ['required' => true] ) !!}
+        {!! BootForm::text('name', _t("Nom du compte"), ['required' => true] ) !!}
         {!! BootForm::select('server',  _t('Serveur'), ['GLOBAL' => 'GLOBAL', 'JAPAN' => 'JAPAN'])  !!}
         {!! BootForm::text('rank', _t('Rank'), ['required' => true]) !!}
 

@@ -1,47 +1,11 @@
-function request_modal(accid, ami) {
-    var modal = 'lg_modal';
-    var html = '<article>';
-    html += '   <div class="modal-header bg-gray-light">';
-    html += '        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">';
-    html += '            <i class="fa fa-times"></i>';
-    html += '        </button>';
-    html += '        <h4 class="modal-title " id="myModalLabel">Demande d\'ami à '+ami+'</h4>';
-    html += '    </div>';
-    html += '    <div class="modal-body modalwidgets bg-gray-light" id="myModalContent">';
-    html += '        <div>';
-    html += '            <mark class="text-info">Vous pourrez voir son code ami et communiquer avec lui si il accepte.</mark>';
-    html += '        </div><hr />';
-    html += '        <div><label for="message" class="col-sm-3 control-label">Message pour le joueur</label>';
-    html += '        <textarea required="" class="form-control" name="message" cols="10" rows="4" id="request_message"></textarea></div>';
-    html += '        <div class="text-center pad-top">';
-    html += '            <button class="btn btn-primary btn-labeled text-bold confirm_send_request" data-id="'+accid+'"> Envoyer la requête  <i class="fa fa-question"> </i></button>';
-    html += '        </div>';
-    html += '    </div>';
-    html += '    <div class="modal-footer clearfix">';
-    html += '    <span class="btn btn-default pull-left" data-dismiss="modal">';
-    html += '    Fermer';
-    html += '    </span>';
-    html += '    </div>';
-    html += '</article>';
-    $('.content_lg_modal').html(html);
-}
-
-function request_friend(accid, name) {
-    var modal = 'lg_modal';
-    request_modal(accid, name);
-    $('#' + modal).modal();
-    $('#' + modal).on('shown.bs.modal', function (e) {
-        attach_confirm_request();
-    });
-}
-
 function attach_confirm_request(){
     $('.confirm_send_request').off();
     $('.confirm_send_request').on('click', function() {
         $('#lg_modal').modal('hide');
         var message = $('#request_message').val();
         var accid = $(this).attr('data-id');
-        $.post(prefix_ajax+"ajax/requestfriend", { id : accid, message : message },
+        var requester_account_id = $('select#requester_account_id').val();
+        $.post(prefix_ajax+"ajax/requestfriend", { id : accid, message : message, requester_account_id : requester_account_id },
             function(returnedData){
                 if(returnedData.status == 'OK')
                     successS("Demande envoyée");
@@ -49,6 +13,32 @@ function attach_confirm_request(){
                     errorS(returnedData.status);
             })
     });
+}
+
+function request_friend(accid, name) {
+    $.ajax({
+        url: prefix_ajax + '/ajax/requestModal',
+        type: 'POST',
+        data: {
+            'id' : accid,
+            'name' : name
+        },
+        dataType: 'html',
+        success: function (data) {
+            if (data) {
+                $('#lg_modal').modal();
+                $('.content_lg_modal').html(data);
+                $('#lg_modal').on('shown.bs.modal', function (e) {
+                    attach_confirm_request();
+                });
+            }
+        },
+        error: function (status) {
+            console.log(status);
+            errorS("Erreur ajax/referenceproposalsdelete/modal : " + status);
+        }
+    });
+
 }
 
 

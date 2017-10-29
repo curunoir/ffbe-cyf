@@ -20,6 +20,7 @@ class CreateAccountsTable extends Migration
 
             $table->unsignedInteger('user_id');
             $table->string('ffbe_id');
+            $table->string('name');
             $table->string('server');
             $table->boolean('ffbe_id_visibility')->default(false);
 

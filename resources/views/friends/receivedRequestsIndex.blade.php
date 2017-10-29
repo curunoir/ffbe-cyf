@@ -3,11 +3,11 @@
 @section('content')
     <div id="page-content">
         <div id="page-title">
-            <h1 class="page-header text-overflow">{{ _t('Chercher des amis dans Final Fantasy Brave Exvius') }}</h1>
+            <h1 class="page-header text-overflow">{{ _t('Vos requêtes d\amis en attente') }}</h1>
         </div>
         <ol class="breadcrumb">
             <li><a href="#">{{ _t('Accueil') }}</a></li>
-            <li class="active"><a href="#">{{ _t('Chercher des amis') }}</a></li>
+            <li class="active"><a href="#">{{ _t('Requêtes') }}</a></li>
         </ol>
         <div class="row">
             <div class="col-md-12">
@@ -29,8 +29,8 @@
                                 <th>{{ _t('Icon') }}</th>
                                 <th>{{ _t('Unit') }}</th>
                                 <th>{{ _t('Rang') }}</th>
+                                <th>{{ _t('Message') }}</th>
                                 <th>{{ _t('Description') }}</th>
-                                <th>{{ _t('Nom du compte') }}</th>
                                 <th>{{ _t('Nom du joueur') }}</th>
                                 <th>{{ _t('Serveur') }}</th>
                                 <th></th>
@@ -61,8 +61,8 @@
             },
             {name: 'units.name', data: 'units.name', trad: "{{ _t('Unit') }}" , searchable: true},
             {name: 'rank', data: 'rank', 'className': 'text-center', trad: "{{ _t('Rang') }}" , searchable: true},
-            {name: 'current_unit_description', data: 'current_unit_description', trad: "{{ _t('Description') }}" , searchable: true},
-            {name: 'account_name', data: 'account_name', trad: "{{ _t('Nom du compte') }}" , searchable: true},
+            {name: 'message', data: 'message', 'className': 'text-center', trad: "{{ _t('Message') }}" , searchable: true},
+            {name: 'description', data: 'description', trad: "{{ _t('Description') }}" , searchable: true},
             {name: 'users.name', data: 'user_name', trad: "{{ _t('Joueur') }}" , searchable: true},
             {name: 'server', data: 'server', trad: "{{ _t('Serveur') }}" , searchable: true},
             {name: 'btn_request', data: 'btn_request', 'className': 'text-center', trad: "{{ _t('Demande ami') }}" , searchable: false, orderable: false}
@@ -74,7 +74,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    "url"   : '/ajax/searchfriends',
+                    "url"   : '/ajax/receivedrequests',
                     "type"  : 'POST',
                     "data"  : function (request) {
                         request.fnofriends = true;

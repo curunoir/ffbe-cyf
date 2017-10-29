@@ -26,26 +26,29 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => [
 
 
     Route::resource('accounts', 'AccountsController');
-    Route::resource('units', 'UnitsController');
+    Route::resource('units',    'UnitsController');
 
-    Route::post('ajax/searchfriends', 'FriendsController@searchfriends');
+    Route::get('receivedrequests',          'FriendsController@receivedRequestsIndex');
+    Route::post('ajax/searchfriends',       'FriendsController@searchfriends');
+    Route::post('ajax/receivedrequests',    'FriendsController@receivedRequests');
+    Route::post('ajax/requestModal',        'FriendsController@requestModal');
 
-    Route::get('ajax/testpusher', 'HomeController@ajaxtestpusher');
-    Route::get('testpusher', 'HomeController@testpusher');
+    Route::get('ajax/testpusher',   'HomeController@ajaxtestpusher');
+    Route::get('testpusher',        'HomeController@testpusher');
 
-    Route::get('units/create/6', 'UnitsController@create6');
-    Route::get('units/create/5', 'UnitsController@create5');
+    Route::get('units/create/6',    'UnitsController@create6');
+    Route::get('units/create/5',    'UnitsController@create5');
     Route::get('unitsmultipleedit', 'UnitsController@multiple');
 
     Route::post('ajax/unit/update', 'UnitsController@updateajax');
 
     Route::post('ajax/requestfriend', 'FriendsController@request');
 
-    Route::get('/chat', 'ChatsController@index');
-    Route::get('ajax/messages', 'ChatsController@fetchMessages');
-    Route::get('ajax/lastmessage', 'ChatsController@lastMessage');
-    Route::post('ajax/message', 'ChatsController@sendMessage');
-    Route::resource('friends', 'FriendsController');
+    Route::get('/chat',             'ChatsController@index');
+    Route::get('ajax/messages',     'ChatsController@fetchMessages');
+    Route::get('ajax/lastmessage',  'ChatsController@lastMessage');
+    Route::post('ajax/message',     'ChatsController@sendMessage');
+    Route::resource('friends',      'FriendsController');
     Auth::routes();
 });
 
