@@ -3,7 +3,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
             <i class="fa fa-times"></i>
         </button>
-        <h4 class="modal-title " id="myModalLabel">Demande d\'ami à '+ami+'</h4>
+        <h4 class="modal-title " id="myModalLabel">Demande d'ami à '+ami+'</h4>
     </div>
     <div class="modal-body modalwidgets bg-gray-light" id="myModalContent">
         <div>

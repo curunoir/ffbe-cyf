@@ -3,7 +3,7 @@
 @section('content')
     <div id="page-content">
         <div id="page-title">
-            <h1 class="page-header text-overflow">{{ _t('Vos requêtes d\amis en attente') }}</h1>
+            <h1 class="page-header text-overflow">{{ _t("Vos requêtes d'amis en attente") }}</h1>
         </div>
         <ol class="breadcrumb">
             <li><a href="#">{{ _t('Accueil') }}</a></li>
@@ -13,15 +13,6 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-body">
-                        <h5>{{ _t('Serveur') }}</h5>
-                        <div class="filters-checkboxes filters-verified">
-                            <select id="validation-filter" name="filter-server">
-                                <option value="Tous">Tous</option>
-                                <option value="Oui">{{ _t('Global') }}</option>
-                                <option value="Non">{{ _t('Japon') }}</option>
-                            </select>
-                            <label for="filter-server" class="control-label">{{ _t('Serveur') }}</label>
-                        </div>
 
                         <table id="grid" class="table table-striped table-bordered table-hover">
                             <thead>
@@ -60,11 +51,11 @@
                 "trad":             ''
             },
             {name: 'units.name', data: 'units.name', trad: "{{ _t('Unit') }}" , searchable: true},
-            {name: 'rank', data: 'rank', 'className': 'text-center', trad: "{{ _t('Rang') }}" , searchable: true},
+            {name: 'requester_account.rank', data: 'requester_account.rank', 'className': 'text-center', trad: "{{ _t('Rang') }}" , searchable: true},
             {name: 'message', data: 'message', 'className': 'text-center', trad: "{{ _t('Message') }}" , searchable: true},
-            {name: 'description', data: 'description', trad: "{{ _t('Description') }}" , searchable: true},
+            {name: 'requester_account.current_unit_description', data: 'requester_account.current_unit_description', trad: "{{ _t('Description') }}" , searchable: true},
             {name: 'users.name', data: 'user_name', trad: "{{ _t('Joueur') }}" , searchable: true},
-            {name: 'server', data: 'server', trad: "{{ _t('Serveur') }}" , searchable: true},
+            {name: 'requester_account.server', data: 'requester_account.server', trad: "{{ _t('Serveur') }}" , searchable: true},
             {name: 'btn_request', data: 'btn_request', 'className': 'text-center', trad: "{{ _t('Demande ami') }}" , searchable: false, orderable: false}
         ];
 

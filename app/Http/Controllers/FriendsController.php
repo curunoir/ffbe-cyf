@@ -88,11 +88,14 @@ class FriendsController extends Controller
         $model = FRequest::select('requests.*',
             'units.name as units.name',
             'units.icon_file as icon',
-            'users.name as user_name'
+            'requester_account.current_unit_description as requester_account.current_unit_description',
+            'users.name as user_name',
+            'requester_account.rank as requester_account.rank',
+            'requester_account.server as requester_account.server'
         )
         ->leftJoin('accounts as requester_account', 'requests.requester_account_id', '=', 'requester_account.id')
         ->leftJoin('accounts as requested_account', 'requests.requested_account_id', '=', 'requested_account.id')
-        ->leftJoin('units', 'units.id', '=', 'accounts.current_unit_id' )
+        ->leftJoin('units as units', 'units.id', '=', 'requester_account.current_unit_id' )
         ->leftJoin('users', 'users.id', '=', 'requests.requester_id' )
         ->where('requests.requested_id', '=', $user->id);
 
@@ -102,6 +105,7 @@ class FriendsController extends Controller
                 return $text;
             })
             ->editColumn('icon', function ($value) {
+
                 $text =  '<img src="'. asset( 'storage/'.$value->icon).'">';
                 return $text;
             })
@@ -109,10 +113,7 @@ class FriendsController extends Controller
                 $text =  $value->rank;
                 return $text;
             })
-            ->editColumn('description', function ($value) {
-                $text =  $value->current_unit->description;
-                return $text;
-            })
+
             ->editColumn('server', function ($value) {
                 $text =  $value->requester_account->server;
                 return $text;
