@@ -47,8 +47,14 @@ class FriendsController extends Controller
             'accounts.name as account_name'
             )
             ->leftJoin('units', 'units.id', '=', 'accounts.current_unit_id' )
-            ->leftJoin('users', 'users.id', '=', 'accounts.user_id' )
-            ->where('users.id', '!=', $user->id);
+            ->leftJoin('users as user_requested', 'user_requested.id', '=', 'accounts.user_id' )
+            ->leftJoin('requests', 'requests.requested_id', '=', 'user_requested.id' )
+            ->leftJoin('users as user_requester', 'user_requester.id', '=', 'requests.requester_id' )
+            ->where('user_requested.id', '!=', $user->id)
+            ->where([
+                ['requests.requested_id', '!=', 'user_requested.id'],
+                ['requests.requester_id', '!=', 'user_requester.id']
+            ]);
 
         $data = Datatables::of($model)
             ->editColumn('btn_request', function ($value) {
