@@ -9,6 +9,7 @@ use App\Account;
 use App\Request as FRequest;
 use App\User;
 use App\Friend;
+use Carbon\Carbon;
 
 class FriendsController extends Controller
 {
@@ -91,7 +92,7 @@ class FriendsController extends Controller
     public function receivedRequests()
     {
         $user = Auth::getUser();
-        $model = FRequest::select('requests.*',
+        $model = FRequest::select('requests.*', 'requests.id as request_id',
             'units.name as units.name',
             'units.icon_file as icon',
             'requester_account.current_unit_description as requester_account.current_unit_description',
@@ -107,7 +108,7 @@ class FriendsController extends Controller
 
         $data = Datatables::of($model)
             ->editColumn('btn_request', function ($value) {
-                $text =  '<button data-name="'.$value->user_name .'" data-id="'._c($value->id) .'" class="request_friend btn btn-mint btn-icon"><i class="fa fa-pencil icon-lg"></i></button>';
+                $text =  '<button data-id="'._c($value->request_id) .'" class="accept_friend btn btn-primary btn-icon text-bold"> '._t('Accepter').' <i class="fa fa-handshake-o icon-lg"></i></button>';
                 return $text;
             })
             ->editColumn('icon', function ($value) {
@@ -153,6 +154,38 @@ class FriendsController extends Controller
         $frequest->requested_id         = $requestedAccount->user->id;
         if($frequest->save())
             return response()->json(['status' => 'OK']);
+        return response()->json(['status' => 'error']);
+    }
+
+    public function acceptfriend(Request $request)
+    {
+        if(!$request->has('id'))
+            return response()->json(['status' => 'error']);
+        $acceptedRequest = FRequest::find(_d($request->get('id')));
+        if(!$acceptedRequest)
+            return response()->json(['status' => 'error']);
+        $user = Auth::getUser();
+        if($user->id != $acceptedRequest->requested_id)
+            return response()->json(['status' => 'error wrong request ids']);
+
+        $friend = new Friend();
+        $friend->user_id             = $user->id;
+        $friend->friend_id           = $acceptedRequest->requester_id;
+        $friend->accept_date         = Carbon::now();
+        $friend->user_account_id     = $acceptedRequest->requested_account_id;
+        $friend->friend_account_id   = $acceptedRequest->requester_account_id;
+        if(!$friend->save())
+            return response()->json(['status' => 'error']);
+        $friend = new Friend();
+        $friend->user_id            = $acceptedRequest->requester_id;
+        $friend->friend_id          = $user->id;
+        $friend->accept_date        = Carbon::now();
+        $friend->friend_account_id  = $acceptedRequest->requested_account_id;
+        $friend->user_account_id    = $acceptedRequest->requester_account_id;
+        if($friend->save()) {
+            if($acceptedRequest->delete())
+                return response()->json(['status' => 'OK']);
+        }
         return response()->json(['status' => 'error']);
     }
 

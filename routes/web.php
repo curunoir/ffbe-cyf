@@ -32,6 +32,8 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => [
     Route::post('ajax/searchfriends',       'FriendsController@searchfriends');
     Route::post('ajax/receivedrequests',    'FriendsController@receivedRequests');
     Route::post('ajax/requestModal',        'FriendsController@requestModal');
+    Route::post('ajax/requestfriend',       'FriendsController@request');
+    Route::post('ajax/acceptfriend',        'FriendsController@acceptfriend');
 
     Route::get('ajax/testpusher',   'HomeController@ajaxtestpusher');
     Route::get('testpusher',        'HomeController@testpusher');
@@ -42,7 +44,6 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => [
 
     Route::post('ajax/unit/update', 'UnitsController@updateajax');
 
-    Route::post('ajax/requestfriend', 'FriendsController@request');
 
     Route::get('/chat',             'ChatsController@index');
     Route::get('ajax/messages',     'ChatsController@fetchMessages');

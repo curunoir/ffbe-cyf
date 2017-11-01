@@ -38,7 +38,6 @@ function request_friend(accid, name) {
             errorS("Erreur ajax/referenceproposalsdelete/modal : " + status);
         }
     });
-
 }
 
 

@@ -79,13 +79,21 @@
                 }
             });
             table.on( 'draw', function () {
-                attach_confirm_request();
-                $('.request_friend').on('click', function() {
+                $('.accept_friend').off();
+                $('.accept_friend').on('click', function() {
                     var accid = $(this).attr('data-id');
-                    var name = $(this).attr('data-name');
-                    request_friend(accid, name);
+                    $.post(prefix_ajax+"ajax/acceptfriend", { id : accid },
+                        function(returnedData){
+                            if(returnedData.status == 'OK') {
+                                table.draw();
+                                successS("Ami accepté");
+                            }
+                            else
+                                errorS(returnedData.status);
+                        })
+
                 });
-            } );
+            });
 
         });
     </script>
