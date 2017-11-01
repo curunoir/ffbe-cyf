@@ -14,7 +14,7 @@
                 <div class="panel panel-bordered-primary">
                     <div class="panel-body">
 
-                        <table id="grid" class="table table-striped table-bordered table-hover">
+                        <table id="grid" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                             <thead>
                             <tr>
                                 <th>{{ _t('Icon') }}</th>

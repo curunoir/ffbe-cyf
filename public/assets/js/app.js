@@ -52,10 +52,6 @@ $(document).ready(function () {
         }
     });
 
-    if ($('.dataTable').length) {
-        datatableM()
-
-    }
     if ($('.select2').length) {
         $('.select2').select2();
     }

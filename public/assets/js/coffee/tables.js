@@ -1,15 +1,3 @@
-/**
- * Created by damien on 20/05/17.
- */
-function removeValue(arrayName, key) {
-    var x;
-    var tmpArray = new Array();
-    for (x in arrayName) {
-        if (arrayName[x] != key)
-            tmpArray[x] = arrayName[x];
-    }
-    return tmpArray;
-}
 
 function tables(options) {
     options.ajax = options.ajax === undefined ? options.route : options.ajax;
@@ -20,12 +8,6 @@ function tables(options) {
 
     table_id = "#" + options.ID;
     table_class = "." + options.ID;
-    if (localStorage) {
-        tmpconfigGrid = localStorage.getItem('ColumnSetting_' + options.ID);
-        if (tmpconfigGrid) {
-            //ColumnSetting = JSON.parse(tmpconfigGrid);
-        }
-    }
     var header = null;
     search = null;
     $.each(options.ColumnSetting, function (idt, column) {
@@ -74,6 +56,7 @@ function tables(options) {
         order: [[options.colDESC, options.typeOrderBY]],
         pageLength: 10,
         colReorder: false,
+        responsive: true,
         scrollY: scrollY,
         sScrollX: "100%",
         deferRender: true,
@@ -81,12 +64,7 @@ function tables(options) {
         scroller: {
             loadingIndicator: true
         },
-        colVis: {
-            buttonText: 'Choisir les colonnes à afficher',
-            showAll: 'Voir tous',
-            showNone: 'Aucune'
-        },
-        "dom": '<"top">rt<"bottom"i><"clear">',
+
         language: {
             "url": options.frJSON
         },
@@ -145,100 +123,6 @@ function tables(options) {
         val = $(this).val().length;
         if (val > 1 || val == 0)
             table.search($(this).val()).draw();
-    });
-
-    if ($('.filter_datatables_checkbox').length) {
-        $(document).on('click', '.filter_datatables_checkbox label', function () {
-            parent = $(this).parents('.filter_datatables_checkbox');
-            var arr = [];
-            block = $(this).find('input');
-
-            parent.find('input:checked').each(function (index, value) {
-                arr.push($(value).val());
-            });
-            if (!block.prop('checked')) {
-                arr.push(block.val());
-            } else {
-                arr = removeValue(arr, block.val());
-            }
-            col = parent.attr('data-col');
-            table.columns(col)
-                .search(arr, true, false)
-                .draw();
-        });
-    }
-
-    if ($('.filter_datatables_radio').length) {
-        $(document).on('click', '.filter_datatables_radio label', function () {
-            //$('.dataTables_processing').show();
-            parent = $(this).parents('.filter_datatables_radio');
-            if (parent.attr('data-toggle') == 'buttons') {
-                input_check = $(this).find('input');
-            } else {
-                input_check = $(this).prev();
-            }
-            var col = parent.attr('data-col');
-            val = input_check.val();
-            table.columns(col)
-                .search(val, true, false)
-                .draw();
-        });
-    }
-
-    if ($('.filter_datatables_checkbox_sidebar').length) {
-        $(document).on('click', '.filter_datatables_checkbox_sidebar label', function () {
-            var arr = [];
-            block = $(this).prev('input');
-            parent = $(this).parents('.filter_datatables_checkbox_sidebar');
-            parent.find('input:checked').each(function (index, value) {
-                arr.push($(value).val());
-            });
-            if (!block.prop('checked')) {
-                arr.push(block.val());
-            } else {
-                arr = removeValue(arr, block.val());
-            }
-            col = parent.attr('data-col');
-            table.columns(col)
-                .search(arr)
-                .draw();
-        });
-
-    }
-
-    // Add event listener for opening and closing details
-    $(table_id +' tbody').on('click', 'td.details-control', function () {
-
-        var tr = $(this).closest('tr');
-        var row = table.row( tr );
-        //console.log($(this.child.attr('data-reference')));
-        if ( row.child.isShown() ) {
-            // This row is already open - close it
-            $('div.slider', row.child()).slideUp( function () {
-                row.child.hide();
-                tr.removeClass('shown');
-            } );
-        }
-        else {
-            // Open this row
-            //row.child( template(row.data()) ).show();
-            var dt = 'rate';
-            $.ajax({
-                url: '/ajax/referenceinfo/'+row.data().reference_id,
-                type: 'GET',
-                dataType: 'html',
-                success: function (data) {
-                    row.child(data, 'no-padding').show();
-                    // row.child( data ).show();
-                    tr.addClass('shown');
-                    $('div.slider', row.child()).slideDown();
-                },
-                error: function (status) {
-                    console.log(status);
-                    dt = "Erreur dans la requete ajax :"+status;
-                }
-            });
-        }
     });
 
     return table;

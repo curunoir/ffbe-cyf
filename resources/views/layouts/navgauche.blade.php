@@ -28,6 +28,7 @@
                             </div>
                         @endif
                     </div>
+
                     <ul id="mainnav-menu" class="list-group">
                         <!--Category name-->
                         <li class="list-header ">{{ _t('Navigation') }}</li>
@@ -48,6 +49,7 @@
                     </ul>
 
                 </div>
+
             </div>
         </div>
         <!--End menu-->

@@ -74,18 +74,25 @@ function getSocket()
 
 function getDatatables($extend = false)
 {
-    \Assets::add('plugins/datatables/jquery.dataTables.min.js');
-    \Assets::add('plugins/datatables/dataTables.bootstrap.min.js');
-    \Assets::add('plugins/datatables/media/css/dataTables.bootstrap.css');
-    \Assets::add('plugins/datatables/extensions/Responsive/css/dataTables.responsive.css');
-    \Assets::add('plugins/jquery.checkboxes-1.0.6.min.js');
-    if ($extend):
-        \Assets::add('plugins/datatable-responsive/datatables.responsive.min.js');
-        \Assets::add('responsive.bootstrap.min.css');
-        //Scroller
-        \Assets::add('scroller.dataTables.min.css');
-        \Assets::add('plugins/datatables/dataTables.scroller.min.js');
-    endif;
+    getLastDatatables();
+//    \Assets::add('plugins/datatables/jquery.dataTables.min.js');
+//    \Assets::add('plugins/datatables/dataTables.bootstrap.min.js');
+//    \Assets::add('plugins/datatables/media/css/dataTables.bootstrap.css');
+//    \Assets::add('plugins/datatables/extensions/Responsive/css/dataTables.responsive.css');
+//    \Assets::add('plugins/jquery.checkboxes-1.0.6.min.js');
+//    if ($extend):
+//        \Assets::add('plugins/datatable-responsive/datatables.responsive.min.js');
+//        \Assets::add('responsive.bootstrap.min.css');
+//        //Scroller
+//        \Assets::add('scroller.dataTables.min.css');
+//        \Assets::add('plugins/datatables/dataTables.scroller.min.js');
+//    endif;
+}
+
+function getLastDatatables()
+{
+    \Assets::add('plugins/datatables/datatables.js');
+    \Assets::add('plugins/datatables/dataTables.css');
 }
 
 function getMaps()

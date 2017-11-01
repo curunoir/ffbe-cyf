@@ -29,7 +29,8 @@ class FriendsController extends Controller
     {
         $user = Auth::getUser();
         $accounts = Account::get();
-        getDatatables(true);
+//        getDatatables(true);
+        getLastDatatables();
         getValidate();
         return view('friends.index', compact('user', 'accounts'));
     }
