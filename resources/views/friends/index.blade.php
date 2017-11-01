@@ -62,7 +62,7 @@
             {name: 'units.name', data: 'units.name', trad: "{{ _t('Unit') }}" , searchable: true},
             {name: 'rank', data: 'rank', 'className': 'text-center', trad: "{{ _t('Rang') }}" , searchable: true},
             {name: 'current_unit_description', data: 'current_unit_description', trad: "{{ _t('Description') }}" , searchable: true},
-            {name: 'account_name', data: 'account_name', trad: "{{ _t('Nom du compte') }}" , searchable: true},
+            {name: 'accounts.name', data: 'account_name', trad: "{{ _t('Nom du compte') }}" , searchable: true},
             {name: 'users.name', data: 'user_name', trad: "{{ _t('Joueur') }}" , searchable: true},
             {name: 'server', data: 'server', trad: "{{ _t('Serveur') }}" , searchable: true},
             {name: 'btn_request', data: 'btn_request', 'className': 'text-center', trad: "{{ _t('Demande ami') }}" , searchable: false, orderable: false}
