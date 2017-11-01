@@ -1,7 +1,7 @@
 <div class="row">
     @foreach( $accounts as $account)
-        <div class="col-md-5">
-            <div class="panel">
+        <div class="col-md-4">
+            <div class="panel panel-bordered-mint">
                 <div class="panel-title panel-heading">
                     <h3 class="panel-title">
                         {{ _t('Code FFBE') }} = <a  href="{{action('AccountsController@edit', _c($account->id))}}">{{ $account->ffbe_id  }} <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

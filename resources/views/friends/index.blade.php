@@ -11,7 +11,7 @@
         </ol>
         <div class="row">
             <div class="col-md-12">
-                <div class="panel">
+                <div class="panel panel-bordered-primary">
                     <div class="panel-body">
                         <h5>{{ _t('Serveur') }}</h5>
                         <div class="filters-checkboxes filters-verified">
@@ -33,7 +33,7 @@
                                 <th>{{ _t('Nom du compte') }}</th>
                                 <th>{{ _t('Nom du joueur') }}</th>
                                 <th>{{ _t('Serveur') }}</th>
-                                <th></th>
+                                <th>{{ _t('Actions') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -92,7 +92,7 @@
                 $('.request_friend').on('click', function() {
                     var accid = $(this).attr('data-id');
                     var name = $(this).attr('data-name');
-                    request_friend(accid, name);
+                    request_friend(accid, name, table);
                 });
             } );
 

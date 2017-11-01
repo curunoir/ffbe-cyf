@@ -34,6 +34,7 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => [
     Route::post('ajax/requestModal',        'FriendsController@requestModal');
     Route::post('ajax/requestfriend',       'FriendsController@request');
     Route::post('ajax/acceptfriend',        'FriendsController@acceptfriend');
+    Route::post('ajax/deleterequest',       'FriendsController@deleteRequest');
 
     Route::get('ajax/testpusher',   'HomeController@ajaxtestpusher');
     Route::get('testpusher',        'HomeController@testpusher');

@@ -59,7 +59,7 @@ class FriendsController extends Controller
 
         $data = Datatables::of($model)
             ->editColumn('btn_request', function ($value) {
-                $text =  '<button data-name="'.$value->user_name .'" data-id="'._c($value->id) .'" class="request_friend btn btn-mint btn-icon"><i class="fa fa-pencil icon-lg"></i></button>';
+                $text =  '<button data-name="'.$value->user_name .'" data-id="'._c($value->id) .'" class="request_friend btn btn-primary btn-icon"> '._t('Demander').' <i class="fa fa-handshake-o icon-lg"></i></button>';
                 return $text;
             })
             ->editColumn('icon', function ($value) {
@@ -108,7 +108,8 @@ class FriendsController extends Controller
 
         $data = Datatables::of($model)
             ->editColumn('btn_request', function ($value) {
-                $text =  '<button data-id="'._c($value->request_id) .'" class="accept_friend btn btn-primary btn-icon text-bold"> '._t('Accepter').' <i class="fa fa-handshake-o icon-lg"></i></button>';
+                $text =  '<button data-id="'._c($value->request_id) .'" class="accept_friend btn btn-primary btn-icon">  <i class="fa fa-handshake-o icon-lg"></i></button>';
+                $text .= '<button data-id="'._c($value->request_id) .'" class="btn btn-danger btn-icon delete_request"> <i class="fa fa-trash icon-lg"></i> </button>';
                 return $text;
             })
             ->editColumn('icon', function ($value) {
@@ -188,5 +189,21 @@ class FriendsController extends Controller
         }
         return response()->json(['status' => 'error']);
     }
+
+    public function deleteRequest(Request $request)
+    {
+        if(!$request->has('id'))
+            return response()->json(['status' => 'error']);
+        $acceptedRequest = FRequest::find(_d($request->get('id')));
+        if(!$acceptedRequest)
+            return response()->json(['status' => 'error']);
+        $user = Auth::getUser();
+        if($user->id != $acceptedRequest->requested_id)
+            return response()->json(['status' => 'error wrong request ids']);
+        if($acceptedRequest->delete())
+            return response()->json(['status' => 'OK']);
+        return response()->json(['status' => 'error']);
+    }
+
 
 }

@@ -1,4 +1,4 @@
-function attach_confirm_request(){
+function attach_confirm_request(table){
     $('.confirm_send_request').off();
     $('.confirm_send_request').on('click', function() {
         $('#lg_modal').modal('hide');
@@ -7,15 +7,17 @@ function attach_confirm_request(){
         var requester_account_id = $('select#requester_account_id').val();
         $.post(prefix_ajax+"ajax/requestfriend", { id : accid, message : message, requester_account_id : requester_account_id },
             function(returnedData){
-                if(returnedData.status == 'OK')
+                if(returnedData.status == 'OK') {
                     successS("Demande envoyée");
+                    table.draw();
+                }
                 else
                     errorS(returnedData.status);
             })
     });
 }
 
-function request_friend(accid, name) {
+function request_friend(accid, name, table) {
     $.ajax({
         url: prefix_ajax + '/ajax/requestModal',
         type: 'POST',
@@ -29,7 +31,7 @@ function request_friend(accid, name) {
                 $('#lg_modal').modal();
                 $('.content_lg_modal').html(data);
                 $('#lg_modal').on('shown.bs.modal', function (e) {
-                    attach_confirm_request();
+                    attach_confirm_request(table);
                 });
             }
         },

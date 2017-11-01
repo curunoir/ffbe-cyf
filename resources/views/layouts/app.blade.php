@@ -29,12 +29,10 @@
     <div id="container" class="effect mainnav-lg">
         <div id="content-container">
             @include('partials._flash')
-        </div>
-        @include('layouts.navbar')
-        <div class="boxed">
-            <div id="content-container">
-                @yield('content')
-            </div>
+
+            @include('layouts.navbar')
+
+            @yield('content')
         </div>
         @if (!Auth::guest())
             @include('layouts.navgauche')

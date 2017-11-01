@@ -9,7 +9,7 @@
             <li><a href="{{ route('home') }}">{{ _t('Accueil') }}</a></li>
             <li class="active">{{ _t('Comptes') }}</li>
         </ol>
-        <div class="panel panel-default">
+        <div class="panel panel-default panel-bordered-primary">
             <div class="panel-body">
                 <div class="panel-title">{{ _t('Vos comptes') }}</div>
                 @include('accounts._accounts')

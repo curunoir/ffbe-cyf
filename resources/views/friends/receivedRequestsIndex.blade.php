@@ -11,7 +11,7 @@
         </ol>
         <div class="row">
             <div class="col-md-12">
-                <div class="panel">
+                <div class="panel panel-bordered-primary">
                     <div class="panel-body">
 
                         <table id="grid" class="table table-striped table-bordered table-hover">
@@ -24,7 +24,7 @@
                                 <th>{{ _t('Description') }}</th>
                                 <th>{{ _t('Nom du joueur') }}</th>
                                 <th>{{ _t('Serveur') }}</th>
-                                <th></th>
+                                <th>{{ _t('Actions') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -81,18 +81,28 @@
             table.on( 'draw', function () {
                 $('.accept_friend').off();
                 $('.accept_friend').on('click', function() {
-                    var accid = $(this).attr('data-id');
-                    $.post(prefix_ajax+"ajax/acceptfriend", { id : accid },
-                        function(returnedData){
-                            if(returnedData.status == 'OK') {
-                                table.draw();
-                                successS("Ami accepté");
-                            }
-                            else
-                                errorS(returnedData.status);
-                        })
-
+                    $.post(prefix_ajax+"ajax/acceptfriend", { id : $(this).attr('data-id') },
+                    function(returnedData){
+                        if(returnedData.status == 'OK') {
+                            table.draw();
+                            successS("Ami accepté");
+                        }
+                        else
+                            errorS(returnedData.status);
+                    });
                 });
+                $('.delete_request').off();
+                $('.delete_request').on('click', function() {
+                    $.post(prefix_ajax+"ajax/deleterequest", { id : $(this).attr('data-id') },
+                    function(returnedData){
+                        if(returnedData.status == 'OK') {
+                            table.draw();
+                            successS("Requête supprimée");
+                        }
+                        else
+                            errorS(returnedData.status);
+                    });
+               });
             });
 
         });
