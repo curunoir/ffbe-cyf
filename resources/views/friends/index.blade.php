@@ -15,10 +15,9 @@
                     <div class="panel-body">
                         <h5>{{ _t('Serveur') }}</h5>
                         <div class="filters-checkboxes filters-verified">
-                            <select id="validation-filter" name="filter-server">
-                                <option value="Tous">Tous</option>
-                                <option value="Oui">{{ _t('Global') }}</option>
-                                <option value="Non">{{ _t('Japon') }}</option>
+                            <select id="filter-server" name="filter-server">
+                                <option value="GLOBAL">{{ _t('Global') }}</option>
+                                <option value="JAPAN">{{ _t('Japon') }}</option>
                             </select>
                             <label for="filter-server" class="control-label">{{ _t('Serveur') }}</label>
                         </div>
@@ -78,6 +77,7 @@
                     "type"  : 'POST',
                     "data"  : function (request) {
                         request.fnofriends = true;
+                        request.fserver = $('#filter-server').val();
                     }
                 },
                 bAutoWidth: true,
@@ -95,6 +95,10 @@
                     request_friend(accid, name, table);
                 });
             } );
+
+            $('#filter-server').on('change', function() {
+                table.draw();
+            });
 
         });
     </script>

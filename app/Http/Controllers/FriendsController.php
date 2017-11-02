@@ -70,6 +70,12 @@ class FriendsController extends Controller
             ->setRowId(function ($value) {
                 return $value->reference_id;
             })
+            ->filter(function ($query) {
+                if (request()->has('fserver')) {
+                    $fserver = request()->get('fserver');
+                    $query->where("accounts.server", '=', $fserver);
+                }
+            }, true)
             ->rawColumns(['btn_request', 'icon']);
         return $data->make(true);
     }
