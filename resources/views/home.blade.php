@@ -62,13 +62,13 @@
                 </div>
             </div>
 
-
         </div>
     </div>
 @endsection
 
 
 @section('script')
+    <script type="text/javascript">
 
-
+    </script>
 @endsection

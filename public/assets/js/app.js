@@ -61,22 +61,9 @@ $(document).ready(function () {
         })
     }
 
-});
+    $('.gochat').on('click', function (e) {
+        var id = dataId(e);
 
-// $.ajax({
-//     url: prefix_ajax + "ajax/friends/request",
-//     type: 'POST',
-//     data: {
-//         'id' : accid
-//     },
-//     dataType: 'html',
-//     success: function (data) {
-//         if (data) {
-//             $('#' + modal).modal();
-//
-//         }
-//     },
-//     error: function (status) {
-//         console.log(status);
-//         errorS("Erreur ajax/supplyproposalsaccept/modal : " + status);
-//     }
+    });
+
+});

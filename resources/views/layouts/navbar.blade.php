@@ -32,28 +32,56 @@
                     <li><a href="{{ route('login') }}"><i class="fa fa-sign-in"></i> {{ _t('Connexion') }}</a></li>
                     <li><a href="{{ route('register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> {{ _t("Nouveau ?") }}</a></li>
                 @else
-                <!--User dropdown-->
+
+                    <!--User dropdown-->
                     <li id="dropdown-user" class="dropdown">
-                        <a href="{{ route('accounts.index') }}" data-toggle="" class="text-right">
-                            <span class="pull-left">
-                                <i class="fa fa-user"></i>
-                                <span class="hidden-xs"> {{ Auth::user()->name }}</span>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right" aria-expanded="false">
+                            <span class="pull-right">
+                                @if(!empty(Auth::getUser()->getFirstAccount()))
+                                    <img class="img-circle img-user media-object" src="{{ asset( 'storage/'.Auth::getUser()->getFirstAccount()->current_unit->icon_file)}}" alt="Unit Picture">
+                                @else
+                                    <i class="fa fa-user fa-2x"></i>
+                                @endif
                             </span>
-
+                            <div class="username hidden-xs">{{ Auth::user()->name }}</div>
                         </a>
 
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();" class="btn">
-                           <span class="pull-right">
-                                <i class="fa fa-sign-out"></i>{{ _t('Déconnexion') }}
-                           </span>
-                        </a>
+                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right panel-default">
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
+                            <!-- User dropdown menu -->
+                            <ul class="head-list">
+                                <li>
+                                    <a href="#">
+                                        <i class="demo-pli-male icon-lg icon-fw"></i> {{ _t('Profil') }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="badge badge-danger pull-right">9</span>
+                                        <i class="demo-pli-mail icon-lg icon-fw"></i> {{ _t('Messages') }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="demo-pli-information icon-lg icon-fw"></i> {{ _t('Aide') }}
+                                    </a>
+                                </li>
+                            </ul>
 
+                            <!-- Dropdown footer -->
+                            <div class="pad-all text-right">
+                                <a href="{{ route('logout') }}" class="btn btn-primary" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-lock "></i> {{ _t('Déconnexion') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <i class="pointer pad-rgt aside-toggle navbar-aside-icon fa fa-comment fa-2x"> </i>
                     </li>
                 @endif
             </ul>

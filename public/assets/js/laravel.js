@@ -21,6 +21,11 @@ function successS(text) {
         timer: 3000
     });
 }
+
+function dataId(that) {
+    return $(that.currentTarget).attr('data-id');
+}
+
 (function () {
     var laravel = {
         initialize: function () {

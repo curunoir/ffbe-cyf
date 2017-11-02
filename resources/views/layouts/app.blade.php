@@ -25,12 +25,14 @@
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
 </head>
 <body>
-
-    <div id="container" class="effect mainnav-lg">
+    <div id="container" class="effect mainnav-lg navbar-fixed aside-fixed footer-fixed">
+        @include('layouts.navbar')
         <div id="content-container">
             @include('partials._flash')
 
-            @include('layouts.navbar')
+
+
+            @include('chat._aside_menu')
 
             @yield('content')
         </div>

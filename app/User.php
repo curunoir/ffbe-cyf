@@ -36,6 +36,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the accounts associated to the user.
+     */
+    public function getFirstAccount()
+    {
+        return $this->accounts->first();
+    }
+
+    /**
      * Get the friends
      */
     public function friends()
