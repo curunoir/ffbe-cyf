@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Message;
-use App\Events\MessageSent;
+use App\Conversation;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,9 +25,16 @@ class ChatsController extends Controller
     public function index()
     {
         getChat();
-        $messages = Message::with('user')->get();
-
-        return view('chat.index', compact('messages'));
+        $conversation = Conversation::find(1);
+        $messages = $conversation->messages;
+        $user = Auth::user();
+        if($user->id == $conversation->user_one->id) {
+            $partner    = $conversation->user_two;
+        }
+        else {
+            $partner    = $conversation->user_one;
+        }
+        return view('chat.index', compact('messages', 'user', 'partner'));
     }
 
     /**
@@ -37,12 +44,14 @@ class ChatsController extends Controller
      */
     public function fetchMessages()
     {
-        $messages = Message::with('user')->get();
-         return view('chat.index');
+        $conversation = Conversation::find(1);
+        $messages = $conversation->messages;
+        $user = Auth::user();
+        return view('chat.index');
     }
 
     /**
-     * Fetch all messages
+     * Get last message
      *
      * @return Message
      */

@@ -7,9 +7,16 @@
         ]); ?>;
         var module = { }; /*   <-----THIS LINE */
     </script>
-    <div class="container">
+    <div id="page-content">
+        <div id="page-title">
+            <h1 class="page-header text-overflow">{{ _t('Discussion avec') .' '.$partner->name }}</h1>
+        </div>
+        <ol class="breadcrumb">
+            <li><a href="#">{{ _t('Accueil') }}</a></li>
+            <li class="active"><a href="#">{{ _t('Discussion') }}</a></li>
+        </ol>
         <div class="row">
-            <div class="col-md-12 col-lg-6">
+            <div class="col-md-8 col-md-offset-2">
 
                 <!--Chat widget-->
                 <!--===================================================-->

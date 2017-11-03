@@ -29,11 +29,9 @@
         @include('layouts.navbar')
         <div id="content-container">
             @include('partials._flash')
-
-
-
-            @include('chat._aside_menu')
-
+            @if (!Auth::guest())
+                @include('partials._aside_menu')
+            @endif
             @yield('content')
         </div>
         @if (!Auth::guest())
