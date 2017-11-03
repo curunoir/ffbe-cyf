@@ -241,3 +241,27 @@ function dates_info($date)
     else
         return _t('Pas de date');
 }
+
+/**
+ * Encodes data
+ */
+function _hashes($data)
+{
+    return App::make('Hashids\Hashids')->encode($data);
+}
+
+
+/**
+ *  Decodes Data
+ */
+function _dehashes($data)
+{
+    $result = App::make('Hashids\Hashids')->decode($data);
+    if (count($result) == 0) {
+        return null;
+    }
+    if (count($result) == 1) {
+        return $result[0];
+    }
+    return $result;
+}

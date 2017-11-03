@@ -15,7 +15,7 @@
 
                     <div class="list-group bg-trans">
                         @foreach(Auth::getUser()->friends as $frienduser)
-                        <a href="#" class="list-group-item gochat" data-id="{{ _c($frienduser->id) }}">
+                        <a href="{{ action('ChatsController@talk', _c($frienduser->id)) }}" class="list-group-item gochat" data-id="{{ _c($frienduser->id) }}">
                             <span class="pull-left"><img class="img-circle img-user media-object" src="{{ asset( 'storage/'.$frienduser->friend_account->current_unit->icon_file)}}" alt="Unit Picture"></span>
                              {{ $frienduser->friend_account->name }}
                         </a>

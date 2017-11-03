@@ -21,7 +21,7 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => [
     Route::get('/', function () {
         return redirect(action('HomeController@index'));
     });
-    Route::post('pusher/auth', 'Broadcast\ChatBroadcastController@authenticate');
+    Route::post('ajax/pusher/auth', 'Broadcast\ChatBroadcastController@authenticate');
     Route::get('home', 'HomeController@index')->name('home');
 
 
@@ -46,7 +46,7 @@ Route::group(['prefix' => TranslationStatic::getRoutePrefix(), 'middleware' => [
     Route::post('ajax/unit/update', 'UnitsController@updateajax');
 
 
-    Route::get('/chat',             'ChatsController@index');
+    Route::get('/chat/{id}',       'ChatsController@talk');
     Route::get('ajax/messages',     'ChatsController@fetchMessages');
     Route::get('ajax/lastmessage',  'ChatsController@lastMessage');
     Route::post('ajax/message',     'ChatsController@sendMessage');

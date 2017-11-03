@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Message;
 use App\Conversation;
+use App\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,19 +23,27 @@ class ChatsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function talk($id)
     {
-        getChat();
-        $conversation = Conversation::find(1);
+
+        $friend = User::find(_d($id));
+        if(!$friend){
+            return redirect(action('HomeController@index'))->with('error', _t("Vous n'êtes pas autorisés à accéder à cette page"));
+        }
+        $user = Auth::getUser();
+        if(!$user->friends->contains($friend->id)) {
+            return redirect(action('HomeController@index'))->with('error', _t("Vous n'êtes pas autorisés à accéder à cette page"));
+        }
+
+        $conversation = Conversation::findOrStart($user, $friend);
         $messages = $conversation->messages;
-        $user = Auth::user();
         if($user->id == $conversation->user_one->id) {
-            $partner    = $conversation->user_two;
+            $partner = $conversation->user_two;
         }
         else {
-            $partner    = $conversation->user_one;
+            $partner = $conversation->user_one;
         }
-        return view('chat.index', compact('messages', 'user', 'partner'));
+        return view('chat.talk', compact('messages', 'user', 'partner', 'conversation'));
     }
 
     /**
@@ -69,19 +78,23 @@ class ChatsController extends Controller
     public function sendMessage(Request $request)
     {
         $user = Auth::user();
-
-        $message = $user->messages()->create([
-            'message' => $request->input('message')
-        ]);
-
-        //broadcast(new MessageSent($user, $message))->toOthers();
-        $res = Pusher::trigger('private-chat', 'NewMessage', [
-            'message' => $message->message,
-            'time' => Carbon::now()->toDateTimeString(),
-            'username' => $user->name,
-            'userid' => _c($user->id)
-        ]);
-
-        return ['status' => 'OK'];
+        $conversation = Conversation::find(_d($request->input('conversation')));
+        if(!$conversation)
+            return ['status' => 'error : no conversation found'];
+        $message = new Message();
+        $message->message = trim($request->input('message'));
+        $message->user_id = $user->id;
+        $message->is_seen = true;
+        $message->conversation_id = $conversation->id;
+        if($message->save()) {
+            $res = Pusher::trigger($conversation->getPusherChannel(), 'NewMessage', [
+                'message' => $message->message,
+                'time' => Carbon::now()->toDateTimeString(),
+                'username' => $user->name,
+                'userid' => _c($user->id)
+            ]);
+            //broadcast(new MessageSent($user, $message))->toOthers();
+            return ['status' => 'OK'];
+        }
     }
 }
