@@ -92,7 +92,7 @@ function getDatatables($extend = false)
 function getLastDatatables()
 {
     \Assets::add('plugins/datatables/datatables.js');
-    \Assets::add('plugins/datatables/dataTables.css');
+    \Assets::add('plugins/datatables/datatables.css');
 }
 
 function getMaps()
