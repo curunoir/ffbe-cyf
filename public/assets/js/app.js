@@ -42,6 +42,20 @@ function request_friend(accid, name, table) {
     });
 }
 
+(function () {
+    if ($('[data-alert]').length) {
+        var block = $('[data-alert]');
+        $.niftyNoty({
+            type: block.attr('data-alert'),
+            icon: 'pli-cross icon-2x',
+            message: block.attr('data-content'),
+            container: 'floating',
+            timer: 3000
+        });
+    }
+})();
+
+
 
 $(document).ready(function () {
     $(document).click(function (event) {

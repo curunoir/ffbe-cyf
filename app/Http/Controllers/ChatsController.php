@@ -28,11 +28,11 @@ class ChatsController extends Controller
 
         $friend = User::find(_d($id));
         if(!$friend){
-            return redirect(action('HomeController@index'))->with('error', _t("Vous n'êtes pas autorisés à accéder à cette page"));
+            return redirect(action('HomeController@index'))->with('error', _t("Vous n'êtes pas autorisés à accéder à cette page : code C01"));
         }
         $user = Auth::getUser();
-        if(!$user->friends->contains($friend->id)) {
-            return redirect(action('HomeController@index'))->with('error', _t("Vous n'êtes pas autorisés à accéder à cette page"));
+        if(!$user->isFriendWith($friend)) {
+            return redirect(action('HomeController@index'))->with('error', _t("Vous n'êtes pas autorisés à accéder à cette page : code C02"));
         }
 
         $conversation = Conversation::findOrStart($user, $friend);

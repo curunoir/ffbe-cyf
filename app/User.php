@@ -52,6 +52,22 @@ class User extends Authenticatable
     }
 
     /**
+     * Is friend with a user ?
+     */
+    public function isFriendWith($user)
+    {
+        $isfriend = false;
+        foreach($this->friends as $friend)
+        {
+            if($friend->user_friend->id == $user->id) {
+                $isfriend = true;
+                break;
+            }
+        }
+        return $isfriend;
+    }
+
+    /**
      * Get the friends
      */
     public function sent_requests()

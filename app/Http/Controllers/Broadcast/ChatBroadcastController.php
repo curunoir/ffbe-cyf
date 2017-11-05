@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Vinkla\Pusher\Facades\Pusher;
+use App\User;
 
 class ChatBroadcastController extends Controller
 {
@@ -31,8 +32,11 @@ class ChatBroadcastController extends Controller
                 $partnerId = $ids[0];
             else
                 return response('Forbidden verification failed code 12', 403);
-            if(!$user->friends->contains($partnerId)) // not a friend ?
+            $partner = User::find($partnerId);
+            if(!$partner) // user not found ?
                 return response('Forbidden verification failed code 13', 403);
+            if(!$user->isFriendWith($partner)) // not a friend ?
+                return response('Forbidden verification failed code 14', 403);
 
             // All is right lets send push messages
             $auth_string = Pusher::socket_auth($request->get('channel_name'), $request->get('socket_id'));
