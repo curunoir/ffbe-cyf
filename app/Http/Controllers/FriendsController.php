@@ -52,7 +52,9 @@ class FriendsController extends Controller
             ->leftJoin('units', 'units.id', '=', 'accounts.current_unit_id' )
             ->leftJoin('users', 'users.id', '=', 'accounts.user_id' )
             ->leftJoin('requests', 'requests.requested_id', '=', 'users.id' )
+            ->leftJoin('friends', 'friends.user_id', '=', 'users.id' )
             ->where('users.id', '!=', $user->id)
+            ->whereNull('friends.friend_id')
             ->where(function ($query) use ($user) {
                 $query->where('requests.requester_id', '!=', $user->id)
                     ->orWhereNull('requests.requester_id');
