@@ -20,7 +20,7 @@
                             <div class="col-sm-12 text-2x">
                                 <p class="">{{ _t("Etre ami avec d'autres joueurs vous permet :") }}</p>
                                 <div>
-                                    <li> {{ _t("de voir leur identifiant de jeu FFBE pour l'ajouter comme ami dans le jeu") }}</li>
+                                    <li> {{ _t("de voir l'identifiant de leur compte de jeu FFBE vous permettant de l'ajouter ensuite comme ami dans le jeu") }}</li>
                                     <li> {{ _t('de discuter avec eux en direct !') }}</li>
                                 </div>
                             </div>
@@ -73,6 +73,12 @@
                             @endforelse
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <a href="{{ action('AccountsController@index') }}">{{ _t("Pour pouvoir ajouter des amis pensez à enregistrer au moins un compte.") }}</a>
+                        </div>
+                    </div>
+                    <hr />
                 </div>
             </div>
 

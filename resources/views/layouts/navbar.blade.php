@@ -32,7 +32,9 @@
                     <li><a href="{{ route('login') }}"><i class="fa fa-sign-in"></i> {{ _t('Connexion') }}</a></li>
                     <li><a href="{{ route('register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> {{ _t("Nouveau ?") }}</a></li>
                 @else
-
+                    <li>
+                        <i class="pointer pad-rgt aside-toggle navbar-aside-icon fa fa-comment fa-2x"> </i>
+                    </li>
                     <!--User dropdown-->
                     <li id="dropdown-user" class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right" aria-expanded="false">
@@ -80,9 +82,6 @@
                         </div>
                     </li>
 
-                    <li>
-                        <i class="pointer pad-rgt aside-toggle navbar-aside-icon fa fa-comment fa-2x"> </i>
-                    </li>
                 @endif
             </ul>
         </div>

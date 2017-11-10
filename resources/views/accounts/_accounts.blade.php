@@ -4,7 +4,7 @@
             <div class="panel panel-bordered-mint">
                 <div class="panel-title panel-heading">
                     <h3 class="panel-title">
-                        {{ _t('Code FFBE') }} = <a  href="{{action('AccountsController@edit', _c($account->id))}}">{{ $account->ffbe_id  }} <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        <a href="{{action('AccountsController@edit', _c($account->id))}}">{{ $account->name }} ({{ $account->ffbe_id  }}) <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                     </h3>
                     <i class="fa fa-calendar-plus-o" aria-hidden="true"></i> {{ _t('Créé le ') }} {{ $account->created_at }}
                 </div>
@@ -32,10 +32,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
     @endforeach
