@@ -42,7 +42,7 @@ class UnitsController extends Controller
         if($icon)
             return view('units.create', compact('unit', 'icon', 'maxstars'));
         else
-            return "Plus d'icones d'unités 6 étoiles a ajouter";
+            return redirect()->back()->with('error', "Plus d'icones d'unités 6 étoiles a ajouter");
     }
 
     public function create5(UnitsTool $unitsTool)
@@ -53,7 +53,7 @@ class UnitsController extends Controller
         if($icon)
             return view('units.create', compact('unit', 'icon', 'maxstars'));
         else
-            return "Plus d'icones d'unités 5 étoiles a ajouter";
+            return redirect()->back()->with('error', "Plus d'icones d'unités 5 étoiles a ajouter");
     }
 
 
