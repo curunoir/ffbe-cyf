@@ -29,7 +29,7 @@
                         <div class="row">
                             @forelse($friends as $friend)
                             <div class="col-md-4">
-                                <div class="panel panel-primary">
+                                <div class="panel panel-primary panel-bordered-primary">
                                     <div class="panel-heading">
                                         <span>
                                             <img src="{{ asset( 'storage/'.$friend->friend_account->current_unit->icon_file) }}" class=" img-circle img-border mar-btm">
