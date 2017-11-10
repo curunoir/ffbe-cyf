@@ -14,4 +14,4 @@ let mix = require('laravel-mix');
 
 // mix.js('resources/assets/js/app.js', 'public/assets/js')
 //     .js('resources/assets/js/chat.js', 'public/assets/js')
-mix.sass('resources/assets/sass/app.scss', 'public/css');
+mix.sass('resources/assets/sass/app.scss', 'public/assets/css');

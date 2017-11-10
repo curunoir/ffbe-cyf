@@ -6,7 +6,7 @@
             <h1 class="page-header text-overflow">{{ _t('Chercher des amis dans Final Fantasy Brave Exvius') }}</h1>
         </div>
         <ol class="breadcrumb">
-            <li><a href="#">{{ _t('Accueil') }}</a></li>
+            <li><a href="{{ action('HomeController@index') }}">{{ _t('Accueil') }}</a></li>
             <li class="active"><a href="#">{{ _t('Chercher des amis') }}</a></li>
         </ol>
         <div class="row">

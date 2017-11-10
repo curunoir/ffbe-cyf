@@ -54,10 +54,15 @@ class FriendsController extends Controller
             ->leftJoin('requests', 'requests.requested_id', '=', 'users.id' )
             ->leftJoin('friends', 'friends.user_id', '=', 'users.id' )
             ->where('users.id', '!=', $user->id)
-            ->whereNull('friends.friend_id')
-            ->where(function ($query) use ($user) {
-                $query->where('requests.requester_id', '!=', $user->id)
-                    ->orWhereNull('requests.requester_id');
+            ->whereNotIn('users.id', function($query) use ($user) {
+                $query->select('friend_id')
+                    ->from(with(new Friend)->getTable())
+                    ->where('user_id', '=', $user->id);
+            })
+            ->whereNotIn('users.id', function($query) use ($user) {
+                $query->select('requested_id')
+                    ->from(with(new FRequest)->getTable())
+                    ->where('requester_id', '=', $user->id);
             });
 
         $data = Datatables::of($model)

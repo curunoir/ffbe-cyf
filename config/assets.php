@@ -140,7 +140,6 @@ return [
                 'app.css',
                 'font-awesome/css/font-awesome.min.css',
                 'pace.min.css',
-                'nifty.css',
                 'ffbe.css'
             ]
         ]

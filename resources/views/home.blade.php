@@ -3,20 +3,31 @@
 @section('content')
     <div id="page-content">
         <div id="page-title">
-            <h1 class="page-header text-overflow">{{ _t('Tableau de bord de Final Fantasy Brave Exvius - Choose your friends') }}</h1>
+            <h1 class="page-header text-overflow">{{ _t('Tableau de bord de Final Fantasy Brave Exvius') }} <span class="text-success"> - Choose Your Friends</span></h1>
         </div>
         <ol class="breadcrumb">
-            <li class="active"><a href="#">{{ _t('Accueil') }}</a></li>
+            <li class="active"><a href="{{ action('HomeController@index') }}">{{ _t('Accueil') }}</a></li>
         </ol>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-bordered-primary">
                     <div class="panel-heading">
-                        <div class="panel-title">{{ _t('Liste de vos amis') }}</div>
+                        <div class="panel-title"><h2>{{ _t('Liste de vos amis') }}</h2></div>
+
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            @foreach($friends as $friend)
+                            <div class="col-sm-12 text-2x">
+                                <p class="">{{ _t("Etre ami avec d'autres joueurs vous permet :") }}</p>
+                                <div>
+                                    <li> {{ _t("de voir leur identifiant de jeu FFBE pour l'ajouter comme ami dans le jeu") }}</li>
+                                    <li> {{ _t('de discuter avec eux en direct !') }}</li>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            @forelse($friends as $friend)
                             <div class="col-md-4">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
@@ -34,8 +45,9 @@
                                                     <i class="caret"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li><a href="#">{{ _t('Parler') }}</a></li>
-                                                    <li><a href="#">{{ _t('Supprimer') }}</a></li>
+                                                    <li><a href="{{ action('ChatsController@talk', _c($friend->user_friend->id)) }}" class="list-group-item gochat" data-id="{{ _c($friend->user_friend->id) }}">{{ _t('Parler') }}</a></li>
+
+                                                    {{--<li><a href="#">{{ _t('Supprimer') }}</a></li>--}}
                                                 </ul>
                                             </div>
                                         </div>
@@ -56,7 +68,9 @@
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                            @empty
+                                <p>{{ _t("Vous n'avez pas encore d'amis. Essayez la recherche") }}</p>
+                            @endforelse
                         </div>
                     </div>
                 </div>

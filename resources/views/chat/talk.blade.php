@@ -12,7 +12,7 @@
             <h1 class="page-header text-overflow">{{ _t('Discussion avec') .' '.$partner->name }}</h1>
         </div>
         <ol class="breadcrumb">
-            <li><a href="#">{{ _t('Accueil') }}</a></li>
+            <li><a href="{{ action('HomeController@index') }}">{{ _t('Accueil') }}</a></li>
             <li class="active"><a href="#">{{ _t('Discussion') }}</a></li>
         </ol>
         <div class="row">
@@ -87,13 +87,18 @@
          * @returns {string}
          */
         function chatMessage(name, message, time, place, picture) {
-            if (place == 'right')
+            if (place == 'right') {
                 speechclass = 'speech-right';
-            else speechclass = '';
+                imgflip = '';
+            }
+            else {
+                speechclass = '';
+                imgflip = 'img-flip';
+            }
 
             var html = ' <li class="mar-btm">';
             html += '    <div class="media-' + place + '">';
-            html += '        <img src="'+picture+'" class="img-circle img-sm" alt="Profile Picture">';
+            html += '        <img src="'+picture+'" class="img-circle img-user ' + imgflip + '" alt="Profile Picture">';
             html += '    </div>';
             html += '    <div class="media-body pad-hor ' + speechclass + '">';
             html += '        <div class="speech">';

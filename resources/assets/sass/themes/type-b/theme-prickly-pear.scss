@@ -85,6 +85,4 @@ $footer-color               : $body-color;
 
 
 //============================================
-@if variable-exists(main-compile) == false {
-    @import "../_themes";
-}
+

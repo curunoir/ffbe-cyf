@@ -8,6 +8,7 @@
 @import "_variables";
 
 // Set as default color scheme.
+@import "themes/type-b/theme-prickly-pear";
 
 @import "custom/_global";
 @import "nifty/_layout";
@@ -20,8 +21,7 @@
 @import "nifty/_bs-overwrite";
 @import "nifty/_helper-classes";
 
-@import "themes/type-a/theme-coffee";
-@import "themes/_themes";
+
 @import "custom/_fonts";
 @import "custom/_mixin";
 @import "custom/label";
@@ -36,3 +36,5 @@
 @import "custom/login";
 @import "custom/responsive";
 @import "custom/chat";
+
+
