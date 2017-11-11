@@ -67,7 +67,7 @@ class FriendsController extends Controller
 
         $data = Datatables::of($model)
             ->editColumn('btn_request', function ($value) {
-                $text =  '<button data-name="'.$value->user_name .'" data-id="'._c($value->id) .'" class="request_friend btn btn-primary btn-icon"> '._t('Demander').' <i class="fa fa-handshake-o icon-lg"></i></button>';
+                $text =  '<button data-name="'.$value->user_name .'" data-id="'._c($value->id) .'" class="request_friend btn btn-primary btn-icon"> <i class="fa fa-handshake-o icon-lg"></i></button>';
                 return $text;
             })
             ->editColumn('icon', function ($value) {

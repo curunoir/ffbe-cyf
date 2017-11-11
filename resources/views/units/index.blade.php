@@ -9,7 +9,7 @@
             <li><a href="{{ route('home') }}">{{ _t('Accueil') }}</a></li>
             <li class="active">{{ _t('Unités') }}</li>
         </ol>
-        <div class="panel panel-default">
+        <div class="panel panel-default panel-ffbe-logo">
             <div class="panel-body">
                 <div class="panel-title">{{ _t('Gestion des unités') }}</div>
                 <div class="row">

@@ -25,14 +25,14 @@
                         <table id="grid" class="table table-striped table-bordered table-hover display dt-responsive no-wrap" cellspacing="0" width="100%">
                             <thead>
                             <tr>
-                                <th data-priority="1">{{ _t('Icon') }}</th>
-                                <th data-priority="2">{{ _t('Unit') }}</th>
+                                <th data-priority="1">{{ _t('Icone') }}</th>
+                                <th data-priority="2">{{ _t('Unité') }}</th>
                                 <th data-priority="3">{{ _t('Rang') }}</th>
                                 <th data-priority="3">{{ _t('Description') }}</th>
                                 <th data-priority="2">{{ _t('Nom du compte') }}</th>
                                 <th data-priority="1">{{ _t('Nom du joueur') }}</th>
                                 <th data-priority="2">{{ _t('Serveur') }}</th>
-                                <th data-priority="1">{{ _t('Actions') }}</th>
+                                <th data-priority="1">{{ _t('Requête ami') }}</th>
                             </tr>
                             </thead>
                             <tbody>

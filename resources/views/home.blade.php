@@ -10,19 +10,23 @@
         </ol>
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-bordered-primary">
+                <div class="panel panel-bordered-primary panel-ffbe-logo">
                     <div class="panel-heading">
-                        <div class="panel-title"><h2>{{ _t('Liste de vos amis') }}</h2></div>
+                        <div class="panel-title"><h2><i class="fa fa-users"> {{ _t('Liste de vos amis') }}</i></h2></div>
 
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-sm-12 text-2x">
+                            <div class="col-sm-6">
                                 <p class="">{{ _t("Etre ami avec d'autres joueurs vous permet :") }}</p>
                                 <div>
                                     <li> {{ _t("de voir l'identifiant de leur compte de jeu FFBE vous permettant de l'ajouter ensuite comme ami dans le jeu") }}</li>
-                                    <li> {{ _t('de discuter avec eux en direct !') }}</li>
+                                    <li> {{ _t('de discuter avec lui en direct !') }} <i class="fa fa-comment"> </i></li>
                                 </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="label label-danger">{{ _t('Important') }}</span>
+                                <a href="{{ action('AccountsController@index') }}">{{ _t("Pour pouvoir ajouter des amis pensez à enregistrer au moins un compte : ") }} <i class="fa fa-2x fa-gamepad"></i></a>
                             </div>
                         </div>
                         <hr />
@@ -34,8 +38,8 @@
                                         <span>
                                             <img src="{{ asset( 'storage/'.$friend->friend_account->current_unit->icon_file) }}" class=" img-circle img-border mar-btm">
                                         </span>
-                                        <span class="panel-title">{{ $friend->friend_account->name }}</span>
-                                        <span class="text-warning text-main text-2x">{{ $friend->friend_account->ffbe_id }}</span>
+                                        <span class="pad-lft text-main text-2x">{{ $friend->friend_account->name }}</span>
+                                        <span class="pad-lft text-warning text-main text-2x"> - {{ $friend->friend_account->ffbe_id }} <i class="fa fa-mobile" aria-hidden="true"></i></span>
                                         <div class="panel-control">
                                             <button class="demo-panel-ref-btn btn btn-default" data-target="#demo-panel-ref" data-toggle="panel-overlay">
                                                 <i class="demo-psi-repeat-2 icon-fw"></i>
@@ -53,29 +57,36 @@
                                         </div>
                                     </div>
                                     <div class="panel-body">
-                                        <dl class="dl-horizontal">
-                                            <dt>{{ _t('Joueur') }}</dt>
-                                            <dd>{{ $friend->user_friend->name }}</dd>
-                                            <dt><i class="fa fa-star" aria-hidden="true"></i> {{ _t('Rang') }}</dt>
-                                            <dd>{{ $friend->friend_account->rank }}</dd>
-                                            <dt>{{ _t('Unité partagée') }}</dt>
-                                            <dd>{{ $friend->friend_account->current_unit->name }}</dd>
-                                            <dt>{{ _t('Unité désirée') }}</dt>
-                                            <dd>{{ $friend->friend_account->desired_unit->name }}</dd>
-                                            <dt><i class="fa fa-globe" aria-hidden="true"></i> {{ _t('Serveur') }}</dt>
-                                            <dd>{{ $friend->friend_account->server }}</dd>
-                                        </dl>
+                                        <div class="pull-left">
+                                            <dl class="dl-horizontal">
+                                                <dt>{{ _t('Joueur') }}</dt>
+                                                <dd class="text-semibold text-primary">{{ $friend->user_friend->name }}</dd>
+                                                <dt><i class="fa fa-star" aria-hidden="true"></i> {{ _t('Rang') }}</dt>
+                                                <dd>{{ $friend->friend_account->rank }}</dd>
+                                                <dt><i class="fa fa-globe" aria-hidden="true"></i> {{ _t('Serveur') }}</dt>
+                                                <dd>{{ $friend->friend_account->server }}</dd>
+                                            </dl>
+                                        </div>
+                                        <div class="pull-right">
+                                            <dl class="dl-horizontal">
+                                                <dt>{{ _t('Unité leader') }}</dt>
+                                                <dd>{{ $friend->friend_account->current_unit->name }}</dd>
+                                                <dt>{{ _t('Description') }}</dt>
+                                                <dd>{{ $friend->friend_account->current_unit_description }}</dd>
+                                                <hr />
+                                                <dt>{{ _t('Unité désirée') }}</dt>
+                                                <dd>{{ $friend->friend_account->desired_unit->name }}</dd>
+                                                <dt>{{ _t('Souhaits') }}</dt>
+                                                <dd>{{ $friend->friend_account->desired_unit_comments }}</dd>
+                                            </dl>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             @empty
                                 <p>{{ _t("Vous n'avez pas encore d'amis. Essayez la recherche") }}</p>
+                                <a href="{{ action('FriendsController@index') }}" class=""><i class="fa fa-users"></i> Chercher des amis</a>
                             @endforelse
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <a href="{{ action('AccountsController@index') }}">{{ _t("Pour pouvoir ajouter des amis pensez à enregistrer au moins un compte.") }}</a>
                         </div>
                     </div>
                     <hr />
