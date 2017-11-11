@@ -26,15 +26,15 @@ class UnitsTool
     }
 
     public function getAllIconsPath(){
-        return storage_path().'app/'.$this->all_icons_dir;
+        return storage_path().'app/public/'.$this->all_icons_dir;
     }
 
     public function getAllIcons() : Collection {
-        return collect(Storage::disk('local')->files($this->all_icons_dir));
+        return collect(Storage::disk('public')->files($this->all_icons_dir));
     }
 
     public function getAllIconsForMaxStar($max) : Collection {
-        $files = array_filter(Storage::disk('local')->files($this->all_icons_dir), function ($file) use($max)
+        $files = array_filter(Storage::disk('public')->files($this->all_icons_dir), function ($file) use($max)
         {
             return preg_match('/(^unit_icon.*['.$max.']).png/', $file);
         });
@@ -46,7 +46,7 @@ class UnitsTool
                 $filtered_files = array();
                 foreach($files as $file) {
                     $filesixstars = substr($file, 0, strlen($file)-5) .'6.png';
-                    if(!Storage::disk('local')->exists($filesixstars))
+                    if(!Storage::disk('public')->exists($filesixstars))
                         $filtered_files[] = $file;
                 }
                 return collect($filtered_files);
@@ -55,7 +55,7 @@ class UnitsTool
     }
 
     public function getAllMaxSixIcons() : Collection {
-        $files = array_filter(Storage::disk('local')->files($this->all_icons_dir), function ($file)
+        $files = array_filter(Storage::disk('public')->files($this->all_icons_dir), function ($file)
         {
             return preg_match('/(^unit_icon.*[6]).png/', $file);
         });
